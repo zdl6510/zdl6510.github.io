@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>Claude Code是深入浅出(安装篇)</title>
+      <link href="/2026/06/11/Claude-Code%E6%98%AF%E6%B7%B1%E5%85%A5%E6%B5%85%E5%87%BA-%E5%AE%89%E8%A3%85%E7%AF%87/"/>
+      <url>/2026/06/11/Claude-Code%E6%98%AF%E6%B7%B1%E5%85%A5%E6%B5%85%E5%87%BA-%E5%AE%89%E8%A3%85%E7%AF%87/</url>
+      
+        <content type="html"><![CDATA[<div class="video-container">[up主专用，视频内嵌代码贴在这]</div> <style>.video-container {    position: relative;    width: 100%;    padding-top: 56.25%; /* 16:9 aspect ratio (height/width = 9/16 * 100%) */}.video-container iframe {    position: absolute;    top: 0;    left: 0;    width: 100%;    height: 100%;}</style>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Claude Code使用技巧篇</title>
+      <link href="/2026/06/11/Claude-Code%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7%E7%AF%87/"/>
+      <url>/2026/06/11/Claude-Code%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7%E7%AF%87/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Claude-code深入浅出（技巧篇1）"><a href="#Claude-code深入浅出（技巧篇1）" class="headerlink" title="Claude code深入浅出（技巧篇1）"></a>Claude code深入浅出（技巧篇1）</h1><p>上一期我们介绍了基础的 <code>Claude Code</code>安装，这一期开始我们就要开始进行 <code>Claude Code</code>使用技巧的学习，现在我们坐稳扶好准备发车！！！ :rainbow:</p><p>[TOC]</p><h2 id="1-工作区介绍"><a href="#1-工作区介绍" class="headerlink" title="1.工作区介绍"></a>1.工作区介绍</h2><p>经过上期吗，我们安装了 <code>Vsocde</code>的 <code>Claude Code</code>插件，拜托了 <code>CLI</code>方式较为复杂晦涩的操作界面，接下来我们就先来学习一下他的基础功能。</p><p><img src="https://imageontelegram.cc.cd/file/blog/AI/tools/1781070686110_image-20260610135117772.png" alt="image-20260610135117772"></p><h3 id="1-1-会话管理"><a href="#1-1-会话管理" class="headerlink" title="1.1 会话管理"></a>1.1 会话管理</h3><p>点击这个橙色的按钮，可以增加多个会话，每一个会话都拥有独立上的上下文，也就是我们所说的拥有独立的记忆，就和我们在使用 Chat APP一样的效果，每一个会话之间不会u相互干扰，这样可以让 AI更加专注的解决精细的问题。</p><p><img src="https://imageontelegram.cc.cd/file/blog/AI/tools/1781071124937_image-20260610135840215.png" alt="image-20260610135840215"></p><p>比如现在我在一个会话里面告诉 <code>Claude Code</code>我的名字，再通过另一个会话询问 <code>Claude Code</code>。就可以看出他们之间的 <strong>记忆隔离</strong></p><p><img src="https://imageontelegram.cc.cd/file/blog/AI/tools/1781071544906_image-20260610140537288.png" alt="image-20260610140537288"></p><p>现在通过点击橙色的小按钮或者是 点击 <code>New Session</code>按钮创建一个新的会话，再次询问他我的名字是什么，即可验证~~</p><p><img src="https://imageontelegram.cc.cd/file/blog/AI/tools/1781071758477_image-20260610140917373.png" alt="image-20260610140917373"></p><p>可以看出 会话之间不存在记忆互通，但是我的 <code>Claude Code</code>还是通过一些渠道找到了一些信息，所以在AI时代大家要更加注意自己的信息隐私安全！！ :warning:</p><p>在新会话按钮的旁边有一个时钟样式的按钮，哪个就是 <strong>历史会话管理</strong>，点开可以看到之前在该工作区和 <code>Claude Code</code>的对话记录，也就是说 <strong>丢失的记忆可以在这里找回来</strong>，如果不慎将一个重要的会话关闭了，可以在这里找回。</p><p><img src="https://imageontelegram.cc.cd/file/blog/AI/tools/1781072432247_image-20260610142025200.png" alt="image-20260610142025200"></p><h2 id="2-文件引用与对话流程"><a href="#2-文件引用与对话流程" class="headerlink" title="2. 文件引用与对话流程"></a>2. 文件引用与对话流程</h2><p>在 <code>Claude Code</code>的对话中也是支持我们自己上传的资料作为，<code>Claude Code</code>的思考依据的</p><p><img src="https://imageontelegram.cc.cd/file/blog/AI/tools/1781073997897_1781073403886_image-20260610143640160.png" alt="image-20260610143640160.png"></p><p>同时我们也可以指定特定的文件来作为这一轮对话的参考，比如我的工作区中有两个文件，可以使用 <code>@ + 指定文件名称</code>的方式来对这个文件的信息进行询问或者是直接使用 <code>Claude Code</code>编辑</p><p><img src="https://imageontelegram.cc.cd/file/blog/AI/tools/1781074218291_image-20260610145009775.png" alt="image-20260610145009775"></p><p><img src="https://imageontelegram.cc.cd/file/blog/AI/tools/1781074359193_image-20260610145233774.png" alt="image-20260610145233774.png"></p><p>接下来我们也可以看到，在对话框的下面有一个斜杠的按钮点开之后可以看到非常多的操作。这个其实在 <code>Claude Code CLI</code>也是可以看到的，但是 <code>VScode</code>插件就更加的 <strong>平民化</strong>一些，可以直接通过搜索和点击按钮的方式，来进行进行交互，常见的操作这里，到了后面会结合具体的操作来展示这里主要的功能，这里我们先按下不表，感兴趣的同学就可以自行搜索一下。</p><p><img src="https://imageontelegram.cc.cd/file/blog/AI/tools/1781075633673_image-20260610151352796.png" alt="image-20260610151352796"></p><p>当然这里每一个 AI输出的每一个 次元都是大家的真金白银，在操作是也会难免有手误的时候，<strong>当觉得询问的问题不具体或者是询问的方向错误等问题想要终止当前的对话，可以直接点击旁边的按钮终止流程</strong></p><p><img src="https://imageontelegram.cc.cd/file/blog/AI/tools/1781076192493_image-20260610152305242.png" alt="image-20260610152305242"></p><h2 id="3-权限机制"><a href="#3-权限机制" class="headerlink" title="3.权限机制"></a>3.权限机制</h2>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+  
+  
+</search>
