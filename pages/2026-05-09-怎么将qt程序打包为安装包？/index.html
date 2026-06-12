@@ -1,0 +1,688 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>怎么将Qt程序打包为安装包？ | 星野暗涌</title><meta name="author" content="近听水无声"><meta name="copyright" content="近听水无声"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#18171d"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="怎么将Qt程序打包为安装包？"><meta name="application-name" content="怎么将Qt程序打包为安装包？"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#18171d"><meta property="og:type" content="article"><meta property="og:title" content="怎么将Qt程序打包为安装包？"><meta property="og:url" content="http://example.com/pages/2026-05-09-%E6%80%8E%E4%B9%88%E5%B0%86qt%E7%A8%8B%E5%BA%8F%E6%89%93%E5%8C%85%E4%B8%BA%E5%AE%89%E8%A3%85%E5%8C%85%EF%BC%9F/index.html"><meta property="og:site_name" content="星野暗涌"><meta property="og:description" content="https:&amp;#x2F;&amp;#x2F;open.spotify.com&amp;#x2F;playlist&amp;#x2F;6zCID88oNjNv9zx6puDHKj?si&amp;#x3D;2697caec55594412&amp;amp;nd&amp;#x3D;1&amp;amp;dlsi&amp;#x3D;1ac4dd1566274a75 现在让我们设好番茄钟放一首好听的音乐开始学习吧 🌈 😋  前言在刚学习编"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://bu.dusays.com/2023/04/27/64496e511b09c.jpg"><meta property="article:author" content="近听水无声"><meta property="article:tag"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://bu.dusays.com/2023/04/27/64496e511b09c.jpg"><meta name="description" content="https:&amp;#x2F;&amp;#x2F;open.spotify.com&amp;#x2F;playlist&amp;#x2F;6zCID88oNjNv9zx6puDHKj?si&amp;#x3D;2697caec55594412&amp;amp;nd&amp;#x3D;1&amp;amp;dlsi&amp;#x3D;1ac4dd1566274a75 现在让我们设好番茄钟放一首好听的音乐开始学习吧 🌈 😋  前言在刚学习编"><link rel="shortcut icon" href="/favicon.ico"><link rel="canonical" href="http://example.com/pages/2026-05-09-%E6%80%8E%E4%B9%88%E5%B0%86qt%E7%A8%8B%E5%BA%8F%E6%89%93%E5%8C%85%E4%B8%BA%E5%AE%89%E8%A3%85%E5%8C%85%EF%BC%9F/"><link rel="preconnect" href="//cdn.cbd.int"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="code-xxx"/><meta name="msvalidate.01" content="xxx"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@6.1.6/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: {"enable":true,"img":"https://upload-bbs.miyoushe.com/upload/2024/07/27/125766904/ba62475f396df9de3316a08ed9e65d86_5680958632268053399..png"},
+  postHeadAiDescription: {"enable":true,"gptName":"AnZhiYu","mode":"local","switchBtn":false,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":"xxxx","Referer":"https://xx.xx/"},
+  diytitle: {"enable":true,"leaveTitle":"w(ﾟДﾟ)w 不要走！再看看嘛！","backTitle":"♪(^∇^*)欢迎肥来！"},
+  LA51: undefined,
+  greetingBox: undefined,
+  twikooEnvId: 'https://twikoo.zhengdengliang.com/',
+  commentBarrageConfig:undefined,
+  music_page_default: "nav_music",
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: undefined,
+  authorStatus: undefined,
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    simplehomepage: true,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":false,"limitCount":50,"languages":{"author":"作者: 近听水无声","link":"链接: ","source":"来源: 星野暗涌","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.2.0/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.2.0/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  shortcutKey: undefined,
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: '星野暗涌',
+  title: '怎么将Qt程序打包为安装包？',
+  postAI: '',
+  pageFillDescription: '前言, 概述, 一、前期准备, 1.1 Qt环境变量配置, 1.2 生成Release版本, 二、使用windeployqt打包依赖, 2.1 准备独立文件夹, 2.2 运行windeployqt工具, 2.3 windeployqt常用参数, 2.4 执行结果, 三、制作安装包, 3.1 选择打包工具, 3.2 Inno Setup安装与配置, 3.3 前置准备, 3.4 运行Inno Setup 创建脚本, 四、高级技巧, 4.1 单文件打包, 4.2 静态编译, 4.3 依赖检查工具, 4.4 自动化打包脚本, 五、常见问题, Q1 提示找不到Qt5Core.dll, Q2 程序在其他电脑无法运行, Q3 打包后程序体积过大, Q4 QML项目打包后界面无法显示, Q5 Inno Setup中文乱码, 六、总结现在让我们设好番茄钟放一首好听的音乐开始学习吧前言在刚学习编程的时候我们总是会将自己做的一些小玩具迫不及待地分享给我们的朋友但是在那时我们的还没程序打包的概念经常做出来的程序要么只能在特定的环境里面中跑起来第一个分享给是有的是一个简单的猜数字游戏但是在室友的电脑上是中运行不起来后看来才知道原来是电脑上不能直接运行程序在刚知道的时候瞬间就觉得他非常的有趣从而开始幻想自己有一天要做出一些让朋友对我竖起大拇指的项目终于前些时间我制作的第一个较大项目完成了今时不同往日现在我是时候来好好琢磨琢磨怎么让朋友们也能玩到这个耗费我大量心血的玩具概述本教程将详细介绍如何在系统下将应用程序打包成可独立运行的程序并进一步制作成专业的安装包整个流程分为三个主要步骤环境准备依赖打包安装包制作核心工具一前期准备环境变量配置在使用工具前需要确保相关路径已添加到系统环境变量中步骤找到自己的安装路径点开可能会有多个目录这取决于你在下载时的安装设置具体选用哪个就要看你想要打包的程序是使用什么构建的比如我现在的这个项目是在上构建的所以我就点进点进的目录找到再点进去找到在这里发现有两个和具体选用哪个是要看你下载的版本比如我下载的是的所以在打包的时候就是用之前的版本可以使用复制现在的文件路径将其添加到环境变量其实也就是当前你进入的文件目录现在我们需要将它添加到环境变量之中让后续的操作更加的简便可以直接在电脑下方的搜索框搜索环境点击进入也可以右键此电脑属性高级系统设置环境变量选择编辑环境变量在系统变量中找到点击编辑配置环境变量验证环境变量是否添加成功输入输入命令显示这样的界面就说明环境变量起作用了注意如果使用编译需要添加的路径如果使用编译需要安装对应版本的运行时生成版本打包前必须使用模式编译程序因为版本体积更小运行效率更高操作在左下角构建模式选择重新运行项目执行成功之后再到项目的构建目录就可以找到版本的执行文件可以直接在跳转到构建项目进入到目录找到文件夹这样就可以找到版本的运行程序了二使用打包依赖准备独立文件夹创建一个新的空文件夹例如将模式生成的文件复制到该文件夹如果程序使用了自定义也一并复制到该文件夹比如我自己的程序就是用到了服务器的地址和端口和库所以这些运行需要的配置文件也要一并的复制进去运行工具右键打开命令行窗口输入打包的工具的命令我这里使用的是如果不是使用的的版本构建的具体的视情况而定这样我们就将自己的程序基本的打包好了点击我们的执行程序文件可以正常的运行一定要注意将自己使用到的动静态库文件拷贝到自己创建的目录否则无法运行常用参数一般的情况下直接使用按照上面的步骤做就行了下面是一些的拓展用法基础用法仅复制核心依赖减小体积包含依赖适用于项目源码路径指定模式显示详细输出执行结果命令执行成功后文件夹中会自动生成文件核心库如等文件夹平台插件图像格式支持等文件夹多语言翻译文件可删除以减小体积其他依赖文件此时双击文件应该可以正常运行排查运行错误三制作安装包完成依赖打包后可以使用安装包制作工具生成专业的安装程序选择打包工具工具优点缺点适用场景简单易用脚本清晰社区活跃功能相对基础中小型项目快速打包功能强大高度自定义学习曲线陡峭复杂安装需求官方工具深度集成配置复杂大型跨平台项目本教程以为例推荐新手使用安装与配置下载地址还是像安装其他的软件一眼个选择一个安装位置就可以了前置准备将我们之前的所有依赖重新放在一个新的文件夹中除了运行程序运行创建脚本打开软件刚打开的时候会弹出这样的窗口注意一定要选择这个按钮点击接下来点击来到这个界面这里的这只可以随意这里我们没有公司和许可证就可以直接不管他继续点击来到这一步这一步很重要点击选中我们的执行程序同时加入我们存放所有依赖的文件夹选中执行程序选中依赖文件夹剩下的步骤可以根据自己的需求自己设置若没有什么特殊需求直接继续单击默认不支持中文但是可以下载到中文的程序包可以自行设置选择一个文件夹来接受后续脚本运行生成的安装包后面的没有特殊需要就直接点击最后默认直接编译执行成功之后就可以发现我们设置的路径下就出现了安装包点击之后可以正常下载四高级技巧单文件打包如果希望生成单个文件无需解压可使用下载安装将打包文件夹的所有内容虚拟化到中生成的单文件体积较大但无需依赖外部文件静态编译优点生成的无需任何体积最小缺点需要重新编译非常耗时数小时不推荐新手使用商业项目需注意许可协议依赖检查工具使用或检查依赖开发者命令提示符自动化打包脚本创建批处理文件开始打包应用程序设置路径清理旧文件复制打包依赖打包完成五常见问题提示找不到未正确执行检查环境变量配置程序在其他电脑无法运行目标电脑缺少运行库在安装包中包含或使用编译打包后程序体积过大使用参数移除翻译文件删除不需要的如等考虑使用模式和代码优化项目打包后界面无法显示需要指定路径项目源码路径中文乱码确保脚本文件编码为六总结完整的应用程序打包流程配置环境变量确保可用生成版本获取优化后的创建独立文件夹复制和自定义运行自动收集依赖测试运行确保无缺失使用制作专业安装包测试安装验证安装包功能关键提示通过本教程你应该能够完成从项目到安装包的完整流程根据项目复杂度整个过程通常需要分钟到小时',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2026-06-12 20:54:40',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 8.1.2"></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="https://npm.elemecdn.com/anzhiyu-blog-static@1.0.4/img/avatar.jpg"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><a id="site-name" href="/" accesskey="h"><div class="title">星野暗涌</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div></div></div><div id="nav-right"><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><div class="nav-button" id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" title="搜索🔍" accesskey="s"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span> 搜索</span></a></div><input id="center-console" type="checkbox"/><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="https://imageontelegram.cc.cd/file/blog/settings/1781177289331_mm_reward_qrcode_1781172627378.png" target="_blank"><img class="post-qr-code-img" alt="微信" src="https://imageontelegram.cc.cd/file/blog/settings/1781177289331_mm_reward_qrcode_1781172627378.png"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://imageontelegram.cc.cd/file/blog/settings/1781177315541_1781177132782.jpg" target="_blank"><img class="post-qr-code-img" alt="支付宝" src="https://imageontelegram.cc.cd/file/blog/settings/1781177315541_1781177132782.jpg"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> 最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">兴趣点</div><span class="author-content-item-title">寻找你感兴趣的领域</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/ai%E5%B7%A5%E5%85%B7/" style="font-size: 1.05rem;">ai工具<sup>2</sup></a><a href="/tags/ai%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/" style="font-size: 1.05rem;">ai应用开发<sup>2</sup></a><a href="/tags/cpp/" style="font-size: 1.05rem;">cpp<sup>8</sup></a><a href="/tags/docker/" style="font-size: 1.05rem;">docker<sup>1</sup></a><a href="/tags/go/" style="font-size: 1.05rem;">go<sup>3</sup></a><a href="/tags/mysql/" style="font-size: 1.05rem;">mysql<sup>1</sup></a><a href="/tags/vue3/" style="font-size: 1.05rem;">vue3<sup>1</sup></a></div></div><hr/></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/06/"><span class="card-archive-list-date">六月 2026</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">2</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/05/"><span class="card-archive-list-date">五月 2026</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">17</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="post-meta-categories"><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/qt/" itemprop="url">qt</a></span><span class="article-meta tags"></span></div></div><h1 class="post-title" itemprop="name headline">怎么将Qt程序打包为安装包？</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2026-05-08T16:00:00.000Z" title="发表于 2026-05-09 00:00:00">2026-05-09</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2026-06-12T12:54:40.160Z" title="更新于 2026-06-12 20:54:40">2026-06-12</time></span></div><div class="meta-secondline"><span class="post-meta-separator"></span><span class="post-meta-wordcount"><i class="anzhiyufont anzhiyu-icon-file-word post-meta-icon" title="文章字数"></i><span class="post-meta-label" title="文章字数">字数总计:</span><span class="word-count" title="文章字数">14k</span><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-clock post-meta-icon" title="阅读时长"></i><span class="post-meta-label" title="阅读时长">阅读时长:</span><span>50 mins.分钟</span></span><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为长沙"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>长沙</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src=""></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="http://example.com/pages/2026-05-09-%E6%80%8E%E4%B9%88%E5%B0%86qt%E7%A8%8B%E5%BA%8F%E6%89%93%E5%8C%85%E4%B8%BA%E5%AE%89%E8%A3%85%E5%8C%85%EF%BC%9F/"><header><a class="post-meta-categories" href="/categories/qt/" itemprop="url">qt</a><h1 id="CrawlerTitle" itemprop="name headline">怎么将Qt程序打包为安装包？</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">近听水无声</span><time itemprop="dateCreated datePublished" datetime="2026-05-08T16:00:00.000Z" title="发表于 2026-05-09 00:00:00">2026-05-09</time><time itemprop="dateCreated datePublished" datetime="2026-06-12T12:54:40.160Z" title="更新于 2026-06-12 20:54:40">2026-06-12</time></header><p><a target="_blank" rel="noopener" href="https://open.spotify.com/playlist/6zCID88oNjNv9zx6puDHKj?si=2697caec55594412&nd=1&dlsi=1ac4dd1566274a75">https://open.spotify.com/playlist/6zCID88oNjNv9zx6puDHKj?si=2697caec55594412&amp;nd=1&amp;dlsi=1ac4dd1566274a75</a></p>
+<p>现在让我们设好番茄钟放一首好听的音乐开始学习吧 🌈 😋</p>
+<hr>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在刚学习编程的时候，我们总是会将自己做的一些小玩具迫不及待地分享给我们的朋友，但是在那时我们的还没程序打包的概念，经常做出来的程序，要么只能在 Visual Studio(特定的环境里面)中跑起来（第一个分享给是有的是一个简单的猜数字游戏，但是在室友的电脑上是中运行不起来，后看来才知道原来是mac电脑上不能直接运行.exe程序 ）。</p>
+<p>在刚知道<code>qt</code>的时候瞬间就觉得他非常的有趣，从而开始幻想自己有一天要做出一些让朋友对我竖起大拇指的项目 😏。终于前些时间，我制作的第一个较大项目完成了，今时不同往日现在我是时候来好好琢磨琢磨，怎么让朋友们也能玩到这个耗费我大量心血的玩具 😊</p>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>本教程将详细介绍如何在Windows系统下将Qt应用程序打包成可独立运行的程序，并进一步制作成专业的安装包。整个流程分为三个主要步骤：<strong>环境准备</strong> → <strong>依赖打包</strong> → <strong>安装包制作</strong>。</p>
+<p>💡 <strong>核心工具</strong></p>
+<hr>
+<h2 id="一、前期准备"><a href="#一、前期准备" class="headerlink" title="一、前期准备"></a>一、前期准备</h2><h3 id="1-1-Qt环境变量配置"><a href="#1-1-Qt环境变量配置" class="headerlink" title="1.1 Qt环境变量配置"></a>1.1 Qt环境变量配置</h3><p>在使用windeployqt工具前，需要确保Qt相关路径已添加到系统环境变量中。</p>
+<p><strong>步骤：</strong></p>
+<ol>
+<li>找到自己的 QT安装路径</li>
+</ol>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/image-50-1024x522.png"></p>
+<ol>
+<li>点开可能会有多个目录，这取决于你在下载Qt时的安装设置，具体选用哪个就要看你想要打包的Qt程序是使用什么构建的</li>
+</ol>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/image-51-1024x522.png"></p>
+<p>比如我现在的这个项目是在MinGW上构建的，所以我就点进mingw</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/image-52-1024x544.png"></p>
+<p>3. 点进mingw的目录找到bin，再点进去找到 <code>windeployqt</code></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/image-53-1024x522.png"></p>
+<p>在这里发现有两个, <code>windeployqt</code> 和 <code>windeployqt6</code> 具体选用哪个，是要看你下载的Qt版本，比如我下载的是Qt的6.7.3所以在打包的时候就是用 <code>windeployqt6</code> 之前的版本可以使用<code>windeployqt</code></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/image-54-1024x522.png"></p>
+<ol>
+<li>复制现在的文件路径将其添加到环境变量（其实也就是当前你进入的文件目录），现在我们需要将它添加到环境变量之中，让后续的操作更加的简便</li>
+</ol>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/image-55-1024x522.png"></p>
+<p>可以直接在电脑下方的搜索框搜索 “环境”，点击进入,(也可以右键 <strong>此电脑</strong> → <strong>属性</strong> → <strong>高级系统设置</strong> → <strong>环境变量)</strong></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/image-56-1024x911.png"></p>
+<p>选择编辑环境变量</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/image-57.png"></p>
+<p>在 <strong>系统变量</strong> 中找到 <strong>Path</strong>，点击 <strong>编辑</strong></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/image-58.png"></p>
+<p>配置环境变量</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/image-59.png"></p>
+<ol>
+<li>验证环境变量是否添加成功</li>
+</ol>
+<p><code>win + R</code> 输入<code>cmd</code> 输入 <code>windeployqt</code> 命令，显示这样的界面就说明环境变量起作用了</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/image-61-1024x534.png"></p>
+<p>⚠️ <strong>注意</strong>：如果使用MinGW编译，需要添加MinGW的bin路径；如果使用MSVC编译，需要安装对应版本的Visual Studio运行时。</p>
+<h3 id="1-2-生成Release版本"><a href="#1-2-生成Release版本" class="headerlink" title="1.2 生成Release版本"></a>1.2 生成Release版本</h3><p>打包前必须使用Release模式编译程序，因为Release版本体积更小、运行效率更高。</p>
+<p><strong>Qt Creator操作：</strong></p>
+<ol>
+<li>在左下角构建模式选择 <strong>Release</strong></li>
+</ol>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/image-62-1024x544.png"></p>
+<ol>
+<li><p>重新运行项目，执行成功之后再到项目的构建目录就可以找到 release版本的执行文件</p>
+<ol>
+<li>可以直接在 qt跳转到构建项目</li>
+</ol>
+<p> <img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/image-63-1024x620.png"></p>
+<p> b. 进入到 build目录找到 release文件夹</p>
+<p> <img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/image-64-1024x522.png"></p>
+<p> 这样就可以找到 release版本的运行程序了</p>
+<p> <img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/image-65-1024x522.png"></p>
+</li>
+</ol>
+<hr>
+<h2 id="二、使用windeployqt打包依赖"><a href="#二、使用windeployqt打包依赖" class="headerlink" title="二、使用windeployqt打包依赖"></a>二、使用windeployqt打包依赖</h2><h3 id="2-1-准备独立文件夹"><a href="#2-1-准备独立文件夹" class="headerlink" title="2.1 准备独立文件夹"></a>2.1 准备独立文件夹</h3><ol>
+<li><p>创建一个新的空文件夹，例如 <code>D:MyApp_Package</code></p>
+</li>
+<li><p>将Release模式生成的 <code>.exe</code> 文件复制到该文件夹</p>
+</li>
+<li><p><strong>如果程序使用了自定义DLL</strong>，也一并复制到该文件夹</p>
+</li>
+</ol>
+<p>比如我自己的程序就是用到了服务器的ip地址和端口和libmpv2库，所以这些运行需要的配置文件也要一并的复制进去</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/image-66-1024x522.png"><br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/image-67-1024x521.png"></p>
+<h3 id="2-2-运行windeployqt工具"><a href="#2-2-运行windeployqt工具" class="headerlink" title="2.2 运行windeployqt工具"></a>2.2 运行windeployqt工具</h3><ol>
+<li>右键打开命令行窗口</li>
+</ol>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/image-68-1024x522.png"></p>
+<p>2. 输入打包的工具的命令 （我这里使用的是 <code>windployqt6</code>， 如果不是使用的Qt6.xxx的版本构建的，具体的视情况而定）</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/image-69-1024x408.png"></p>
+<p>这样我们就将自己的qt程序基本的打包好了，点击我们的执行程序文件可以正常的运行；</p>
+<p>PS: <strong>一定要注意将自己使用到的动静态库文件拷贝到自己创建的目录，否则无法运行！！</strong></p>
+<h3 id="2-3-windeployqt常用参数"><a href="#2-3-windeployqt常用参数" class="headerlink" title="2.3 windeployqt常用参数"></a>2.3 windeployqt常用参数</h3><p>一般的情况下，直接使用按照上面的步骤做就行了，下面是一些 <code>windeployqt</code> 的拓展用法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"># 基础用法</span><br><span class="line">windeployqt MyApp.exe</span><br><span class="line"></span><br><span class="line"># 仅复制核心依赖，减小体积</span><br><span class="line">windeployqt --no-translations MyApp.exe</span><br><span class="line"></span><br><span class="line"># 包含QML依赖（适用于Qt Quick项目）</span><br><span class="line">windeployqt --qmldir &lt;QML源码路径&gt; MyApp.exe</span><br><span class="line"></span><br><span class="line"># 指定Release模式</span><br><span class="line">windeployqt --release MyApp.exe</span><br><span class="line"></span><br><span class="line"># 显示详细输出</span><br><span class="line">windeployqt --verbose 2 MyApp.exe</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-4-执行结果"><a href="#2-4-执行结果" class="headerlink" title="2.4 执行结果"></a>2.4 执行结果</h3><p>命令执行成功后，文件夹中会自动生成：</p>
+<ul>
+<li><p><strong>DLL文件</strong>：Qt核心库（如Qt5Core.dll、Qt5Gui.dll等）</p>
+</li>
+<li><p><strong>plugins文件夹</strong>：平台插件、图像格式支持等</p>
+</li>
+<li><p><strong>translations文件夹</strong>：多语言翻译文件（可删除以减小体积）</p>
+</li>
+<li><p><strong>其他依赖文件</strong></p>
+</li>
+</ul>
+<p>此时双击 <code>.exe</code> 文件应该可以正常运行。</p>
+<p>🔍 <strong>排查运行错误</strong></p>
+<hr>
+<h2 id="三、制作安装包"><a href="#三、制作安装包" class="headerlink" title="三、制作安装包"></a>三、制作安装包</h2><p>完成依赖打包后，可以使用安装包制作工具生成专业的安装程序。</p>
+<h3 id="3-1-选择打包工具"><a href="#3-1-选择打包工具" class="headerlink" title="3.1 选择打包工具"></a>3.1 选择打包工具</h3><table>
+<thead>
+<tr>
+<th>工具</th>
+<th>优点</th>
+<th>缺点</th>
+<th>适用场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Inno Setup</strong></td>
+<td>简单易用，脚本清晰，社区活跃</td>
+<td>功能相对基础</td>
+<td>中小型项目，快速打包</td>
+</tr>
+<tr>
+<td><strong>NSIS</strong></td>
+<td>功能强大，高度自定义</td>
+<td>学习曲线陡峭</td>
+<td>复杂安装需求</td>
+</tr>
+<tr>
+<td><strong>Qt Installer Framework</strong></td>
+<td>Qt官方工具，深度集成</td>
+<td>配置复杂</td>
+<td>大型跨平台项目</td>
+</tr>
+</tbody></table>
+<p><strong>本教程以Inno Setup为例</strong>（推荐新手使用）。</p>
+<h3 id="3-2-Inno-Setup安装与配置"><a href="#3-2-Inno-Setup安装与配置" class="headerlink" title="3.2 Inno Setup安装与配置"></a>3.2 Inno Setup安装与配置</h3><p><strong>下载地址：</strong> <a target="_blank" rel="noopener" href="https://jrsoftware.org/isdl.php#stable">https://jrsoftware.org/isdl.php</a></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/image-70-1024x544.png"></p>
+<p>还是像安装其他的软件一眼个选择一个安装位置就可以了。</p>
+<h3 id="3-3-前置准备"><a href="#3-3-前置准备" class="headerlink" title="3.3 前置准备"></a>3.3 前置准备</h3><p>将我们之前的所有依赖重新放在一个新的文件夹中（除了运行程序）</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/image-71-1024x522.png"></p>
+<h3 id="3-4-运行Inno-Setup-创建脚本"><a href="#3-4-运行Inno-Setup-创建脚本" class="headerlink" title="3.4 运行Inno Setup 创建脚本"></a>3.4 运行Inno Setup 创建脚本</h3><ol>
+<li>打开软件</li>
+</ol>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/image-72-1024x527.png"></p>
+<p>刚打开的时候会弹出这样的窗口注意一定要选择这个按钮！！</p>
+<ol>
+<li>点击OK,接下来点击next，来到这个界面</li>
+</ol>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/image-74-1024x527.png"></p>
+<p>这里的这只可以随意，这里我们没有公司和许可证，就可以直接不管他</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/image-75-1024x526.png"></p>
+<p>3. 继续点击next来到这一步，这一步很重要，点击选中我们的执行程序，同时加入我们存放所有依赖的文件夹 ☺️</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/image-76-1024x527.png"></p>
+<ul>
+<li>选中执行程序</li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/image-77-1024x544.png"></p>
+<ul>
+<li>选中依赖文件夹</li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/image-78-1024x544.png"></p>
+<ol>
+<li>剩下的步骤可以根据自己的需求自己设置，若没有什么特殊需求直接继续单击next</li>
+</ol>
+<p>默认不支持中文，但是可以下载到中文的程序包，可以自行设置</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/image-79.png"></p>
+<p>5. 选择一个文件夹，来接受后续脚本运行生成的安装包</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/image-80-1024x527.png"></p>
+<ol>
+<li>后面的没有特殊需要，就直接点击next,最后默认直接编译</li>
+</ol>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/image-81-1024x527.png"></p>
+<p>7. 执行成功之后，就可以发现我们设置的路径下就出现了安装包，点击之后可以正常下载 🏆</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/image-82-1024x526.png"><br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/image-83-1024x544.png"></p>
+<hr>
+<h2 id="四、高级技巧"><a href="#四、高级技巧" class="headerlink" title="四、高级技巧"></a>四、高级技巧</h2><h3 id="4-1-单文件打包"><a href="#4-1-单文件打包" class="headerlink" title="4.1 单文件打包"></a>4.1 单文件打包</h3><p>如果希望生成单个exe文件（无需解压），可使用 <strong>Enigma Virtual Box</strong>：</p>
+<ol>
+<li><p>下载安装 Enigma Virtual Box</p>
+</li>
+<li><p>将打包文件夹的所有内容虚拟化到exe中</p>
+</li>
+<li><p>生成的单文件体积较大，但无需依赖外部文件</p>
+</li>
+</ol>
+<h3 id="4-2-静态编译"><a href="#4-2-静态编译" class="headerlink" title="4.2 静态编译"></a>4.2 静态编译</h3><p><strong>优点：</strong> 生成的exe无需任何DLL，体积最小</p>
+<p><strong>缺点：</strong> 需要重新编译Qt，非常耗时（数小时）</p>
+<p>不推荐新手使用，商业项目需注意Qt许可协议。</p>
+<h3 id="4-3-依赖检查工具"><a href="#4-3-依赖检查工具" class="headerlink" title="4.3 依赖检查工具"></a>4.3 依赖检查工具</h3><p>使用 <strong>Dependency Walker</strong> 或 <strong>dumpbin</strong> 检查exe依赖：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># Visual Studio开发者命令提示符</span><br><span class="line">dumpbin /dependents MyApp.exe</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-4-自动化打包脚本"><a href="#4-4-自动化打包脚本" class="headerlink" title="4.4 自动化打包脚本"></a>4.4 自动化打包脚本</h3><p>创建批处理文件 <code>package.bat</code>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">@echo off</span><br><span class="line">echo 开始打包Qt应用程序...</span><br><span class="line"></span><br><span class="line">REM 设置路径</span><br><span class="line">set QTDIR=C:Qt5.15.2mingw81_64</span><br><span class="line">set BUILDDIR=build-MyApp-Desktop_Qt_5_15_2_MinGW_64_bit-Release</span><br><span class="line">set PACKAGEDIR=D:MyApp_Package</span><br><span class="line"></span><br><span class="line">REM 清理旧文件</span><br><span class="line">if exist &quot;%PACKAGEDIR%&quot; rd /s /q &quot;%PACKAGEDIR%&quot;</span><br><span class="line">mkdir &quot;%PACKAGEDIR%&quot;</span><br><span class="line"></span><br><span class="line">REM 复制exe</span><br><span class="line">copy &quot;%BUILDDIR%releaseMyApp.exe&quot; &quot;%PACKAGEDIR%&quot;</span><br><span class="line"></span><br><span class="line">REM 打包依赖</span><br><span class="line">cd /d &quot;%PACKAGEDIR%&quot;</span><br><span class="line">&quot;%QTDIR%binwindeployqt.exe&quot; --release --no-translations MyApp.exe</span><br><span class="line"></span><br><span class="line">echo 打包完成！</span><br><span class="line">pause</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="五、常见问题"><a href="#五、常见问题" class="headerlink" title="五、常见问题"></a>五、常见问题</h2><h3 id="Q1-提示找不到Qt5Core-dll"><a href="#Q1-提示找不到Qt5Core-dll" class="headerlink" title="Q1: 提示找不到Qt5Core.dll"></a>Q1: 提示找不到Qt5Core.dll</h3><p><strong>A:</strong> windeployqt未正确执行，检查Qt环境变量配置。</p>
+<h3 id="Q2-程序在其他电脑无法运行"><a href="#Q2-程序在其他电脑无法运行" class="headerlink" title="Q2: 程序在其他电脑无法运行"></a>Q2: 程序在其他电脑无法运行</h3><p><strong>A:</strong> 目标电脑缺少MSVC运行库，在安装包中包含 <code>vcredist_x64.exe</code> 或使用MinGW编译。</p>
+<h3 id="Q3-打包后程序体积过大"><a href="#Q3-打包后程序体积过大" class="headerlink" title="Q3: 打包后程序体积过大"></a>Q3: 打包后程序体积过大</h3><p><strong>A:</strong></p>
+<ul>
+<li><p>使用 <code>--no-translations</code> 参数移除翻译文件</p>
+</li>
+<li><p>删除不需要的plugins（如sql、multimedia等）</p>
+</li>
+<li><p>考虑使用Release模式和代码优化</p>
+</li>
+</ul>
+<h3 id="Q4-QML项目打包后界面无法显示"><a href="#Q4-QML项目打包后界面无法显示" class="headerlink" title="Q4: QML项目打包后界面无法显示"></a>Q4: QML项目打包后界面无法显示</h3><p><strong>A:</strong> 需要指定qmldir路径：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">windeployqt --qmldir &lt;项目QML源码路径&gt; MyApp.exe</span><br></pre></td></tr></table></figure>
+
+<h3 id="Q5-Inno-Setup中文乱码"><a href="#Q5-Inno-Setup中文乱码" class="headerlink" title="Q5: Inno Setup中文乱码"></a>Q5: Inno Setup中文乱码</h3><p><strong>A:</strong> 确保 <code>.iss</code> 脚本文件编码为UTF-8 with BOM。</p>
+<hr>
+<h2 id="六、总结"><a href="#六、总结" class="headerlink" title="六、总结"></a>六、总结</h2><p>完整的Qt应用程序打包流程：</p>
+<ol>
+<li><p><strong>配置Qt环境变量</strong> → 确保windeployqt可用</p>
+</li>
+<li><p><strong>生成Release版本</strong> → 获取优化后的exe</p>
+</li>
+<li><p><strong>创建独立文件夹</strong> → 复制exe和自定义DLL</p>
+</li>
+<li><p><strong>运行windeployqt</strong> → 自动收集Qt依赖</p>
+</li>
+<li><p><strong>测试运行</strong> → 确保无缺失DLL</p>
+</li>
+<li><p><strong>使用Inno Setup</strong> → 制作专业安装包</p>
+</li>
+<li><p><strong>测试安装</strong> → 验证安装包功能</p>
+</li>
+</ol>
+<p>✅ <strong>关键提示</strong></p>
+<p>通过本教程，你应该能够完成从Qt项目到Windows安装包的完整流程。根据项目复杂度，整个过程通常需要30分钟到2小时。</p>
+</article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2023/04/27/64496e511b09c.jpg" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2023/04/27/64496e511b09c.jpg" title="头像" alt="头像"></a><div class="post-copyright__author_name">近听水无声</div><div class="post-copyright__author_desc">每一次仰望，都是对未知的无畏奔赴</div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="http://example.com/pages/2026-05-09-%E6%80%8E%E4%B9%88%E5%B0%86qt%E7%A8%8B%E5%BA%8F%E6%89%93%E5%8C%85%E4%B8%BA%E5%AE%89%E8%A3%85%E5%8C%85%EF%BC%9F/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('http://example.com/pages/2026-05-09-%E6%80%8E%E4%B9%88%E5%B0%86qt%E7%A8%8B%E5%BA%8F%E6%89%93%E5%8C%85%E4%B8%BA%E5%AE%89%E8%A3%85%E5%8C%85%EF%BC%9F/')">怎么将Qt程序打包为安装包？</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"><div class="post-reward" onclick="anzhiyu.addRewardMask()"><div class="reward-button button--animated" title="赞赏作者"><i class="anzhiyufont anzhiyu-icon-hand-heart-fill"></i>打赏作者</div><div class="reward-main"><div class="reward-all"><span class="reward-title">感谢你赐予我前进的力量</span><ul class="reward-group"><li class="reward-item"><a href="https://imageontelegram.cc.cd/file/blog/settings/1781177289331_mm_reward_qrcode_1781172627378.png" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://imageontelegram.cc.cd/file/blog/settings/1781177289331_mm_reward_qrcode_1781172627378.png" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://imageontelegram.cc.cd/file/blog/settings/1781177315541_1781177132782.jpg" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://imageontelegram.cc.cd/file/blog/settings/1781177315541_1781177132782.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul><a class="reward-main-btn" href="/about/#about-reward" target="_blank"><div class="reward-text">赞赏者名单</div><div class="reward-dec">因为你们的支持让我意识到写文章的价值🙏</div></a></div></div></div><div id="quit-box" onclick="anzhiyu.removeRewardMask()" style="display: none"></div></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="http://example.com/pages/2026-05-09-%E6%80%8E%E4%B9%88%E5%B0%86qt%E7%A8%8B%E5%BA%8F%E6%89%93%E5%8C%85%E4%B8%BA%E5%AE%89%E8%A3%85%E5%8C%85%EF%BC%9F/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=怎么将Qt程序打包为安装包？&amp;url=http://example.com/pages/2026-05-09-%E6%80%8E%E4%B9%88%E5%B0%86qt%E7%A8%8B%E5%BA%8F%E6%89%93%E5%8C%85%E4%B8%BA%E5%AE%89%E8%A3%85%E5%8C%85%EF%BC%9F/&amp;pic=" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl() {
+  var currentPageUrl = window.location.href;
+  var input = document.createElement("input");
+  input.setAttribute("value", currentPageUrl);
+  document.body.appendChild(input);
+  input.select();
+  input.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  document.body.removeChild(input);
+}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">星野暗涌</a>！</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"></div></div></div><div class="post_share"><div class="social-share" data-image="https://img.090227.xyz/file/ae62475a131f3734a201c.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/pages/2026-05-09-golang%E7%9A%84%E5%8D%8F%E7%A8%8B%E4%B8%8E%E5%B9%B6%E8%A1%8C/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/ChatGPT_Image_2026E5B9B42E69C8820E697A5_17_17_51-1.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Golang的协程与并行</div></div></a></div><div class="next-post pull-right"><a href="/pages/2026-05-09-go%E8%AF%AD%E8%A8%80%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8%EF%BC%8C%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E4%B8%80%E5%AD%A6%E5%B0%B1%E4%BC%9A/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/photo-1642367340318-96fdbc5d30f5-scaled.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">go语言快速入门，基础语法一学就会</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="anzhiyufont anzhiyu-icon-comments"></i><span> 评论</span></div><div class="comment-randomInfo"><a onclick="anzhiyu.addRandomCommentInfo()" href="javascript:void(0)">匿名评论</a><a href="/privacy" style="margin-left: 4px">隐私政策</a></div><div class="comment-tips" id="comment-tips"><span>✅ 你无需删除空行，直接评论以获取最佳展示效果</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div><div class="comment-barrage"></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2023/04/27/64496e511b09c.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__description"></div></div></div><div class="card-widget anzhiyu-right-widget" id="card-wechat" onclick="null"><div id="flip-wrapper"><div id="flip-content"><div class="face" style="background: url(https://bu.dusays.com/2023/01/13/63c02edf44033.png) center center / 100% no-repeat"></div><div class="back face" style="background: url(https://bu.dusays.com/2023/05/13/645fa415e8694.png) center center / 100% no-repeat"></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0"><span class="toc-number">2.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%89%8D%E6%9C%9F%E5%87%86%E5%A4%87"><span class="toc-number">3.</span> <span class="toc-text">一、前期准备</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-Qt%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE"><span class="toc-number">3.1.</span> <span class="toc-text">1.1 Qt环境变量配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E7%94%9F%E6%88%90Release%E7%89%88%E6%9C%AC"><span class="toc-number">3.2.</span> <span class="toc-text">1.2 生成Release版本</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E4%BD%BF%E7%94%A8windeployqt%E6%89%93%E5%8C%85%E4%BE%9D%E8%B5%96"><span class="toc-number">4.</span> <span class="toc-text">二、使用windeployqt打包依赖</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E5%87%86%E5%A4%87%E7%8B%AC%E7%AB%8B%E6%96%87%E4%BB%B6%E5%A4%B9"><span class="toc-number">4.1.</span> <span class="toc-text">2.1 准备独立文件夹</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E8%BF%90%E8%A1%8Cwindeployqt%E5%B7%A5%E5%85%B7"><span class="toc-number">4.2.</span> <span class="toc-text">2.2 运行windeployqt工具</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-windeployqt%E5%B8%B8%E7%94%A8%E5%8F%82%E6%95%B0"><span class="toc-number">4.3.</span> <span class="toc-text">2.3 windeployqt常用参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-%E6%89%A7%E8%A1%8C%E7%BB%93%E6%9E%9C"><span class="toc-number">4.4.</span> <span class="toc-text">2.4 执行结果</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%88%B6%E4%BD%9C%E5%AE%89%E8%A3%85%E5%8C%85"><span class="toc-number">5.</span> <span class="toc-text">三、制作安装包</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-%E9%80%89%E6%8B%A9%E6%89%93%E5%8C%85%E5%B7%A5%E5%85%B7"><span class="toc-number">5.1.</span> <span class="toc-text">3.1 选择打包工具</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-Inno-Setup%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE"><span class="toc-number">5.2.</span> <span class="toc-text">3.2 Inno Setup安装与配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-%E5%89%8D%E7%BD%AE%E5%87%86%E5%A4%87"><span class="toc-number">5.3.</span> <span class="toc-text">3.3 前置准备</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-%E8%BF%90%E8%A1%8CInno-Setup-%E5%88%9B%E5%BB%BA%E8%84%9A%E6%9C%AC"><span class="toc-number">5.4.</span> <span class="toc-text">3.4 运行Inno Setup 创建脚本</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E9%AB%98%E7%BA%A7%E6%8A%80%E5%B7%A7"><span class="toc-number">6.</span> <span class="toc-text">四、高级技巧</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-%E5%8D%95%E6%96%87%E4%BB%B6%E6%89%93%E5%8C%85"><span class="toc-number">6.1.</span> <span class="toc-text">4.1 单文件打包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-%E9%9D%99%E6%80%81%E7%BC%96%E8%AF%91"><span class="toc-number">6.2.</span> <span class="toc-text">4.2 静态编译</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-%E4%BE%9D%E8%B5%96%E6%A3%80%E6%9F%A5%E5%B7%A5%E5%85%B7"><span class="toc-number">6.3.</span> <span class="toc-text">4.3 依赖检查工具</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-4-%E8%87%AA%E5%8A%A8%E5%8C%96%E6%89%93%E5%8C%85%E8%84%9A%E6%9C%AC"><span class="toc-number">6.4.</span> <span class="toc-text">4.4 自动化打包脚本</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98"><span class="toc-number">7.</span> <span class="toc-text">五、常见问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Q1-%E6%8F%90%E7%A4%BA%E6%89%BE%E4%B8%8D%E5%88%B0Qt5Core-dll"><span class="toc-number">7.1.</span> <span class="toc-text">Q1: 提示找不到Qt5Core.dll</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Q2-%E7%A8%8B%E5%BA%8F%E5%9C%A8%E5%85%B6%E4%BB%96%E7%94%B5%E8%84%91%E6%97%A0%E6%B3%95%E8%BF%90%E8%A1%8C"><span class="toc-number">7.2.</span> <span class="toc-text">Q2: 程序在其他电脑无法运行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Q3-%E6%89%93%E5%8C%85%E5%90%8E%E7%A8%8B%E5%BA%8F%E4%BD%93%E7%A7%AF%E8%BF%87%E5%A4%A7"><span class="toc-number">7.3.</span> <span class="toc-text">Q3: 打包后程序体积过大</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Q4-QML%E9%A1%B9%E7%9B%AE%E6%89%93%E5%8C%85%E5%90%8E%E7%95%8C%E9%9D%A2%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA"><span class="toc-number">7.4.</span> <span class="toc-text">Q4: QML项目打包后界面无法显示</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Q5-Inno-Setup%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81"><span class="toc-number">7.5.</span> <span class="toc-text">Q5: Inno Setup中文乱码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E6%80%BB%E7%BB%93"><span class="toc-number">8.</span> <span class="toc-text">六、总结</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/pages/Claude-Code%E6%B7%B1%E5%85%A5%E6%B5%85%E5%87%BA(%E6%8A%80%E5%B7%A7%E7%AF%871)/" title="Claude Code是深入浅出(技巧篇1)"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://img.090227.xyz/file/ae62475a131f3734a201c.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Claude Code是深入浅出(技巧篇1)"/></a><div class="content"><a class="title" href="/pages/Claude-Code%E6%B7%B1%E5%85%A5%E6%B5%85%E5%87%BA(%E6%8A%80%E5%B7%A7%E7%AF%871)/" title="Claude Code是深入浅出(技巧篇1)">Claude Code是深入浅出(技巧篇1)</a><time datetime="2026-06-11T05:14:45.000Z" title="发表于 2026-06-11 13:14:45">2026-06-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/pages/Claude-Code%E6%98%AF%E6%B7%B1%E5%85%A5%E6%B5%85%E5%87%BA-%E5%AE%89%E8%A3%85%E7%AF%87/" title="Claude Code深入浅出(安装篇)"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://img.zhengdengliang.com/file/blog/AI/tools/1781166275928_20260611162422433.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Claude Code深入浅出(安装篇)"/></a><div class="content"><a class="title" href="/pages/Claude-Code%E6%98%AF%E6%B7%B1%E5%85%A5%E6%B5%85%E5%87%BA-%E5%AE%89%E8%A3%85%E7%AF%87/" title="Claude Code深入浅出(安装篇)">Claude Code深入浅出(安装篇)</a><time datetime="2026-06-11T05:14:45.000Z" title="发表于 2026-06-11 13:14:45">2026-06-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/pages/2026-05-09-c11%E5%B9%B6%E5%8F%91%E5%BA%93/" title="C++11并发库"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/photo-1617529497471-9218633199c0-scaled.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="C++11并发库"/></a><div class="content"><a class="title" href="/pages/2026-05-09-c11%E5%B9%B6%E5%8F%91%E5%BA%93/" title="C++11并发库">C++11并发库</a><time datetime="2026-05-08T16:00:00.000Z" title="发表于 2026-05-09 00:00:00">2026-05-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/pages/2026-05-09-c-11%E6%8B%93%E5%B1%95%E5%AD%A6%E4%B9%A0/" title="C++ 11拓展学习"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/photo-1607799279861-4dd421887fb3-1-scaled.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="C++ 11拓展学习"/></a><div class="content"><a class="title" href="/pages/2026-05-09-c-11%E6%8B%93%E5%B1%95%E5%AD%A6%E4%B9%A0/" title="C++ 11拓展学习">C++ 11拓展学习</a><time datetime="2026-05-08T16:00:00.000Z" title="发表于 2026-05-09 00:00:00">2026-05-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/pages/2026-05-09-c14-standards/" title="C++14 Standards"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/photo-1614741118887-7a4ee193a5fa-1-scaled.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="C++14 Standards"/></a><div class="content"><a class="title" href="/pages/2026-05-09-c14-standards/" title="C++14 Standards">C++14 Standards</a><time datetime="2026-05-08T16:00:00.000Z" title="发表于 2026-05-09 00:00:00">2026-05-09</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">&copy;2020 - 2026 By <a class="footer-bar-link" href="/" title="近听水无声" target="_blank">近听水无声</a></div></div><div id="footer-type-tips"></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://github.com/anzhiyu-c/hexo-theme-anzhiyu" title="主题">主题</a></div></div></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">19</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">6</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://hexo.anheyu.com/" title="博客"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/favicon.ico" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://image.anheyu.com/" title="安知鱼图床"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://image.anheyu.com/favicon.ico" alt="安知鱼图床"/><span class="back-menu-item-text">安知鱼图床</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/ai%E5%B7%A5%E5%85%B7/" style="font-size: 0.88rem;">ai工具<sup>2</sup></a><a href="/tags/ai%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/" style="font-size: 0.88rem;">ai应用开发<sup>2</sup></a><a href="/tags/cpp/" style="font-size: 0.88rem;">cpp<sup>8</sup></a><a href="/tags/docker/" style="font-size: 0.88rem;">docker<sup>1</sup></a><a href="/tags/go/" style="font-size: 0.88rem;">go<sup>3</sup></a><a href="/tags/mysql/" style="font-size: 0.88rem;">mysql<sup>1</sup></a><a href="/tags/vue3/" style="font-size: 0.88rem;">vue3<sup>1</sup></a></div></div><hr/></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="anzhiyufont anzhiyu-icon-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="8152976493" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.7"></meting-js></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="anzhiyufont anzhiyu-icon-xmark"></i></button></nav><div class="is-center" id="loading-database"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-pulse-icon"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://y.qq.com/n/ryqq/playlist/8802438608&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/@fancyapps/ui@6.1.6/dist/fancybox/fancybox.umd.js"></script><script src="https://cdn.cbd.int/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://cdn.cbd.int/vanilla-lazyload@19.1.3/dist/lazyload.iife.min.js"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("2026/6/11"); //此处修改你的建站时间或者网站上线时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  const ascll = [
+    `欢迎使用安知鱼!`,
+    `生活明朗, 万物可爱`,
+    `
+        
+       █████╗ ███╗   ██╗███████╗██╗  ██╗██╗██╗   ██╗██╗   ██╗
+      ██╔══██╗████╗  ██║╚══███╔╝██║  ██║██║╚██╗ ██╔╝██║   ██║
+      ███████║██╔██╗ ██║  ███╔╝ ███████║██║ ╚████╔╝ ██║   ██║
+      ██╔══██║██║╚██╗██║ ███╔╝  ██╔══██║██║  ╚██╔╝  ██║   ██║
+      ██║  ██║██║ ╚████║███████╗██║  ██║██║   ██║   ╚██████╔╝
+      ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝    ╚═════╝
+        
+        `,
+    "已上线",
+    dnum,
+    "天",
+    "©2020 By 安知鱼 V1.7.1",
+  ];
+  const ascll2 = [`NCC2-036`, `调用前置摄像头拍照成功，识别为【小笨蛋】.`, `Photo captured: `, `🤪`];
+
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} %c ${ascll[2]} %c${ascll[3]}%c ${ascll[4]}%c ${ascll[5]}\n\n%c ${ascll[6]}\n`,
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      ""
+    )
+  );
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，小笨蛋.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Powered by 安知鱼 %c 你正在访问 近听水无声 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 你现在正处于监控中.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async src="/anzhiyu/random.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>(() => {
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'https://twikoo.zhengdengliang.com/',
+      region: '',
+      onCommentLoaded: () => {
+        anzhiyu.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') setTimeout(runFn,0)
+    else getScript('https://cdn.cbd.int/twikoo@1.6.44/dist/twikoo.all.min.js').then(runFn)
+  }
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'https://twikoo.zhengdengliang.com/',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(res => {
+      countELement.textContent = res[0].count
+    }).catch(err => {
+      console.error(err)
+    })
+  }
+
+  const runFn = () => {
+    init();
+    
+  }
+
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) anzhiyu.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else {
+      loadTwikoo()
+    }
+  } else {
+    window.loadOtherComment = loadTwikoo
+  }
+})()</script><input type="hidden" name="page-type" id="page-type" value="post"></div><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getComment = () => {
+    const runTwikoo = () => {
+      twikoo.getRecentComments({
+        envId: 'https://twikoo.zhengdengliang.com/',
+        region: '',
+        pageSize: 6,
+        includeReply: true
+      }).then(function (res) {
+        const twikooArray = res.map(e => {
+          return {
+            'content': changeContent(e.comment),
+            'avatar': e.avatar,
+            'nick': e.nick,
+            'url': e.url + '#' + e.id,
+            'date': new Date(e.created).toISOString()
+          }
+        })
+
+        saveToLocal.set('twikoo-newest-comments', JSON.stringify(twikooArray), 10/(60*24))
+        generateHtml(twikooArray)
+      }).catch(function (err) {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.textContent= "无法获取评论，请确认相关配置是否正确"
+      })
+    }
+
+    if (typeof twikoo === 'object') {
+      runTwikoo()
+    } else {
+      getScript('https://cdn.cbd.int/twikoo@1.6.44/dist/twikoo.all.min.js').then(runTwikoo)
+    }
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'data-lazy-src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'><div class='name'><span>${array[i].nick} </span></div></a>`
+        }
+        
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <time datetime="${array[i].date}">${anzhiyu.diffDate(array[i].date, true)}</time></div>
+        </div>`
+      }
+    } else {
+      result += '没有评论'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom && ($dom.innerHTML= result)
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('twikoo-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><script>var visitorMail = "";
+</script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://cdn.cbd.int/qrcodejs@1.0.0/qrcode.min.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><canvas class="fireworks" mobile="true"></canvas><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/fireworks.min.js"></script><script defer="defer" id="ribbon" src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="false"></script><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["meta[property=\"og:image\"]","meta[property=\"og:title\"]","meta[property=\"og:url\"]","meta[property=\"og:type\"]","meta[property=\"og:site_name\"]","meta[property=\"og:description\"]","head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script charset="UTF-8" src="https://cdn.cbd.int/anzhiyu-theme-static@1.1.5/accesskey/accesskey.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>
