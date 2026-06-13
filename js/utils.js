@@ -225,7 +225,7 @@ const anzhiyu = {
       const html = `
         <div class="loading-container">
           <div class="loading-item">
-            <div></div><div></div><div></div><div></div><div></div>
+            
           </div>
         </div>
       `;
