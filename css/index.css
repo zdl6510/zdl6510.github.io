@@ -21151,6 +21151,16 @@ html.hide-aside .layout > div:first-child {
   }
 }
 
+/* Show post excerpts on homepage cards */
+#content-inner #recent-posts > .recent-post-item > .recent-post-info > .content {
+  opacity: 1 !important;
+  height: auto !important;
+  min-height: 2.8em;
+  display: -webkit-box !important;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
 #aside-content .card-widget#card-wechat {
   background: #57bd6a;
   display: flex;
