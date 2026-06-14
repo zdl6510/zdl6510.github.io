@@ -21159,13 +21159,67 @@ html.hide-aside .layout > div:first-child {
 }
 
 /* Show post excerpts on homepage cards */
+#content-inner #recent-posts > .recent-post-item > .recent-post-info > .article-meta-wrap {
+  bottom: 68px !important;
+}
+
 #content-inner #recent-posts > .recent-post-item > .recent-post-info > .content {
   opacity: 1 !important;
-  height: auto !important;
-  min-height: 2.8em;
+  position: absolute;
+  left: 32px;
+  right: 32px;
+  bottom: 16px;
+  height: 44px !important;
+  min-height: 44px;
+  max-height: 44px;
+  margin: 0 !important;
+  padding: 0.36rem 0.7rem 0.36rem 0.78rem !important;
   display: -webkit-box !important;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 2 !important;
+  overflow: hidden !important;
+  border-left: 3px solid var(--anzhiyu-theme);
+  border-radius: 8px;
+  background: var(--anzhiyu-secondbg);
+  color: var(--anzhiyu-secondtext) !important;
+  font-size: 0.86rem;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0;
+  text-align: left;
+  box-sizing: border-box;
+}
+
+#content-inner #recent-posts > .recent-post-item > .recent-post-info > .content code {
+  padding: 0.08rem 0.28rem;
+  border-radius: 4px;
+  background: var(--anzhiyu-card-bg);
+  color: var(--anzhiyu-theme);
+  font-size: 0.88em;
+}
+
+#content-inner #recent-posts > .recent-post-item:hover > .recent-post-info > .content {
+  background: var(--anzhiyu-theme-op);
+  color: var(--anzhiyu-fontcolor) !important;
+}
+
+@media screen and (max-width: 768px) {
+  #content-inner #recent-posts > .recent-post-item > .recent-post-info > .article-meta-wrap {
+    bottom: 74px !important;
+  }
+
+  #content-inner #recent-posts > .recent-post-item > .recent-post-info > .content {
+    left: 20px;
+    right: 20px;
+    bottom: 18px;
+    height: 46px !important;
+    min-height: 46px;
+    max-height: 46px;
+    padding: 0.34rem 0.62rem 0.34rem 0.7rem !important;
+    font-size: 0.88rem;
+    line-height: 1.5;
+    -webkit-line-clamp: 2 !important;
+  }
 }
 
 /* Reward QR codes */
