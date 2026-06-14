@@ -21168,6 +21168,85 @@ html.hide-aside .layout > div:first-child {
   -webkit-line-clamp: 2;
 }
 
+/* Reward QR codes */
+.post-reward .reward-main .reward-group {
+  gap: 12px;
+}
+
+.post-reward .reward-main .reward-group .reward-item,
+.console-card-group-reward .reward-all .reward-item {
+  padding: 0 !important;
+}
+
+.post-reward .reward-main .reward-group .reward-item a,
+.console-card-group-reward .reward-all .reward-item a {
+  width: 152px;
+  height: 152px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  background: #fff;
+  border: var(--style-border-always);
+  border-radius: 14px;
+  box-shadow: var(--anzhiyu-shadow-lightblack);
+}
+
+.post-reward .reward-main .reward-group .reward-item .post-qr-code-img,
+.console-card-group-reward .reward-all .reward-item .post-qr-code-img {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  object-fit: contain;
+  border: 0 !important;
+  border-radius: 8px !important;
+  box-shadow: none !important;
+  background: #fff;
+}
+
+.post-reward .reward-main .reward-group .reward-item .post-qr-code-desc,
+.console-card-group-reward .reward-all .reward-item .post-qr-code-desc {
+  margin: 8px 0 0 !important;
+  padding: 0 !important;
+  color: var(--anzhiyu-fontcolor);
+  font-size: 0.9rem;
+  line-height: 1.2;
+}
+
+.console-card-group-reward .reward-all {
+  gap: 18px;
+}
+
+.console-card-group-reward .reward-all .reward-item a {
+  width: 230px;
+  height: 230px;
+  padding: 12px;
+  border-radius: 18px;
+}
+
+@media screen and (max-width: 768px) {
+  .post-reward .reward-main .reward-group {
+    gap: 10px;
+  }
+
+  .post-reward .reward-main .reward-group .reward-item a {
+    width: 128px;
+    height: 128px;
+    padding: 7px;
+  }
+
+  .console-card-group-reward .reward-all {
+    flex-wrap: wrap;
+  }
+
+  .console-card-group-reward .reward-all .reward-item a {
+    width: 160px;
+    height: 160px;
+    padding: 9px;
+  }
+}
+
 #aside-content .card-widget#card-wechat {
   background: #57bd6a;
   display: flex;
