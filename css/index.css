@@ -21176,7 +21176,7 @@ html.hide-aside .layout > div:first-child {
   padding: 0;
   cursor: pointer;
   border: none;
-  height: 110px;
+  height: 235px;
 }
 [data-theme="dark"] #aside-content .card-widget#card-wechat {
   background-color: #121121;
@@ -21191,7 +21191,7 @@ html.hide-aside .layout > div:first-child {
 #flip-wrapper {
   position: relative;
   width: 235px;
-  height: 110px;
+  height: 235px;
   z-index: 1;
 }
 #flip-content {
@@ -21207,7 +21207,9 @@ html.hide-aside .layout > div:first-child {
   height: 100%;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
-  background-size: 100%;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center center !important;
 }
 
 #aside-content #flip-wrapper #flip-content .back.face {
@@ -21215,7 +21217,9 @@ html.hide-aside .layout > div:first-child {
   -webkit-transform: rotateY(180deg);
   transform: rotateY(180deg);
   box-sizing: border-box;
-  background-size: 100%;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center center !important;
 }
 #flip-wrapper:hover #flip-content {
   -webkit-transform: rotateY(180deg);
