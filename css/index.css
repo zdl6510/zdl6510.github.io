@@ -9841,11 +9841,6 @@ h1.page-title + .tag-cloud-list {
   opacity: 0;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
   filter: alpha(opacity=0);
-  -webkit-transform: scale(0);
-  -moz-transform: scale(0);
-  -o-transform: scale(0);
-  -ms-transform: scale(0);
-  transform: scale(0);
 }
 #aside-content .card-info .author-info-avatar {
   margin: 45px auto;
