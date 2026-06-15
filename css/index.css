@@ -21218,7 +21218,7 @@ html.hide-aside .layout > div:first-child {
 
 /* Show post excerpts on homepage cards */
 #content-inner #recent-posts > .recent-post-item > .recent-post-info > .article-meta-wrap {
-  bottom: 68px !important;
+  bottom: 82px !important;
 }
 
 #content-inner #recent-posts > .recent-post-item > .recent-post-info > .content {
@@ -21226,26 +21226,28 @@ html.hide-aside .layout > div:first-child {
   position: absolute;
   left: 32px;
   right: 32px;
-  bottom: 16px;
-  height: 44px !important;
-  min-height: 44px;
-  max-height: 44px;
+  bottom: 31px;
+  height: 2.5rem !important;
+  min-height: 2.5rem;
+  max-height: 2.5rem;
   margin: 0 !important;
-  padding: 0.36rem 0.7rem 0.36rem 0.78rem !important;
+  padding: 0 0.78rem 0 0.82rem !important;
   display: -webkit-box !important;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2 !important;
   overflow: hidden !important;
   border-left: 3px solid var(--anzhiyu-theme);
-  border-radius: 8px;
+  border-radius: 4px;
   background: var(--anzhiyu-secondbg);
+  box-shadow: 0 0 0 7px var(--anzhiyu-secondbg);
   color: var(--anzhiyu-secondtext) !important;
   font-size: 0.86rem;
   font-weight: 400;
-  line-height: 1.5;
+  line-height: 1.45;
   letter-spacing: 0;
   text-align: left;
   box-sizing: border-box;
+  z-index: 1;
 }
 
 #content-inner #recent-posts > .recent-post-item > .recent-post-info > .content code {
@@ -21258,25 +21260,96 @@ html.hide-aside .layout > div:first-child {
 
 #content-inner #recent-posts > .recent-post-item:hover > .recent-post-info > .content {
   background: var(--anzhiyu-theme-op);
+  box-shadow: 0 0 0 7px var(--anzhiyu-theme-op);
   color: var(--anzhiyu-fontcolor) !important;
 }
 
 @media screen and (max-width: 768px) {
   #content-inner #recent-posts > .recent-post-item > .recent-post-info > .article-meta-wrap {
-    bottom: 74px !important;
+    bottom: 84px !important;
   }
 
   #content-inner #recent-posts > .recent-post-item > .recent-post-info > .content {
     left: 20px;
     right: 20px;
-    bottom: 18px;
-    height: 46px !important;
-    min-height: 46px;
-    max-height: 46px;
-    padding: 0.34rem 0.62rem 0.34rem 0.7rem !important;
+    bottom: 31px;
+    height: 2.56rem !important;
+    min-height: 2.56rem;
+    max-height: 2.56rem;
+    padding: 0 0.68rem 0 0.74rem !important;
     font-size: 0.88rem;
-    line-height: 1.5;
+    line-height: 1.45;
     -webkit-line-clamp: 2 !important;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  #content-inner #recent-posts > .recent-post-item > .recent-post-info {
+    min-height: 210px !important;
+    height: 210px !important;
+    overflow: hidden;
+  }
+
+  #content-inner #recent-posts > .recent-post-item > .recent-post-info > .recent-post-info-top {
+    position: absolute !important;
+    top: 24px;
+    right: 0;
+    left: 0;
+    padding: 0 20px !important;
+  }
+
+  #content-inner #recent-posts > .recent-post-item > .recent-post-info > .recent-post-info-top > .recent-post-info-top-tips {
+    margin-top: 0 !important;
+    min-height: 18px;
+    overflow: hidden;
+  }
+
+  #content-inner #recent-posts > .recent-post-item > .recent-post-info > .recent-post-info-top > .article-title {
+    display: -webkit-box !important;
+    width: auto !important;
+    margin: 7px 0 0 !important;
+    padding: 0 !important;
+    font-size: 1.08rem !important;
+    line-height: 1.28 !important;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2 !important;
+    overflow: hidden !important;
+  }
+
+  #content-inner #recent-posts > .recent-post-item > .recent-post-info > .article-meta-wrap {
+    bottom: 82px !important;
+    padding: 0 20px !important;
+    display: flex !important;
+    flex-direction: row-reverse !important;
+    align-items: flex-start !important;
+    justify-content: space-between !important;
+    gap: 6px;
+    line-height: 1.25;
+  }
+
+  #content-inner #recent-posts > .recent-post-item > .recent-post-info > .article-meta-wrap > .article-meta {
+    max-width: calc(100% - 86px);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  #content-inner #recent-posts > .recent-post-item > .recent-post-info > .article-meta-wrap > .post-meta-date {
+    position: static !important;
+    margin: 0 0 0 auto !important;
+    font-size: 0.78rem !important;
+    line-height: 1.2;
+  }
+
+  #content-inner #recent-posts > .recent-post-item > .recent-post-info > .content {
+    left: 20px;
+    right: 20px;
+    bottom: 28px;
+    height: 2.5rem !important;
+    min-height: 2.5rem;
+    max-height: 2.5rem;
+    font-size: 0.84rem;
+    line-height: 1.45;
   }
 }
 
