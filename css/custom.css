@@ -1,4 +1,4 @@
-/* 作者卡片整体改为深灰色 */
+/* 作者卡片深灰色背景 */
 #aside-content > .card-widget.card-info::before {
   background: linear-gradient(135deg, #2d2d2d, #3a3a3a, #333333, #404040) !important;
   background-size: 400% !important;
@@ -6,9 +6,9 @@
 
 /* 作者卡片底部信息栏毛玻璃效果 */
 #aside-content > .card-widget.card-info .author-info__bottom-group {
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  background: rgba(255, 255, 255, 0.08);
-  border-radius: 12px;
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
   padding: 10px 16px;
 }
