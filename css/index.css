@@ -21217,16 +21217,57 @@ html.hide-aside .layout > div:first-child {
 }
 
 /* Show post excerpts on homepage cards */
+#content-inner #recent-posts > .recent-post-item > .recent-post-info {
+  min-height: 188px;
+  display: flex !important;
+  flex-direction: column;
+  justify-content: center;
+  gap: 9px;
+  padding: 22px 32px 26px !important;
+  overflow: hidden;
+}
+
+#content-inner #recent-posts > .recent-post-item > .recent-post-info > .recent-post-info-top {
+  position: relative !important;
+  top: auto;
+  right: auto;
+  left: auto;
+  padding: 0 !important;
+  flex: 0 0 auto;
+}
+
+#content-inner #recent-posts > .recent-post-item > .recent-post-info > .recent-post-info-top > .recent-post-info-top-tips {
+  margin-top: 0 !important;
+  min-height: 18px;
+  overflow: hidden;
+}
+
+#content-inner #recent-posts > .recent-post-item > .recent-post-info > .recent-post-info-top > .article-title {
+  display: -webkit-box !important;
+  margin-top: 7px !important;
+  line-height: 1.32 !important;
+  max-height: 3.3rem;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2 !important;
+  overflow: hidden !important;
+}
+
 #content-inner #recent-posts > .recent-post-item > .recent-post-info > .article-meta-wrap {
-  bottom: 82px !important;
+  position: relative !important;
+  left: auto !important;
+  bottom: auto !important;
+  padding: 0 !important;
+  flex: 0 0 auto;
+  min-height: 20px;
+  line-height: 1.25;
 }
 
 #content-inner #recent-posts > .recent-post-item > .recent-post-info > .content {
   opacity: 1 !important;
-  position: absolute;
-  left: 32px;
-  right: 32px;
-  bottom: 31px;
+  position: relative;
+  left: auto;
+  right: auto;
+  bottom: auto;
   height: 2.5rem !important;
   min-height: 2.5rem;
   max-height: 2.5rem;
@@ -21265,14 +21306,18 @@ html.hide-aside .layout > div:first-child {
 }
 
 @media screen and (max-width: 768px) {
+  #content-inner #recent-posts > .recent-post-item > .recent-post-info {
+    padding: 22px 20px 26px !important;
+  }
+
   #content-inner #recent-posts > .recent-post-item > .recent-post-info > .article-meta-wrap {
-    bottom: 84px !important;
+    bottom: auto !important;
   }
 
   #content-inner #recent-posts > .recent-post-item > .recent-post-info > .content {
-    left: 20px;
-    right: 20px;
-    bottom: 31px;
+    left: auto;
+    right: auto;
+    bottom: auto;
     height: 2.56rem !important;
     min-height: 2.56rem;
     max-height: 2.56rem;
@@ -21285,17 +21330,22 @@ html.hide-aside .layout > div:first-child {
 
 @media screen and (max-width: 520px) {
   #content-inner #recent-posts > .recent-post-item > .recent-post-info {
-    min-height: 210px !important;
-    height: 210px !important;
+    min-height: 236px !important;
+    height: auto !important;
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    gap: 9px;
+    padding: 22px 20px 26px !important;
     overflow: hidden;
   }
 
   #content-inner #recent-posts > .recent-post-item > .recent-post-info > .recent-post-info-top {
-    position: absolute !important;
-    top: 24px;
-    right: 0;
-    left: 0;
-    padding: 0 20px !important;
+    position: relative !important;
+    top: auto;
+    right: auto;
+    left: auto;
+    padding: 0 !important;
   }
 
   #content-inner #recent-posts > .recent-post-item > .recent-post-info > .recent-post-info-top > .recent-post-info-top-tips {
@@ -21317,8 +21367,10 @@ html.hide-aside .layout > div:first-child {
   }
 
   #content-inner #recent-posts > .recent-post-item > .recent-post-info > .article-meta-wrap {
-    bottom: 82px !important;
-    padding: 0 20px !important;
+    position: relative !important;
+    left: auto !important;
+    bottom: auto !important;
+    padding: 0 !important;
     display: flex !important;
     flex-direction: row-reverse !important;
     align-items: flex-start !important;
@@ -21342,9 +21394,10 @@ html.hide-aside .layout > div:first-child {
   }
 
   #content-inner #recent-posts > .recent-post-item > .recent-post-info > .content {
-    left: 20px;
-    right: 20px;
-    bottom: 28px;
+    position: relative;
+    left: auto;
+    right: auto;
+    bottom: auto;
     height: 2.5rem !important;
     min-height: 2.5rem;
     max-height: 2.5rem;
