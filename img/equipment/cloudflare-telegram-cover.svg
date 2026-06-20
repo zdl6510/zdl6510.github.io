@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#07111f"/>
+      <stop offset="46%" stop-color="#0b2447"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+    <linearGradient id="cloudflare" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffb347"/>
+      <stop offset="100%" stop-color="#f97316"/>
+    </linearGradient>
+    <linearGradient id="telegram" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#67e8f9"/>
+      <stop offset="100%" stop-color="#229ed9"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f8fafc" stop-opacity="0.98"/>
+      <stop offset="100%" stop-color="#dbeafe" stop-opacity="0.9"/>
+    </linearGradient>
+    <filter id="softShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="24" stdDeviation="28" flood-color="#020617" flood-opacity="0.45"/>
+    </filter>
+    <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="12" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <pattern id="grid" width="56" height="56" patternUnits="userSpaceOnUse">
+      <path d="M 56 0 L 0 0 0 56" fill="none" stroke="#60a5fa" stroke-width="1" opacity="0.11"/>
+    </pattern>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <rect width="1600" height="900" fill="url(#grid)"/>
+  <circle cx="1320" cy="126" r="210" fill="#38bdf8" opacity="0.11"/>
+  <circle cx="218" cy="742" r="280" fill="#f97316" opacity="0.12"/>
+  <circle cx="800" cy="450" r="420" fill="#2563eb" opacity="0.08"/>
+
+  <g opacity="0.42" stroke="#93c5fd" stroke-width="2" fill="none">
+    <path d="M318 220 C505 155, 656 185, 786 300 S1080 435, 1255 338"/>
+    <path d="M270 612 C472 530, 632 575, 773 456 S1060 332, 1320 485"/>
+    <path d="M330 392 C518 355, 625 420, 770 450 S1034 526, 1260 620"/>
+  </g>
+  <g fill="#7dd3fc" opacity="0.8">
+    <circle cx="318" cy="220" r="6"/>
+    <circle cx="786" cy="300" r="7"/>
+    <circle cx="1255" cy="338" r="6"/>
+    <circle cx="270" cy="612" r="6"/>
+    <circle cx="773" cy="456" r="7"/>
+    <circle cx="1320" cy="485" r="6"/>
+    <circle cx="330" cy="392" r="6"/>
+    <circle cx="770" cy="450" r="7"/>
+    <circle cx="1260" cy="620" r="6"/>
+  </g>
+
+  <g filter="url(#softShadow)">
+    <rect x="240" y="170" width="1120" height="560" rx="44" fill="#0f172a" opacity="0.84" stroke="#334155"/>
+    <rect x="286" y="216" width="1028" height="468" rx="32" fill="#111827" opacity="0.92"/>
+  </g>
+
+  <g transform="translate(345 292)" filter="url(#softShadow)">
+    <path d="M194 214H70c-44 0-80-34-80-76 0-36 27-67 63-74 18-42 61-72 112-72 61 0 112 42 121 96 39 5 70 37 70 75 0 42-36 76-80 76h-82z"
+          fill="url(#cloudflare)"/>
+    <path d="M94 121c20-42 66-66 112-54 41 10 70 41 78 79 28 3 51 19 64 42-14-59-67-103-132-103-55 0-103 31-126 76-33 7-58 34-58 67 0 5 1 10 2 14 7-58 34-99 60-121z"
+          fill="#fed7aa" opacity="0.65"/>
+  </g>
+
+  <g transform="translate(856 264)" filter="url(#softShadow)">
+    <circle cx="164" cy="164" r="154" fill="url(#telegram)"/>
+    <path d="M84 163l201-82c18-7 34 9 26 27l-70 169c-7 17-31 18-39 1l-35-72-60 55c-13 12-34 3-34-15v-45l133-82-164 63c-22 8-35-11-18-19z"
+          fill="#f8fafc"/>
+    <path d="M167 206l40 81 33-79 52-126z" fill="#dbeafe" opacity="0.9"/>
+  </g>
+
+  <g filter="url(#softShadow)">
+    <rect x="517" y="432" width="258" height="180" rx="24" fill="url(#card)" opacity="0.97"/>
+    <rect x="551" y="468" width="190" height="18" rx="9" fill="#38bdf8" opacity="0.75"/>
+    <rect x="551" y="508" width="150" height="14" rx="7" fill="#94a3b8" opacity="0.8"/>
+    <rect x="551" y="542" width="102" height="14" rx="7" fill="#94a3b8" opacity="0.55"/>
+    <circle cx="706" cy="552" r="34" fill="#f97316" opacity="0.86"/>
+    <path d="M689 555l13 13 25-32" fill="none" stroke="#fff7ed" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <g stroke-linecap="round" stroke-width="10" fill="none" filter="url(#glow)">
+    <path d="M720 380 C780 346, 840 346, 900 382" stroke="#38bdf8" opacity="0.9"/>
+    <path d="M735 492 C804 548, 887 548, 956 492" stroke="#fb923c" opacity="0.9"/>
+  </g>
+  <g fill="#f8fafc" opacity="0.92">
+    <circle cx="720" cy="380" r="8"/>
+    <circle cx="900" cy="382" r="8"/>
+    <circle cx="735" cy="492" r="8"/>
+    <circle cx="956" cy="492" r="8"/>
+  </g>
+
+  <g font-family="Inter, Segoe UI, Arial, sans-serif">
+    <text x="800" y="782" text-anchor="middle" font-size="56" font-weight="800" fill="#f8fafc">Cloudflare + Telegram 图床</text>
+    <text x="800" y="832" text-anchor="middle" font-size="28" fill="#bae6fd">Free Image Hosting · Cloud Storage · Fast Delivery</text>
+  </g>
+</svg>
