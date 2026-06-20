@@ -6122,6 +6122,7 @@ body[data-type='about'] #web_bg {
   margin-top: 12px;
 }
 .equipment-item .equipment-item-content .equipment-item-content-item .equipment-item-content-item-name {
+  display: block;
   font-size: 18px;
   font-weight: bold;
   line-height: 1;
@@ -6132,6 +6133,7 @@ body[data-type='about'] #web_bg {
   text-overflow: ellipsis;
   width: fit-content;
   cursor: pointer;
+  color: var(--anzhiyu-fontcolor);
 }
 .equipment-item .equipment-item-content .equipment-item-content-item .equipment-item-content-item-name:hover {
   color: var(--anzhiyu-main);
@@ -6189,6 +6191,29 @@ body[data-type='about'] #web_bg {
   -ms-flex-align: center;
   -webkit-align-items: center;
   align-items: center;
+}
+.equipment-item .equipment-item-content .equipment-item-content-item .equipment-item-content-item-image-link {
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: box;
+  display: flex;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -o-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -o-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  cursor: zoom-in;
 }
 .equipment-item .equipment-item-content .equipment-item-content-item img.equipment-item-content-item-image {
   object-fit: contain;
