@@ -453,7 +453,7 @@ queueMicrotask(() => {
     if (commentRoot.dataset) commentRoot.dataset.qqNickFallback = 'true'
 
     const cache = {}
-    const qqNickCacheKey = 'anzhiyu_qq_nick_cache'
+    const qqNickCacheKey = 'anzhiyu_qq_nick_cache_v2'
     const qqNickApi = '/api/qqinfo?qq={qq}&v=2026062205'
     const getInputText = input => {
       const field = input.closest('.tk-input, .tk-meta-input, .el-form-item, .el-input, label, div') || input.parentElement
