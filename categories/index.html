@@ -322,11 +322,103 @@ queueMicrotask(() => {
         anzhiyu.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
       }
     }, {}))
+    installQQNickFallback()
+  }
+
+  const installQQNickFallback = () => {
+    const twikooWrap = document.getElementById('twikoo-wrap')
+    if (!twikooWrap || twikooWrap.dataset.qqNickFallback === 'true') return
+    twikooWrap.dataset.qqNickFallback = 'true'
+
+    const cache = {}
+    const getInputs = () => {
+      const inputs = [...twikooWrap.querySelectorAll('input.el-input__inner, input')]
+      const findInput = key => inputs.find(input => {
+        const text = `${input.name || ''} ${input.placeholder || ''} ${input.getAttribute('aria-label') || ''}`.toLowerCase()
+        return text.includes(key)
+      })
+      return {
+        nick: findInput('nick') || inputs.find(input => /昵称|qq/i.test(input.placeholder || '')),
+        mail: findInput('mail') || inputs.find(input => /邮箱|email|mail/i.test(input.placeholder || ''))
+      }
+    }
+
+    const setValue = (input, value) => {
+      if (!input || !value || input.value === value) return
+      const setter = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value').set
+      setter.call(input, value)
+      input.dispatchEvent(new Event('input', { bubbles: true }))
+      input.dispatchEvent(new Event('change', { bubbles: true }))
+    }
+
+    const queryQQNick = qq => new Promise(resolve => {
+      if (cache[qq]) return resolve(cache[qq])
+      const callbackName = 'portraitCallBack'
+      const oldCallback = window[callbackName]
+      const script = document.createElement('script')
+      let done = false
+
+      const finish = nick => {
+        if (done) return
+        done = true
+        script.remove()
+        window[callbackName] = oldCallback
+        cache[qq] = nick || ''
+        resolve(cache[qq])
+      }
+
+      window[callbackName] = data => {
+        const nick = data && data[qq] && data[qq][6]
+        finish(nick)
+      }
+      script.charset = 'utf-8'
+      script.onerror = () => finish('')
+      script.src = `https://users.qzone.qq.com/fcg-bin/cgi_get_portrait.fcg?uins=${encodeURIComponent(qq)}`
+      document.head.appendChild(script)
+      setTimeout(() => finish(''), 5000)
+    })
+
+    const handleQQInput = async () => {
+      const { nick, mail } = getInputs()
+      if (!nick) return
+      const qq = nick.value.trim()
+      if (!/^[1-9]\d{4,11}$/.test(qq)) return
+      setValue(mail, `${qq}@qq.com`)
+      const qqNick = await queryQQNick(qq)
+      if (qqNick && nick.value.trim() === qq) setValue(nick, qqNick)
+    }
+
+    twikooWrap.addEventListener('blur', event => {
+      if (event.target && event.target.matches('input')) handleQQInput()
+    }, true)
+    twikooWrap.addEventListener('change', handleQQInput, true)
+    new MutationObserver(() => {
+      const { nick } = getInputs()
+      if (nick && !nick.dataset.qqNickFallbackBinded) {
+        nick.dataset.qqNickFallbackBinded = 'true'
+        nick.addEventListener('input', () => {
+          window.clearTimeout(nick.qqNickFallbackTimer)
+          nick.qqNickFallbackTimer = window.setTimeout(handleQQInput, 600)
+        })
+        nick.addEventListener('blur', handleQQInput)
+      }
+    }).observe(twikooWrap, { childList: true, subtree: true })
+    setTimeout(() => {
+      const { nick } = getInputs()
+      if (nick && !nick.dataset.qqNickFallbackBinded) {
+        nick.dataset.qqNickFallbackBinded = 'true'
+        nick.addEventListener('input', () => {
+          window.clearTimeout(nick.qqNickFallbackTimer)
+          nick.qqNickFallbackTimer = window.setTimeout(handleQQInput, 600)
+        })
+        nick.addEventListener('blur', handleQQInput)
+      }
+    }, 1000)
   }
 
   const loadTwikoo = () => {
     if (typeof twikoo === 'object') setTimeout(runFn,0)
-    else getScript('https://cdn.cbd.int/twikoo@1.6.44/dist/twikoo.all.min.js').then(runFn)
+    else getScript('https://cdn.cbd.int/twikoo@1.7.13/dist/twikoo.all.min.js').then(runFn)
   }
 
   const getCount = () => {
@@ -401,7 +493,7 @@ queueMicrotask(() => {
     if (typeof twikoo === 'object') {
       runTwikoo()
     } else {
-      getScript('https://cdn.cbd.int/twikoo@1.6.44/dist/twikoo.all.min.js').then(runTwikoo)
+      getScript('https://cdn.cbd.int/twikoo@1.7.13/dist/twikoo.all.min.js').then(runTwikoo)
     }
   }
 

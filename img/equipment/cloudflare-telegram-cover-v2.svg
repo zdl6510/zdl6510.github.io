@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Cloudflare Telegram image bed cover v2</title>
+  <desc id="desc">A modern dashboard-style cover showing Cloudflare edge network forwarding images to Telegram storage.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="45%" stop-color="#e0f2fe"/>
+      <stop offset="100%" stop-color="#fff7ed"/>
+    </linearGradient>
+    <linearGradient id="edge" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#fb923c"/>
+      <stop offset="100%" stop-color="#f97316"/>
+    </linearGradient>
+    <linearGradient id="tg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#0284c7"/>
+    </linearGradient>
+    <linearGradient id="panel" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#f8fafc"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="28" stdDeviation="28" flood-color="#0f172a" flood-opacity="0.18"/>
+    </filter>
+    <filter id="soft" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="22"/>
+    </filter>
+    <pattern id="dots" width="32" height="32" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="2" fill="#0284c7" opacity="0.16"/>
+    </pattern>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <rect width="1600" height="900" fill="url(#dots)"/>
+  <circle cx="240" cy="150" r="210" fill="#fed7aa" opacity="0.65" filter="url(#soft)"/>
+  <circle cx="1360" cy="720" r="260" fill="#bae6fd" opacity="0.75" filter="url(#soft)"/>
+
+  <g transform="translate(128 112)" filter="url(#shadow)">
+    <rect x="0" y="0" width="1344" height="676" rx="34" fill="url(#panel)"/>
+    <rect x="0" y="0" width="1344" height="86" rx="34" fill="#0f172a"/>
+    <rect x="0" y="54" width="1344" height="40" fill="#0f172a"/>
+    <circle cx="50" cy="43" r="12" fill="#fb7185"/>
+    <circle cx="88" cy="43" r="12" fill="#fbbf24"/>
+    <circle cx="126" cy="43" r="12" fill="#34d399"/>
+    <text x="190" y="53" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="700" fill="#e2e8f0">Image Bed Pipeline</text>
+
+    <g transform="translate(70 142)">
+      <rect x="0" y="0" width="335" height="402" rx="28" fill="#fff7ed" stroke="#fed7aa" stroke-width="3"/>
+      <circle cx="168" cy="116" r="74" fill="url(#edge)"/>
+      <path d="M104 129c15-34 45-56 81-56 39 0 70 24 84 58 32 3 56 27 56 58 0 33-28 59-63 59H105c-38 0-69-28-69-63 0-32 25-58 58-62 3-7 6-13 10-19" fill="#fff" opacity="0.96"/>
+      <text x="168" y="252" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="32" font-weight="800" fill="#9a3412">Cloudflare</text>
+      <text x="168" y="292" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="20" fill="#c2410c">Pages / D1 / KV</text>
+      <rect x="58" y="326" width="219" height="46" rx="23" fill="#ffedd5"/>
+      <text x="168" y="356" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700" fill="#ea580c">edge routing</text>
+    </g>
+
+    <g transform="translate(504 176)">
+      <path d="M0 170 C100 60 205 60 306 170" fill="none" stroke="#94a3b8" stroke-width="8" stroke-linecap="round" stroke-dasharray="16 18"/>
+      <path d="M300 170 l-38 -16 16 38z" fill="#94a3b8"/>
+      <g transform="translate(94 76)">
+        <rect x="0" y="0" width="132" height="132" rx="32" fill="#ecfeff" stroke="#67e8f9" stroke-width="3"/>
+        <path d="M38 71h56M66 38v56" stroke="#0891b2" stroke-width="10" stroke-linecap="round"/>
+        <circle cx="66" cy="66" r="48" fill="none" stroke="#0891b2" stroke-width="6" opacity="0.18"/>
+      </g>
+      <text x="160" y="262" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="800" fill="#334155">secure upload</text>
+      <text x="160" y="295" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="18" fill="#64748b">free static delivery</text>
+    </g>
+
+    <g transform="translate(936 142)">
+      <rect x="0" y="0" width="335" height="402" rx="28" fill="#f0f9ff" stroke="#bae6fd" stroke-width="3"/>
+      <circle cx="168" cy="116" r="74" fill="url(#tg)"/>
+      <path d="M111 118l126-48c12-5 23 5 19 18l-43 140c-4 13-18 16-28 8l-50-39-27 26c-8 8-21 3-21-9v-48l99-64-75 46z" fill="#fff"/>
+      <text x="168" y="252" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="32" font-weight="800" fill="#075985">Telegram</text>
+      <text x="168" y="292" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="20" fill="#0369a1">unlimited media storage</text>
+      <rect x="58" y="326" width="219" height="46" rx="23" fill="#e0f2fe"/>
+      <text x="168" y="356" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700" fill="#0284c7">file hosting</text>
+    </g>
+
+    <g transform="translate(70 586)">
+      <rect x="0" y="0" width="1204" height="46" rx="23" fill="#f1f5f9"/>
+      <rect x="0" y="0" width="315" height="46" rx="23" fill="#fed7aa"/>
+      <rect x="363" y="0" width="255" height="46" rx="23" fill="#cffafe"/>
+      <rect x="666" y="0" width="274" height="46" rx="23" fill="#dbeafe"/>
+      <text x="158" y="30" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="17" font-weight="800" fill="#9a3412">zero-cost deployment</text>
+      <text x="490" y="30" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="17" font-weight="800" fill="#0e7490">image proxy</text>
+      <text x="803" y="30" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="17" font-weight="800" fill="#1d4ed8">metadata index</text>
+      <text x="1070" y="30" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="17" font-weight="800" fill="#475569">public links</text>
+    </g>
+  </g>
+
+  <text x="800" y="838" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="54" font-weight="900" fill="#0f172a">Cloudflare + Telegram 图床</text>
+</svg>
