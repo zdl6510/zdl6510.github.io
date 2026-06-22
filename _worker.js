@@ -1,8 +1,60 @@
 const jsonHeaders = {
   'Content-Type': 'application/json; charset=utf-8',
-  'Cache-Control': 'public, max-age=3600',
+  'Cache-Control': 'public, max-age=300',
   'Access-Control-Allow-Origin': '*'
 };
+
+const upstreamApis = [
+  qq => `https://uapis.cn/api/v1/social/qq/userinfo?qq=${encodeURIComponent(qq)}`,
+  qq => `https://api.lolimi.cn/API/qqxx/api.php?qq=${encodeURIComponent(qq)}`,
+  qq => `https://tenapi.cn/v2/qqinfo?qq=${encodeURIComponent(qq)}`,
+  qq => `https://api.vvhan.com/api/qq?qq=${encodeURIComponent(qq)}`
+];
+
+function pickNick(data) {
+  if (!data) return '';
+
+  const candidates = [
+    data.nickname,
+    data.nick,
+    data.name,
+    data.qqname,
+    data.user,
+    data.data && data.data.nickname,
+    data.data && data.data.nick,
+    data.data && data.data.name,
+    data.data && data.data.qqname,
+    data.result && data.result.nickname,
+    data.result && data.result.nick,
+    data.result && data.result.name
+  ];
+
+  const nick = candidates.find(item => typeof item === 'string' && item.trim());
+  return nick ? nick.trim() : '';
+}
+
+async function fetchQQNick(qq) {
+  for (const getUrl of upstreamApis) {
+    try {
+      const response = await fetch(getUrl(qq), {
+        headers: {
+          'Accept': 'application/json,text/plain,*/*',
+          'Accept-Language': 'zh-CN,zh;q=0.9,en;q=0.8',
+          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120 Safari/537.36'
+        }
+      });
+      const text = await response.text();
+
+      if (!response.ok || /^\s*</.test(text)) continue;
+
+      const data = JSON.parse(text);
+      const nickname = pickNick(data);
+      if (nickname) return nickname;
+    } catch (error) {}
+  }
+
+  return '';
+}
 
 async function handleQQInfo(request) {
   const url = new URL(request.url);
@@ -16,14 +68,15 @@ async function handleQQInfo(request) {
   }
 
   try {
-    const upstream = await fetch(`https://uapis.cn/api/v1/social/qq/userinfo?qq=${encodeURIComponent(qq)}`, {
-      headers: {
-        'Accept': 'application/json'
-      }
-    });
+    const nickname = await fetchQQNick(qq);
 
-    return new Response(await upstream.text(), {
-      status: upstream.ok ? 200 : upstream.status,
+    return new Response(JSON.stringify({
+      qq,
+      nickname: nickname || '',
+      nick: nickname || '',
+      email: `${qq}@qq.com`
+    }), {
+      status: 200,
       headers: jsonHeaders
     });
   } catch (error) {
