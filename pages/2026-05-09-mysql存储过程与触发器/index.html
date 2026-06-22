@@ -924,13 +924,16 @@ queueMicrotask(() => {
       if (root.querySelector('.tk-image-upload-button')) return
       const button = document.createElement('button')
       button.type = 'button'
-      button.className = 'tk-image-upload-button el-button el-button--default el-button--small'
-      button.textContent = '图片'
-      button.style.marginRight = '8px'
+      button.className = 'tk-image-upload-button tk-submit-action-icon'
+      button.title = '上传图片'
+      button.setAttribute('aria-label', '上传图片')
+      button.innerHTML = '<i class="fa-regular fa-image"></i>'
       button.addEventListener('click', () => fileInput.click())
 
-      const actionBar = root.querySelector('.tk-row.actions, .tk-submit-action, .tk-footer, .tk-comments-container + .tk-submit')
-      if (actionBar) actionBar.insertBefore(button, actionBar.firstChild)
+      const actionBar = root.querySelector('.tk-row-actions-start, .tk-submit-action, .tk-footer, .tk-comments-container + .tk-submit')
+      const owoButton = actionBar && actionBar.querySelector('.OwO')
+      if (owoButton && owoButton.nextSibling) actionBar.insertBefore(button, owoButton.nextSibling)
+      else if (actionBar) actionBar.appendChild(button)
       else textarea.insertAdjacentElement('afterend', button)
     }
 
