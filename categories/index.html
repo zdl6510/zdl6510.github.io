@@ -326,94 +326,199 @@ queueMicrotask(() => {
   }
 
   const installQQNickFallback = () => {
-    const twikooWrap = document.getElementById('twikoo-wrap')
-    if (!twikooWrap || twikooWrap.dataset.qqNickFallback === 'true') return
-    twikooWrap.dataset.qqNickFallback = 'true'
+    const commentRoot = document.getElementById('post-comment') || document
+    const getTwikooRoot = () => document.getElementById('twikoo') || document.getElementById('twikoo-wrap') || commentRoot
+    if (commentRoot.dataset && commentRoot.dataset.qqNickFallback === 'true') return
+    if (commentRoot.dataset) commentRoot.dataset.qqNickFallback = 'true'
 
     const cache = {}
+    const qqNickCacheKey = 'anzhiyu_qq_nick_cache'
+    const qqNickApi = '/api/qqinfo?qq={qq}'
+    const getInputText = input => {
+      const field = input.closest('.tk-input, .tk-meta-input, .el-form-item, .el-input, label, div') || input.parentElement
+      return [
+        input.name,
+        input.id,
+        input.type,
+        input.placeholder,
+        input.autocomplete,
+        input.getAttribute('aria-label'),
+        field && field.textContent
+      ].join(' ').toLowerCase()
+    }
+
     const getInputs = () => {
-      const inputs = [...twikooWrap.querySelectorAll('input.el-input__inner, input')]
-      const findInput = key => inputs.find(input => {
-        const text = `${input.name || ''} ${input.placeholder || ''} ${input.getAttribute('aria-label') || ''}`.toLowerCase()
-        return text.includes(key)
-      })
-      return {
-        nick: findInput('nick') || inputs.find(input => /昵称|qq/i.test(input.placeholder || '')),
-        mail: findInput('mail') || inputs.find(input => /邮箱|email|mail/i.test(input.placeholder || ''))
-      }
+      const inputs = [...getTwikooRoot().querySelectorAll('input.el-input__inner, input')]
+        .filter(input => input.offsetParent !== null && input.type !== 'hidden')
+      const findInput = patterns => inputs.find(input => patterns.some(pattern => pattern.test(getInputText(input))))
+      const nick = findInput([/nick/, /name/, /昵称/, /暱稱/, /qq/]) || inputs[0]
+      const mail = findInput([/mail/, /email/, /邮箱/, /郵箱/]) || inputs.find(input => input !== nick && input.type === 'email') || inputs.find(input => input !== nick)
+      return { nick, mail }
     }
 
     const setValue = (input, value) => {
-      if (!input || !value || input.value === value) return
+      if (!input || !value) return
+      if (input.value === value) return
       const setter = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value').set
+      if (commentRoot.dataset) commentRoot.dataset.qqNickSetting = 'true'
       setter.call(input, value)
       input.dispatchEvent(new Event('input', { bubbles: true }))
       input.dispatchEvent(new Event('change', { bubbles: true }))
+      window.setTimeout(() => {
+        if (commentRoot.dataset) delete commentRoot.dataset.qqNickSetting
+      }, 0)
     }
 
-    const queryQQNick = qq => new Promise(resolve => {
-      if (cache[qq]) return resolve(cache[qq])
-      const callbackName = 'portraitCallBack'
-      const oldCallback = window[callbackName]
-      const script = document.createElement('script')
-      let done = false
-
-      const finish = nick => {
-        if (done) return
-        done = true
-        script.remove()
-        window[callbackName] = oldCallback
-        cache[qq] = nick || ''
-        resolve(cache[qq])
+    const readStoredNick = qq => {
+      if (Object.prototype.hasOwnProperty.call(cache, qq)) return cache[qq]
+      try {
+        const stored = JSON.parse(localStorage.getItem(qqNickCacheKey) || '{}')
+        if (stored[qq] && typeof stored[qq].nick === 'string') {
+          cache[qq] = stored[qq].nick
+          return stored[qq].nick
+        }
+        return null
+      } catch (e) {
+        return null
       }
+    }
 
-      window[callbackName] = data => {
-        const nick = data && data[qq] && data[qq][6]
-        finish(nick)
-      }
-      script.charset = 'utf-8'
-      script.onerror = () => finish('')
-      script.src = `https://users.qzone.qq.com/fcg-bin/cgi_get_portrait.fcg?uins=${encodeURIComponent(qq)}`
-      document.head.appendChild(script)
-      setTimeout(() => finish(''), 5000)
+    const saveStoredNick = (qq, nick) => {
+      if (!qq || typeof nick !== 'string') return
+      cache[qq] = nick
+      try {
+        const stored = JSON.parse(localStorage.getItem(qqNickCacheKey) || '{}')
+        stored[qq] = { nick, time: Date.now() }
+        localStorage.setItem(qqNickCacheKey, JSON.stringify(stored))
+      } catch (e) {}
+    }
+
+    const pickNickFromApiData = data => {
+      if (!data) return ''
+      const candidates = [
+        data.nickname,
+        data.name,
+        data.nick,
+        data.qqname,
+        data.user,
+        data.data && data.data.nickname,
+        data.data && data.data.name,
+        data.data && data.data.nick,
+        data.data && data.data.qqname,
+        data.result && data.result.nickname,
+        data.result && data.result.name,
+        data.result && data.result.nick
+      ]
+      return candidates.find(item => typeof item === 'string' && item.trim()) || ''
+    }
+
+    const fetchQQNick = qq => new Promise(resolve => {
+      const controller = new AbortController()
+      const timer = window.setTimeout(() => controller.abort(), 6000)
+      const apiUrl = qqNickApi.replace('{qq}', encodeURIComponent(qq))
+      fetch(apiUrl, { signal: controller.signal })
+        .then(res => res.ok ? res.json() : null)
+        .then(data => resolve(pickNickFromApiData(data).trim()))
+        .catch(() => resolve(''))
+        .finally(() => window.clearTimeout(timer))
     })
+
+    const timeoutValue = (ms, value) => new Promise(resolve => {
+      window.setTimeout(() => resolve(value), ms)
+    })
+
+    const queryQQNick = async qq => {
+      const storedNick = readStoredNick(qq)
+      if (storedNick !== null) {
+        return storedNick
+      }
+
+      try {
+        const apiNick = await Promise.race([
+          fetchQQNick(qq),
+          timeoutValue(7000, '')
+        ])
+        const finalNick = apiNick || qq
+        saveStoredNick(qq, finalNick)
+        return finalNick
+      } catch (e) {
+        saveStoredNick(qq, qq)
+        return qq
+      }
+    }
 
     const handleQQInput = async () => {
       const { nick, mail } = getInputs()
       if (!nick) return
-      const qq = nick.value.trim()
-      if (!/^[1-9]\d{4,11}$/.test(qq)) return
+      const nickValue = nick ? nick.value.trim() : ''
+      const qq = /^[1-9]\d{4,11}$/.test(nickValue) ? nickValue : ''
+      if (!qq) {
+        if (commentRoot.dataset) delete commentRoot.dataset.qqNickPending
+        return
+      }
+      const requestId = `${qq}:${Date.now()}`
+      nick.dataset.qqNickRequest = requestId
+      if (commentRoot.dataset) commentRoot.dataset.qqNickLast = qq
+      if (commentRoot.dataset) commentRoot.dataset.qqNickPending = qq
       setValue(mail, `${qq}@qq.com`)
       const qqNick = await queryQQNick(qq)
-      if (qqNick && nick.value.trim() === qq) setValue(nick, qqNick)
+      const { nick: latestNick } = getInputs()
+      if (!latestNick) return
+      if (latestNick.dataset.qqNickRequest !== requestId) return
+      if (latestNick.dataset.qqNickUserCancel === requestId) return
+      const finalNick = qqNick || qq
+      const applyFinalNick = () => {
+        const { nick: targetNick } = getInputs()
+        if (!targetNick) return
+        if (targetNick.dataset.qqNickRequest !== requestId) return
+        if (targetNick.dataset.qqNickUserCancel === requestId) return
+        const currentNick = targetNick.value.trim()
+        const lastAutoNick = targetNick.dataset.qqNickAutoValue || ''
+        if (currentNick === qq || !currentNick || currentNick === lastAutoNick || currentNick === finalNick) {
+          setValue(targetNick, finalNick)
+          targetNick.dataset.qqNickAutoValue = finalNick
+        }
+      }
+      applyFinalNick()
+      ;[160, 500, 1200, 2500].forEach(delay => window.setTimeout(applyFinalNick, delay))
+      if (commentRoot.dataset && commentRoot.dataset.qqNickPending === qq) delete commentRoot.dataset.qqNickPending
     }
 
-    twikooWrap.addEventListener('blur', event => {
-      if (event.target && event.target.matches('input')) handleQQInput()
-    }, true)
-    twikooWrap.addEventListener('change', handleQQInput, true)
-    new MutationObserver(() => {
+    const safeHandleQQInput = () => {
+      handleQQInput().catch(() => {
+        if (commentRoot.dataset) delete commentRoot.dataset.qqNickPending
+      })
+    }
+
+    const bindNickInput = () => {
       const { nick } = getInputs()
-      if (nick && !nick.dataset.qqNickFallbackBinded) {
-        nick.dataset.qqNickFallbackBinded = 'true'
-        nick.addEventListener('input', () => {
-          window.clearTimeout(nick.qqNickFallbackTimer)
-          nick.qqNickFallbackTimer = window.setTimeout(handleQQInput, 600)
-        })
-        nick.addEventListener('blur', handleQQInput)
-      }
-    }).observe(twikooWrap, { childList: true, subtree: true })
-    setTimeout(() => {
-      const { nick } = getInputs()
-      if (nick && !nick.dataset.qqNickFallbackBinded) {
-        nick.dataset.qqNickFallbackBinded = 'true'
-        nick.addEventListener('input', () => {
-          window.clearTimeout(nick.qqNickFallbackTimer)
-          nick.qqNickFallbackTimer = window.setTimeout(handleQQInput, 600)
-        })
-        nick.addEventListener('blur', handleQQInput)
-      }
-    }, 1000)
+      if (!nick || nick.dataset.qqNickFallbackBinded === 'true') return
+      nick.dataset.qqNickFallbackBinded = 'true'
+      nick.addEventListener('input', event => {
+        if (commentRoot.dataset && commentRoot.dataset.qqNickSetting === 'true') return
+        const value = nick.value.trim()
+        window.clearTimeout(nick.qqNickFallbackTimer)
+        if (!/^[1-9]\d{4,11}$/.test(value)) {
+          if (event.isTrusted) {
+            nick.dataset.qqNickUserCancel = nick.dataset.qqNickRequest || ''
+            if (commentRoot.dataset) delete commentRoot.dataset.qqNickPending
+          }
+          return
+        }
+        nick.qqNickFallbackTimer = window.setTimeout(safeHandleQQInput, 600)
+      })
+      nick.addEventListener('keydown', event => {
+        if (event.key === 'Enter' && /^[1-9]\d{4,11}$/.test(nick.value.trim())) {
+          event.preventDefault()
+          safeHandleQQInput()
+        }
+      })
+      nick.addEventListener('blur', safeHandleQQInput)
+    }
+
+    new MutationObserver(bindNickInput).observe(commentRoot, { childList: true, subtree: true })
+    bindNickInput()
+    setTimeout(bindNickInput, 1000)
   }
 
   const loadTwikoo = () => {
