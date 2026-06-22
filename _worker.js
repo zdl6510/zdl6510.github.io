@@ -4,13 +4,35 @@ const jsonHeaders = {
   'Access-Control-Allow-Origin': '*'
 };
 
-const upstreamApis = [
-  qq => `https://uapis.cn/api/v1/social/qq/userinfo?qq=${encodeURIComponent(qq)}`,
-  qq => `https://tmini.net/api/qqinfos?qq=${encodeURIComponent(qq)}&type=json`,
-  qq => `https://api.lolimi.cn/API/qqxx/api.php?qq=${encodeURIComponent(qq)}`,
-  qq => `https://tenapi.cn/v2/qqinfo?qq=${encodeURIComponent(qq)}`,
-  qq => `https://api.vvhan.com/api/qq?qq=${encodeURIComponent(qq)}`
-];
+function getUapisUrl(qq) {
+  return `https://uapis.cn/api/v1/social/qq/userinfo?qq=${encodeURIComponent(qq)}`;
+}
+
+function fillProxyUrl(template, qq) {
+  const proxy = String(template || '').trim();
+  if (!proxy) return '';
+
+  const uapisUrl = getUapisUrl(qq);
+  if (proxy.includes('{rawUrl}')) return proxy.replaceAll('{rawUrl}', uapisUrl).replaceAll('{qq}', encodeURIComponent(qq));
+  if (proxy.includes('{url}')) return proxy.replaceAll('{url}', encodeURIComponent(uapisUrl)).replaceAll('{qq}', encodeURIComponent(qq));
+  if (proxy.includes('{qq}')) return proxy.replaceAll('{qq}', encodeURIComponent(qq));
+
+  const separator = proxy.includes('?') ? '&' : '?';
+  return `${proxy}${separator}qq=${encodeURIComponent(qq)}`;
+}
+
+function getUpstreamUrls(qq, env = {}) {
+  const proxyTemplates = [
+    env.QQINFO_PROXY_URLS,
+    env.QQINFO_PROXY_URL
+  ].filter(Boolean).flatMap(item => String(item).split(','));
+  const proxyUrls = proxyTemplates.map(template => fillProxyUrl(template, qq)).filter(Boolean);
+
+  return [
+    ...proxyUrls,
+    getUapisUrl(qq)
+  ];
+}
 
 function pickNick(data) {
   if (!data) return '';
@@ -34,11 +56,10 @@ function pickNick(data) {
   return nick ? nick.trim() : '';
 }
 
-async function fetchQQNick(qq, debug = false) {
+async function fetchQQNick(qq, debug = false, env = {}) {
   const attempts = [];
 
-  for (const getUrl of upstreamApis) {
-    const requestUrl = getUrl(qq);
+  for (const requestUrl of getUpstreamUrls(qq, env)) {
     try {
       const response = await fetch(requestUrl, {
         headers: {
@@ -87,7 +108,7 @@ async function fetchQQNick(qq, debug = false) {
   };
 }
 
-async function handleQQInfo(request) {
+async function handleQQInfo(request, env = {}) {
   const url = new URL(request.url);
   const qq = (url.searchParams.get('qq') || '').trim();
   const debug = url.searchParams.get('debug') === '1';
@@ -100,7 +121,7 @@ async function handleQQInfo(request) {
   }
 
   try {
-    const result = await fetchQQNick(qq, debug);
+    const result = await fetchQQNick(qq, debug, env);
     const nickname = result.nickname || '';
 
     return new Response(JSON.stringify({
@@ -148,7 +169,7 @@ export default {
         });
       }
 
-      return handleQQInfo(request);
+      return handleQQInfo(request, env);
     }
 
     return env.ASSETS.fetch(request);
