@@ -580,6 +580,155 @@ queueMicrotask(() => {
       }
     }, {}))
     installQQNickFallback()
+    installCommentImageUploader()
+  }
+
+  const installCommentImageUploader = () => {
+    const uploadURL = 'https://imageontelegram.cc.cd/upload?authCode=2rZ459RjQxkAp3&uploadFolder=blog/comments&returnFormat=full'
+    if (!uploadURL) return
+
+    const commentRoot = document.getElementById('post-comment') || document
+    if (commentRoot.dataset && commentRoot.dataset.commentImageUploader === 'true') return
+    if (commentRoot.dataset) commentRoot.dataset.commentImageUploader = 'true'
+
+    const getTwikooRoot = () => document.getElementById('twikoo') || document.getElementById('twikoo-wrap') || commentRoot
+    const getTextarea = () => getTwikooRoot().querySelector('textarea.el-textarea__inner, textarea')
+    const fileInput = document.createElement('input')
+    fileInput.type = 'file'
+    fileInput.accept = 'image/*'
+    fileInput.multiple = true
+    fileInput.style.display = 'none'
+    document.body.appendChild(fileInput)
+
+    const setTextareaValue = (textarea, value) => {
+      const setter = Object.getOwnPropertyDescriptor(HTMLTextAreaElement.prototype, 'value').set
+      setter.call(textarea, value)
+      textarea.dispatchEvent(new Event('input', { bubbles: true }))
+      textarea.dispatchEvent(new Event('change', { bubbles: true }))
+      textarea.focus()
+    }
+
+    const insertText = (textarea, text) => {
+      const start = textarea.selectionStart || textarea.value.length
+      const end = textarea.selectionEnd || textarea.value.length
+      const before = textarea.value.slice(0, start)
+      const after = textarea.value.slice(end)
+      const prefix = before && !/\s$/.test(before) ? '\n' : ''
+      const suffix = after && !/^\s/.test(after) ? '\n' : ''
+      const nextValue = `${before}${prefix}${text}${suffix}${after}`
+      setTextareaValue(textarea, nextValue)
+      const cursor = before.length + prefix.length + text.length
+      textarea.setSelectionRange(cursor, cursor)
+    }
+
+    const pickURL = data => {
+      if (!data) return ''
+      if (typeof data === 'string') {
+        const markdownMatch = data.match(/!\[[^\]]*\]\((https?:\/\/[^)\s]+)\)/)
+        if (markdownMatch) return markdownMatch[1]
+        const urlMatch = data.match(/https?:\/\/[^\s"'<>)]*/)
+        return urlMatch ? urlMatch[0] : ''
+      }
+      const candidates = [
+        data.url,
+        data.full,
+        data.src,
+        data.link,
+        data.image,
+        data.path,
+        data.data && data.data.url,
+        data.data && data.data.full,
+        data.data && data.data.src,
+        data.data && data.data.link,
+        data.result && data.result.url,
+        data.result && data.result.full,
+        data.result && data.result.src,
+        data.result && data.result.link
+      ]
+      return candidates.find(item => typeof item === 'string' && /^https?:\/\//.test(item)) || ''
+    }
+
+    const uploadFile = async file => {
+      const formData = new FormData()
+      formData.append('file', file)
+      const response = await fetch(uploadURL, {
+        method: 'POST',
+        body: formData
+      })
+      const text = await response.text()
+      if (!response.ok) throw new Error(text || `Upload failed: ${response.status}`)
+      try {
+        const json = JSON.parse(text)
+        const url = pickURL(json)
+        if (url) return url
+      } catch (e) {}
+      const url = pickURL(text)
+      if (url) return url
+      throw new Error('Upload response has no image url')
+    }
+
+    const uploadFiles = async files => {
+      const images = [...files].filter(file => file && file.type && file.type.startsWith('image/'))
+      if (!images.length) return
+      const textarea = getTextarea()
+      if (!textarea) return
+      if (window.anzhiyu && anzhiyu.snackbarShow) anzhiyu.snackbarShow('图片上传中...')
+      try {
+        const urls = []
+        for (const file of images) {
+          const url = await uploadFile(file)
+          urls.push(`![${file.name.replace(/\.[^.]+$/, '') || 'image'}](${url})`)
+        }
+        insertText(textarea, urls.join('\n'))
+        if (window.anzhiyu && anzhiyu.snackbarShow) anzhiyu.snackbarShow('图片已插入评论')
+      } catch (error) {
+        console.error(error)
+        if (window.anzhiyu && anzhiyu.snackbarShow) anzhiyu.snackbarShow('图片上传失败，请稍后再试')
+      }
+    }
+
+    const bindUploader = () => {
+      const root = getTwikooRoot()
+      const textarea = getTextarea()
+      if (!root || !textarea) return
+
+      if (textarea.dataset.commentImagePaste !== 'true') {
+        textarea.dataset.commentImagePaste = 'true'
+        textarea.addEventListener('paste', event => {
+          const files = event.clipboardData && event.clipboardData.files
+          if (!files || ![...files].some(file => file.type && file.type.startsWith('image/'))) return
+          event.preventDefault()
+          uploadFiles(files)
+        })
+        textarea.addEventListener('drop', event => {
+          const files = event.dataTransfer && event.dataTransfer.files
+          if (!files || ![...files].some(file => file.type && file.type.startsWith('image/'))) return
+          event.preventDefault()
+          uploadFiles(files)
+        })
+      }
+
+      if (root.querySelector('.tk-image-upload-button')) return
+      const button = document.createElement('button')
+      button.type = 'button'
+      button.className = 'tk-image-upload-button el-button el-button--default el-button--small'
+      button.textContent = '图片'
+      button.style.marginRight = '8px'
+      button.addEventListener('click', () => fileInput.click())
+
+      const actionBar = root.querySelector('.tk-row.actions, .tk-submit-action, .tk-footer, .tk-comments-container + .tk-submit')
+      if (actionBar) actionBar.insertBefore(button, actionBar.firstChild)
+      else textarea.insertAdjacentElement('afterend', button)
+    }
+
+    fileInput.addEventListener('change', () => {
+      uploadFiles(fileInput.files)
+      fileInput.value = ''
+    })
+
+    new MutationObserver(bindUploader).observe(commentRoot, { childList: true, subtree: true })
+    bindUploader()
+    setTimeout(bindUploader, 1000)
   }
 
   const installQQNickFallback = () => {
