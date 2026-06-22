@@ -5,6 +5,7 @@ const jsonHeaders = {
 };
 
 const upstreamApis = [
+  qq => `https://tmini.net/api/qqinfos?qq=${encodeURIComponent(qq)}&type=json`,
   qq => `https://uapis.cn/api/v1/social/qq/userinfo?qq=${encodeURIComponent(qq)}`,
   qq => `https://api.lolimi.cn/API/qqxx/api.php?qq=${encodeURIComponent(qq)}`,
   qq => `https://tenapi.cn/v2/qqinfo?qq=${encodeURIComponent(qq)}`,
