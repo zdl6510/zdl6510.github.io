@@ -1,0 +1,987 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>Windows 效率工具推荐：ShareX、LocalSend、Files、Windows Terminal、PowerToys | 星野暗涌</title><meta name="author" content="星野暗涌"><meta name="copyright" content="星野暗涌"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#18171d"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="Windows 效率工具推荐：ShareX、LocalSend、Files、Windows Terminal、PowerToys"><meta name="application-name" content="Windows 效率工具推荐：ShareX、LocalSend、Files、Windows Terminal、PowerToys"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#18171d"><meta property="og:type" content="website"><meta property="og:title" content="Windows 效率工具推荐：ShareX、LocalSend、Files、Windows Terminal、PowerToys"><meta property="og:url" content="http://example.com/equipment/windows-tools/index.html"><meta property="og:site_name" content="星野暗涌"><meta property="og:description" content="这几款工具都很适合长期留在 Windows 电脑里：ShareX 负责截图和录屏，LocalSend 负责局域网传文件，Files 改善文件管理体验，Windows Terminal 统一命令行窗口，PowerToys 则补齐系统级效率能力。 ShareXShareX 是一款开源截图、录屏和自动化上"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://imageontelegram.cc.cd/file/blog/AI/tools/1781160700966_image-20260611145132490.png"><meta property="article:author" content="星野暗涌"><meta property="article:tag"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://imageontelegram.cc.cd/file/blog/AI/tools/1781160700966_image-20260611145132490.png"><meta name="description" content="这几款工具都很适合长期留在 Windows 电脑里：ShareX 负责截图和录屏，LocalSend 负责局域网传文件，Files 改善文件管理体验，Windows Terminal 统一命令行窗口，PowerToys 则补齐系统级效率能力。 ShareXShareX 是一款开源截图、录屏和自动化上"><link rel="shortcut icon" href="/favicon.ico"><link rel="canonical" href="http://example.com/equipment/windows-tools/"><link rel="preconnect" href="//cdn.cbd.int"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="code-xxx"/><meta name="msvalidate.01" content="xxx"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/@fortawesome/fontawesome-free@7.1.0/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@6.1.6/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: {"enable":true,"img":"https://upload-bbs.miyoushe.com/upload/2024/07/27/125766904/ba62475f396df9de3316a08ed9e65d86_5680958632268053399..png"},
+  postHeadAiDescription: {"enable":true,"gptName":"AnZhiYu","mode":"local","switchBtn":false,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":"xxxx","Referer":"https://xx.xx/"},
+  diytitle: {"enable":true,"leaveTitle":"w(ﾟДﾟ)w 不要走！再看看嘛！","backTitle":"♪(^∇^*)欢迎肥来！"},
+  LA51: undefined,
+  greetingBox: undefined,
+  twikooEnvId: 'https://twikoo.zhengdengliang.com/',
+  commentBarrageConfig:undefined,
+  music_page_default: "nav_music",
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: undefined,
+  authorStatus: {"skills":["🔭 每一次仰望，都是对未知的无畏奔赴","💡 数字工具不该有门槛","🌊 技术平权，从我做起","📬 联系邮箱：blog@zdl.dpdns.org"]},
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    simplehomepage: true,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":false,"limitCount":50,"languages":{"author":"作者: 星野暗涌","link":"链接: ","source":"来源: 星野暗涌","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.2.0/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.2.0/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  shortcutKey: undefined,
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: '星野暗涌',
+  title: 'Windows 效率工具推荐：ShareX、LocalSend、Files、Windows Terminal、PowerToys',
+  postAI: '',
+  pageFillDescription: 'ShareX, LocalSend, Files, Windows Terminal, PowerToys这几款工具都很适合长期留在电脑里负责截图和录屏负责局域网传文件改善文件管理体验统一命令行窗口则补齐系统级效率能力是一款开源截图录屏和自动化上传工具它不只是截图软件更像一个截图后的工作流中心截完图后可以自动标注保存复制到剪贴板上传到图床或者继续进入编辑器常用功能区域截图窗口截图全屏截图滚动截图和视频录制适合记录软件操作步骤截图后自动进入图片编辑器添加箭头矩形编号马赛克和文字识别图片文字适合从报错截图里提取文本取色器尺子图片合并二维码识别等小工具使用方法安装后先打开快捷键设置给矩形区域截图录屏设置自己顺手的快捷键在截图后的动作里勾选复制图片到剪贴板保存图片到文件写教程时会非常顺手如果需要上传图片进入目标设置配置图床或对象存储然后在上传后的动作里选择复制到剪贴板想录时选择捕捉屏幕录制框选区域后开始录制即可小技巧写教程时建议把截图后打开图片编辑器设为默认动作编号和箭头会让步骤清楚很多临时贴图可以用图像效果贴图相关功能把截图悬浮在桌面上对照操作如果只想本地使用不配置上传目标也完全可以仍然是很强的截图工具下载方式官方文档是一款开源跨平台局域网文件传输工具它的核心优点是不用登录账号不依赖网盘也不需要数据经过第三方服务器只要设备在同一个局域网里就可以互相发现并发送文件常用功能之间互传文件和文件夹发送文本内容适合把手机上的一段文字快速丢到电脑支持选择保存路径和接收确认避免文件乱进下载目录可通过别名识别设备比看地址直观得多使用方法在两台设备上都安装并连接到同一个或局域网打开发送端选择文件文件夹或文本然后选择接收设备接收端确认后文件会传到指定目录如果发现不了设备优先检查系统防火墙网络是否为同一网段以及是否开启了代理小技巧给每台设备设置固定别名比如台式机手机平板传文件时不容易选错传大文件时尽量让设备连接同一个速度和稳定性会更好临时传文字链接命令片段时用发送文本比发聊天软件更干净下载方式官方文档是一个现代化文件管理器适合用来替代或补充系统自带资源管理器它的重点不是炫酷而是把标签页双栏预览标签云盘入口和命令面板这些常用能力做得更顺手常用功能多标签页管理目录减少开一堆资源管理器窗口双栏视图适合整理文件对比目录搬运素材文件标签和收藏方便管理项目资料素材库和常用路径支持云盘压缩包状态等现代文件管理体验命令面板可以快速执行复制路径打开终端切换布局等操作使用方法安装后先把常用目录固定到侧边栏比如项目目录下载目录素材目录整理文件时打开双栏视图一边放来源目录一边放目标目录对经常访问的项目文件夹添加标签或收藏减少层层点击遇到需要命令行处理的目录可以直接从中打开终端小技巧用标签页按任务分组比如博客素材项目源码下载整理比多窗口更清爽双栏适合处理图片压缩包导出文件这些高频搬运任务如果偶尔兼容性不如系统资源管理器可以把当增强工具使用不必完全替代系统默认管理器下载方式官方文档是官方现代终端可以把等命令行放进同一个窗口里它最大的价值是统一入口多标签分屏和可配置的启动环境常用功能多标签页和分屏同时运行多个命令行任务支持等不同配置文件可自定义字体主题背景默认启动目录和快捷键命令面板可以快速新建标签切换窗格调整布局支持命令从运行窗口或脚本中启动指定终端布局使用方法安装后打开设置把常用设为默认配置文件比如或给常用环境设置不同名称和图标避免在多个标签里迷路使用或相关快捷键分屏在同一个窗口里同时跑服务日志和命令在项目目录中右键打开终端可以直接进入当前路径小技巧开发时可以一屏放另一屏放或测试命令给设置不同配色肉眼就能分辨当前环境熟悉命令后可以写脚本一键打开固定工作区下载方式官方文档是官方维护的效率增强工具合集它适合几乎所有重度电脑用户因为里面很多功能都在补系统日常使用中的小缺口常用功能自定义窗口布局把屏幕切成固定工作区快速启动应用搜索文件执行计算和命令重映射按键和快捷键批量重命名文件全局取色器适合设计和前端工作让电脑临时保持唤醒避免下载构建或演示时休眠右键批量调整图片尺寸快速找鼠标鼠标高亮录屏演示时很有用使用方法安装后打开设置页只启用自己需要的模块大屏或多屏用户优先配置把窗口吸附到固定区域把绑定到顺手快捷键用它代替一部分开始菜单搜索经常处理图片或文件名时启用和小技巧很适合固定编辑器浏览器终端的开发布局支持预览批量改名前先检查结果能避免误改建议只在临时任务中开启用完关闭避免电脑长期不休眠可以把不常用按键改成常用快捷键但不要一次改太多先保留回退空间下载方式官方文档',
+  isPost: false,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2026-06-27 10:36:33',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><meta name="generator" content="Hexo 8.1.2"></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="https://imageontelegram.cc.cd/file/blog/AI/tools/1781160700966_image-20260611145132490.png"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="page" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><a class="equipment-back-home" href="/equipment/" title="返回好物推荐站"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i><span>返回</span></a><a id="site-name" href="/" accesskey="h"><div class="title">星野暗涌</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 归档</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div></div></div><div id="nav-right"><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><div class="nav-button" id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" title="搜索🔍" accesskey="s"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span> 搜索</span></a></div><input id="center-console" type="checkbox"><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="/img/reward/wechat-reward.png" target="_blank"><img class="post-qr-code-img" alt="微信" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/reward/wechat-reward.png"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/img/reward/alipay-reward.jpg" target="_blank"><img class="post-qr-code-img" alt="支付宝" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/reward/alipay-reward.jpg"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> 最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">兴趣点</div><span class="author-content-item-title">寻找你感兴趣的领域</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/ai%E5%B7%A5%E5%85%B7/" style="font-size: 1.05rem;">ai工具<sup>3</sup></a><a href="/tags/ai%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/" style="font-size: 1.05rem;">ai应用开发<sup>2</sup></a><a href="/tags/claude-code/" style="font-size: 1.05rem;">claude code<sup>3</sup></a><a href="/tags/cpp/" style="font-size: 1.05rem;">cpp<sup>8</sup></a><a href="/tags/docker/" style="font-size: 1.05rem;">docker<sup>1</sup></a><a href="/tags/go/" style="font-size: 1.05rem;">go<sup>3</sup></a><a href="/tags/mysql/" style="font-size: 1.05rem;">mysql<sup>1</sup></a><a href="/tags/qt/" style="font-size: 1.05rem;">qt<sup>1</sup></a><a href="/tags/vue3/" style="font-size: 1.05rem;">vue3<sup>1</sup></a><a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 1.05rem;">数据库<sup>1</sup></a></div></div><hr/></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/06/"><span class="card-archive-list-date">六月 2026</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">3</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/05/"><span class="card-archive-list-date">五月 2026</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">17</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav></header><main id="blog-container"><div class="layout" id="content-inner"><div id="page"><h1 class="page-title">Windows 效率工具推荐：ShareX、LocalSend、Files、Windows Terminal、PowerToys</h1><div id="article-container"><p>这几款工具都很适合长期留在 Windows 电脑里：ShareX 负责截图和录屏，LocalSend 负责局域网传文件，Files 改善文件管理体验，Windows Terminal 统一命令行窗口，PowerToys 则补齐系统级效率能力。</p>
+<h2 id="ShareX"><a href="#ShareX" class="headerlink" title="ShareX"></a>ShareX</h2><p>ShareX 是一款开源截图、录屏和自动化上传工具。它不只是截图软件，更像一个“截图后的工作流中心”：截完图后可以自动标注、保存、复制到剪贴板、上传到图床，或者继续进入编辑器。</p>
+<p>常用功能：</p>
+<ul>
+<li>区域截图、窗口截图、全屏截图、滚动截图。</li>
+<li>GIF 和视频录制，适合记录软件操作步骤。</li>
+<li>截图后自动进入图片编辑器，添加箭头、矩形、编号、马赛克和文字。</li>
+<li>OCR 识别图片文字，适合从报错截图里提取文本。</li>
+<li>取色器、尺子、图片合并、二维码识别等小工具。</li>
+</ul>
+<p>使用方法：</p>
+<ol>
+<li>安装后先打开“快捷键设置”，给“矩形区域截图”“录屏”“OCR”设置自己顺手的快捷键。</li>
+<li>在“截图后的动作”里勾选“复制图片到剪贴板”“保存图片到文件”，写教程时会非常顺手。</li>
+<li>如果需要上传图片，进入“目标设置”配置图床或对象存储，然后在“上传后的动作”里选择“复制 URL 到剪贴板”。</li>
+<li>想录 GIF 时，选择“捕捉 &gt; 屏幕录制 GIF”，框选区域后开始录制即可。</li>
+</ol>
+<p>小技巧：</p>
+<ul>
+<li>写教程时建议把“截图后打开图片编辑器”设为默认动作，编号和箭头会让步骤清楚很多。</li>
+<li>临时贴图可以用“图像效果 &#x2F; 贴图”相关功能，把截图悬浮在桌面上对照操作。</li>
+<li>如果只想本地使用，不配置上传目标也完全可以，ShareX 仍然是很强的截图工具。</li>
+</ul>
+<p>下载方式：<a target="_blank" rel="noopener" href="https://getsharex.com/downloads">ShareX Downloads</a></p>
+<p>官方文档：<a target="_blank" rel="noopener" href="https://getsharex.com/docs/region-capture">ShareX Docs</a></p>
+<h2 id="LocalSend"><a href="#LocalSend" class="headerlink" title="LocalSend"></a>LocalSend</h2><p>LocalSend 是一款开源、跨平台、局域网文件传输工具。它的核心优点是不用登录账号，不依赖网盘，也不需要数据经过第三方服务器；只要设备在同一个局域网里，就可以互相发现并发送文件。</p>
+<p>常用功能：</p>
+<ul>
+<li>Windows、macOS、Linux、Android、iOS 之间互传文件和文件夹。</li>
+<li>发送文本内容，适合把手机上的一段文字快速丢到电脑。</li>
+<li>支持选择保存路径和接收确认，避免文件乱进下载目录。</li>
+<li>可通过别名识别设备，比看 IP 地址直观得多。</li>
+</ul>
+<p>使用方法：</p>
+<ol>
+<li>在两台设备上都安装 LocalSend，并连接到同一个 Wi-Fi 或局域网。</li>
+<li>打开发送端，选择“文件”“文件夹”或“文本”，然后选择接收设备。</li>
+<li>接收端确认后，文件会传到指定目录。</li>
+<li>如果发现不了设备，优先检查系统防火墙、网络是否为同一网段，以及是否开启了 VPN 代理。</li>
+</ol>
+<p>小技巧：</p>
+<ul>
+<li>给每台设备设置固定别名，比如“台式机”“手机”“平板”，传文件时不容易选错。</li>
+<li>传大文件时尽量让设备连接同一个 5GHz Wi-Fi，速度和稳定性会更好。</li>
+<li>临时传文字、链接、命令片段时，用“发送文本”比发聊天软件更干净。</li>
+</ul>
+<p>下载方式：<a target="_blank" rel="noopener" href="https://localsend.org/download">LocalSend Download</a></p>
+<p>官方文档：<a target="_blank" rel="noopener" href="https://github.com/localsend/localsend">LocalSend GitHub</a></p>
+<h2 id="Files"><a href="#Files" class="headerlink" title="Files"></a>Files</h2><p>Files 是一个现代化 Windows 文件管理器，适合用来替代或补充系统自带资源管理器。它的重点不是炫酷，而是把标签页、双栏、预览、标签、云盘入口和命令面板这些常用能力做得更顺手。</p>
+<p>常用功能：</p>
+<ul>
+<li>多标签页管理目录，减少开一堆资源管理器窗口。</li>
+<li>双栏视图，适合整理文件、对比目录、搬运素材。</li>
+<li>文件标签和收藏，方便管理项目资料、素材库和常用路径。</li>
+<li>支持云盘、压缩包、Git 状态等现代文件管理体验。</li>
+<li>命令面板可以快速执行复制路径、打开终端、切换布局等操作。</li>
+</ul>
+<p>使用方法：</p>
+<ol>
+<li>安装后先把常用目录固定到侧边栏，比如项目目录、下载目录、素材目录。</li>
+<li>整理文件时打开双栏视图，一边放来源目录，一边放目标目录。</li>
+<li>对经常访问的项目文件夹添加标签或收藏，减少层层点击。</li>
+<li>遇到需要命令行处理的目录，可以直接从 Files 中打开终端。</li>
+</ol>
+<p>小技巧：</p>
+<ul>
+<li>用标签页按任务分组，比如“博客素材”“项目源码”“下载整理”，比多窗口更清爽。</li>
+<li>双栏适合处理图片、压缩包、导出文件这些高频搬运任务。</li>
+<li>如果偶尔兼容性不如系统资源管理器，可以把 Files 当增强工具使用，不必完全替代系统默认管理器。</li>
+</ul>
+<p>下载方式：<a target="_blank" rel="noopener" href="https://files.community/download">Files Download</a></p>
+<p>官方文档：<a target="_blank" rel="noopener" href="https://files.community/docs">Files Documentation</a></p>
+<h2 id="Windows-Terminal"><a href="#Windows-Terminal" class="headerlink" title="Windows Terminal"></a>Windows Terminal</h2><p>Windows Terminal 是 Microsoft 官方现代终端，可以把 PowerShell、CMD、WSL、Azure Cloud Shell、SSH 等命令行放进同一个窗口里。它最大的价值是统一入口、多标签、分屏和可配置的启动环境。</p>
+<p>常用功能：</p>
+<ul>
+<li>多标签页和分屏，同时运行多个命令行任务。</li>
+<li>支持 PowerShell、CMD、WSL、SSH 等不同配置文件。</li>
+<li>可自定义字体、主题、背景、默认启动目录和快捷键。</li>
+<li>命令面板可以快速新建标签、切换窗格、调整布局。</li>
+<li>支持 <code>wt</code> 命令从运行窗口或脚本中启动指定终端布局。</li>
+</ul>
+<p>使用方法：</p>
+<ol>
+<li>安装后打开设置，把常用 Shell 设为默认配置文件，比如 PowerShell 或 WSL。</li>
+<li>给常用环境设置不同名称和图标，避免在多个标签里迷路。</li>
+<li>使用 <code>Alt + Shift + -</code> 或相关快捷键分屏，在同一个窗口里同时跑服务、日志和命令。</li>
+<li>在项目目录中右键打开终端，可以直接进入当前路径。</li>
+</ol>
+<p>小技巧：</p>
+<ul>
+<li>开发时可以一屏放 <code>npm run dev</code>，另一屏放 Git 或测试命令。</li>
+<li>给 WSL、PowerShell、CMD 设置不同配色，肉眼就能分辨当前环境。</li>
+<li>熟悉 <code>wt</code> 命令后，可以写脚本一键打开固定工作区。</li>
+</ul>
+<p>下载方式：<a target="_blank" rel="noopener" href="https://aka.ms/terminal">Windows Terminal</a></p>
+<p>官方文档：<a target="_blank" rel="noopener" href="https://learn.microsoft.com/windows/terminal/">Windows Terminal Docs</a></p>
+<h2 id="PowerToys"><a href="#PowerToys" class="headerlink" title="PowerToys"></a>PowerToys</h2><p>PowerToys 是 Microsoft 官方维护的 Windows 效率增强工具合集。它适合几乎所有重度电脑用户，因为里面很多功能都在补系统日常使用中的“小缺口”。</p>
+<p>常用功能：</p>
+<ul>
+<li>FancyZones：自定义窗口布局，把屏幕切成固定工作区。</li>
+<li>PowerToys Run：快速启动应用、搜索文件、执行计算和命令。</li>
+<li>Keyboard Manager：重映射按键和快捷键。</li>
+<li>PowerRename：批量重命名文件。</li>
+<li>Color Picker：全局取色器，适合设计和前端工作。</li>
+<li>Awake：让电脑临时保持唤醒，避免下载、构建或演示时休眠。</li>
+<li>Image Resizer：右键批量调整图片尺寸。</li>
+<li>Mouse Utilities：快速找鼠标、鼠标高亮，录屏演示时很有用。</li>
+</ul>
+<p>使用方法：</p>
+<ol>
+<li>安装后打开 PowerToys 设置页，只启用自己需要的模块。</li>
+<li>大屏或多屏用户优先配置 FancyZones，把窗口吸附到固定区域。</li>
+<li>把 PowerToys Run 绑定到顺手快捷键，用它代替一部分开始菜单搜索。</li>
+<li>经常处理图片或文件名时，启用 Image Resizer 和 PowerRename。</li>
+</ol>
+<p>小技巧：</p>
+<ul>
+<li>FancyZones 很适合固定“编辑器 + 浏览器 + 终端”的开发布局。</li>
+<li>PowerRename 支持预览，批量改名前先检查结果，能避免误改。</li>
+<li>Awake 建议只在临时任务中开启，用完关闭，避免电脑长期不休眠。</li>
+<li>Keyboard Manager 可以把不常用按键改成常用快捷键，但不要一次改太多，先保留回退空间。</li>
+</ul>
+<p>下载方式：<a target="_blank" rel="noopener" href="https://learn.microsoft.com/windows/powertoys/install">PowerToys Install</a></p>
+<p>官方文档：<a target="_blank" rel="noopener" href="https://learn.microsoft.com/windows/powertoys/">PowerToys Docs</a></p>
+</div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="anzhiyufont anzhiyu-icon-comments"></i><span> 评论</span></div><div class="comment-randomInfo"><a onclick="anzhiyu.addRandomCommentInfo()" href="javascript:void(0)">匿名评论</a><a href="/privacy" style="margin-left: 4px">隐私政策</a></div><div class="comment-tips" id="comment-tips"><span>✅ 你无需删除空行，直接评论以获取最佳展示效果</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div><div class="comment-barrage"></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info__sayhi" id="author-info__sayhi" onclick="anzhiyu.changeSayHelloText()"></div><div class="author-info-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://imageontelegram.cc.cd/file/blog/AI/tools/1781160700966_image-20260611145132490.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-status"><img class="g-status" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2023/08/24/64e6ce9c507bb.png" alt="status"/></div></div><div class="author-info__description">一个相信技术不该有门槛的普通人。拆解晦涩的概念，分享趁手的数字工具，让每个愿意学习的人都能跟上这个数字时代。</div><div class="author-info__bottom-group"><a class="author-info__bottom-group-left" href="/"><h1 class="author-info__name">星野暗涌</h1><div class="author-info__desc">blog@zdl.dpdns.org</div></a></div></div></div><div class="card-widget anzhiyu-right-widget" id="card-wechat" onclick="null"><div id="flip-wrapper"><div id="flip-content"><div class="face" style="background: url(https://bu.dusays.com/2023/01/13/63c02edf44033.png) center center / 100% no-repeat"></div><div class="back face" style="background: url(https://imageontelegram.cc.cd/file/blog/settings/1781420603867_mmexport1781420526036.jpeg) center center / 100% no-repeat"></div></div></div></div><div class="sticky_layout"><div class="card-widget"><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/ai%E5%B7%A5%E5%85%B7/" style="font-size: 1.05rem;">ai工具<sup>3</sup></a><a href="/tags/ai%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/" style="font-size: 1.05rem;">ai应用开发<sup>2</sup></a><a href="/tags/claude-code/" style="font-size: 1.05rem;">claude code<sup>3</sup></a><a href="/tags/cpp/" style="font-size: 1.05rem;">cpp<sup>8</sup></a><a href="/tags/docker/" style="font-size: 1.05rem;">docker<sup>1</sup></a><a href="/tags/go/" style="font-size: 1.05rem;">go<sup>3</sup></a><a href="/tags/mysql/" style="font-size: 1.05rem;">mysql<sup>1</sup></a><a href="/tags/qt/" style="font-size: 1.05rem;">qt<sup>1</sup></a><a href="/tags/vue3/" style="font-size: 1.05rem;">vue3<sup>1</sup></a><a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 1.05rem;">数据库<sup>1</sup></a></div></div><hr/><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/06/"><span class="card-archive-list-date">六月 2026</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">3</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/05/"><span class="card-archive-list-date">五月 2026</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">17</span><span>篇</span></div></a></li></ul></div><hr/><div class="card-webinfo"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="webinfo-item-title"><i class="anzhiyufont anzhiyu-icon-file-lines"></i><div class="item-name">文章总数 :</div></div><div class="item-count">20</div></div><div class="webinfo-item"><div class="webinfo-item-title"><i class="anzhiyufont anzhiyu-icon-stopwatch"></i><div class="item-name">建站天数 :</div></div><div class="item-count" id="runtimeshow" data-publishDate="2026-06-09T16:00:00.000Z"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-spin"></i></div></div><div class="webinfo-item"><div class="webinfo-item-title"><i class="anzhiyufont anzhiyu-icon-font"></i><div class="item-name">全站字数 :</div></div><div class="item-count">97k</div></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">&copy;2020 - 2026 By <a class="footer-bar-link" href="/" title="星野暗涌" target="_blank">星野暗涌</a></div></div><div id="footer-type-tips"></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://github.com/anzhiyu-c/hexo-theme-anzhiyu" title="主题">主题</a></div></div></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">20</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">10</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">4</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://hexo.anheyu.com/" title="博客"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/favicon.ico" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://image.anheyu.com/" title="安知鱼图床"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://image.anheyu.com/favicon.ico" alt="安知鱼图床"/><span class="back-menu-item-text">安知鱼图床</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 归档</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/ai%E5%B7%A5%E5%85%B7/" style="font-size: 0.88rem;">ai工具<sup>3</sup></a><a href="/tags/ai%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/" style="font-size: 0.88rem;">ai应用开发<sup>2</sup></a><a href="/tags/claude-code/" style="font-size: 0.88rem;">claude code<sup>3</sup></a><a href="/tags/cpp/" style="font-size: 0.88rem;">cpp<sup>8</sup></a><a href="/tags/docker/" style="font-size: 0.88rem;">docker<sup>1</sup></a><a href="/tags/go/" style="font-size: 0.88rem;">go<sup>3</sup></a><a href="/tags/mysql/" style="font-size: 0.88rem;">mysql<sup>1</sup></a><a href="/tags/qt/" style="font-size: 0.88rem;">qt<sup>1</sup></a><a href="/tags/vue3/" style="font-size: 0.88rem;">vue3<sup>1</sup></a><a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 0.88rem;">数据库<sup>1</sup></a></div></div><hr/></div></div><div id="rightside"><div id="rightside-config-hide"><button id="translateLink" type="button" title="简繁转换">绻?</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="anzhiyufont anzhiyu-icon-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="8152976493" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.7"></meting-js></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="anzhiyufont anzhiyu-icon-xmark"></i></button></nav><div class="is-center" id="loading-database"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-pulse-icon"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://y.qq.com/n/ryqq/playlist/8802438608&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-language"></i><span>转为繁体</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/@fancyapps/ui@6.1.6/dist/fancybox/fancybox.umd.js"></script><script src="https://cdn.cbd.int/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://cdn.cbd.int/vanilla-lazyload@19.1.3/dist/lazyload.iife.min.js"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("2026/6/11"); //此处修改你的建站时间或者网站上线时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  const ascll = [
+    `欢迎使用安知鱼!`,
+    `生活明朗, 万物可爱`,
+    `
+        
+       █████╗ ███╗   ██╗███████╗██╗  ██╗██╗██╗   ██╗██╗   ██╗
+      ██╔══██╗████╗  ██║╚══███╔╝██║  ██║██║╚██╗ ██╔╝██║   ██║
+      ███████║██╔██╗ ██║  ███╔╝ ███████║██║ ╚████╔╝ ██║   ██║
+      ██╔══██║██║╚██╗██║ ███╔╝  ██╔══██║██║  ╚██╔╝  ██║   ██║
+      ██║  ██║██║ ╚████║███████╗██║  ██║██║   ██║   ╚██████╔╝
+      ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝    ╚═════╝
+        
+        `,
+    "已上线",
+    dnum,
+    "天",
+    "©2020 By 安知鱼 V1.7.1",
+  ];
+  const ascll2 = [`NCC2-036`, `调用前置摄像头拍照成功，识别为【小笨蛋】.`, `Photo captured: `, `🤪`];
+
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} %c ${ascll[2]} %c${ascll[3]}%c ${ascll[4]}%c ${ascll[5]}\n\n%c ${ascll[6]}\n`,
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      ""
+    )
+  );
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，小笨蛋.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Powered by 安知鱼 %c 你正在访问 星野暗涌 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 你现在正处于监控中.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async src="/anzhiyu/random.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>(() => {
+  const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+  if ($mermaid.length === 0) return
+  const runMermaid = () => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    Array.from($mermaid).forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      const mermaidThemeConfig = '%%{init:{ \'theme\':\'' + theme + '\'}}%%\n'
+      const mermaidID = 'mermaid-' + index
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+
+      const renderV10 = () => {
+        renderFn.then(({svg}) => {
+          mermaidSrc.insertAdjacentHTML('afterend', svg)
+        })
+      }
+
+      const renderV9 = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+      }
+
+      typeof renderFn === 'string' ? renderV9(renderFn) : renderV10()
+    })
+  }
+
+  const loadMermaid = () => {
+    window.loadMermaid ? runMermaid() : getScript('https://cdn.cbd.int/mermaid@11.12.2/dist/mermaid.min.js').then(runMermaid)
+  }
+
+  anzhiyu.addGlobalFn('themeChange', runMermaid, 'mermaid')
+
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script><script>(() => {
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'https://twikoo.zhengdengliang.com/',
+      region: '',
+      onCommentLoaded: () => {
+        anzhiyu.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, {}))
+    installQQNickFallback()
+    installCommentImageUploader()
+  }
+
+  const installCommentImageUploader = () => {
+    const uploadURL = 'https://imageontelegram.cc.cd/upload?authCode=2rZ459RjQxkAp3&uploadFolder=blog/comments&returnFormat=full'
+    if (!uploadURL) return
+
+    const commentRoot = document.getElementById('post-comment') || document
+    if (commentRoot.dataset && commentRoot.dataset.commentImageUploader === 'true') return
+    if (commentRoot.dataset) commentRoot.dataset.commentImageUploader = 'true'
+
+    const getTwikooRoot = () => document.getElementById('twikoo') || document.getElementById('twikoo-wrap') || commentRoot
+    const getTextarea = () => getTwikooRoot().querySelector('textarea.el-textarea__inner, textarea')
+    const fileInput = document.createElement('input')
+    fileInput.type = 'file'
+    fileInput.accept = 'image/*'
+    fileInput.multiple = true
+    fileInput.style.display = 'none'
+    document.body.appendChild(fileInput)
+
+    const setTextareaValue = (textarea, value) => {
+      const setter = Object.getOwnPropertyDescriptor(HTMLTextAreaElement.prototype, 'value').set
+      setter.call(textarea, value)
+      textarea.dispatchEvent(new Event('input', { bubbles: true }))
+      textarea.dispatchEvent(new Event('change', { bubbles: true }))
+      textarea.focus()
+    }
+
+    const insertText = (textarea, text) => {
+      const start = textarea.selectionStart || textarea.value.length
+      const end = textarea.selectionEnd || textarea.value.length
+      const before = textarea.value.slice(0, start)
+      const after = textarea.value.slice(end)
+      const prefix = before && !/\s$/.test(before) ? '\n' : ''
+      const suffix = after && !/^\s/.test(after) ? '\n' : ''
+      const nextValue = `${before}${prefix}${text}${suffix}${after}`
+      setTextareaValue(textarea, nextValue)
+      const cursor = before.length + prefix.length + text.length
+      textarea.setSelectionRange(cursor, cursor)
+    }
+
+    const pickURL = data => {
+      if (!data) return ''
+      if (typeof data === 'string') {
+        const markdownMatch = data.match(/!\[[^\]]*\]\((https?:\/\/[^)\s]+)\)/)
+        if (markdownMatch) return markdownMatch[1]
+        const urlMatch = data.match(/https?:\/\/[^\s"'<>)]*/)
+        return urlMatch ? urlMatch[0] : ''
+      }
+      const candidates = [
+        data.url,
+        data.full,
+        data.src,
+        data.link,
+        data.image,
+        data.path,
+        data.data && data.data.url,
+        data.data && data.data.full,
+        data.data && data.data.src,
+        data.data && data.data.link,
+        data.result && data.result.url,
+        data.result && data.result.full,
+        data.result && data.result.src,
+        data.result && data.result.link
+      ]
+      return candidates.find(item => typeof item === 'string' && /^https?:\/\//.test(item)) || ''
+    }
+
+    const uploadFile = async file => {
+      const formData = new FormData()
+      formData.append('file', file)
+      const response = await fetch(uploadURL, {
+        method: 'POST',
+        body: formData
+      })
+      const text = await response.text()
+      if (!response.ok) throw new Error(text || `Upload failed: ${response.status}`)
+      try {
+        const json = JSON.parse(text)
+        const url = pickURL(json)
+        if (url) return url
+      } catch (e) {}
+      const url = pickURL(text)
+      if (url) return url
+      throw new Error('Upload response has no image url')
+    }
+
+    const uploadFiles = async files => {
+      const images = [...files].filter(file => file && file.type && file.type.startsWith('image/'))
+      if (!images.length) return
+      const textarea = getTextarea()
+      if (!textarea) return
+      if (window.anzhiyu && anzhiyu.snackbarShow) anzhiyu.snackbarShow('图片上传中...')
+      try {
+        const urls = []
+        for (const file of images) {
+          const url = await uploadFile(file)
+          urls.push(`![${file.name.replace(/\.[^.]+$/, '') || 'image'}](${url})`)
+        }
+        insertText(textarea, urls.join('\n'))
+        if (window.anzhiyu && anzhiyu.snackbarShow) anzhiyu.snackbarShow('图片已插入评论')
+      } catch (error) {
+        console.error(error)
+        if (window.anzhiyu && anzhiyu.snackbarShow) anzhiyu.snackbarShow('图片上传失败，请稍后再试')
+      }
+    }
+
+    const bindUploader = () => {
+      const root = getTwikooRoot()
+      const textarea = getTextarea()
+      if (!root || !textarea) return
+
+      if (textarea.dataset.commentImagePaste !== 'true') {
+        textarea.dataset.commentImagePaste = 'true'
+        textarea.addEventListener('paste', event => {
+          const files = event.clipboardData && event.clipboardData.files
+          if (!files || ![...files].some(file => file.type && file.type.startsWith('image/'))) return
+          event.preventDefault()
+          uploadFiles(files)
+        })
+        textarea.addEventListener('drop', event => {
+          const files = event.dataTransfer && event.dataTransfer.files
+          if (!files || ![...files].some(file => file.type && file.type.startsWith('image/'))) return
+          event.preventDefault()
+          uploadFiles(files)
+        })
+      }
+
+      if (root.querySelector('.tk-image-upload-button')) return
+      const button = document.createElement('button')
+      button.type = 'button'
+      button.className = 'tk-image-upload-button tk-submit-action-icon'
+      button.title = '上传图片'
+      button.setAttribute('aria-label', '上传图片')
+      button.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="17" height="17" rx="2.2" fill="none"></rect><circle cx="8.2" cy="8.2" r="1.25" fill="currentColor" stroke="none"></circle><path d="M5.8 17.2l4.1-4.35 3.05 3.05 2-2.15 3.25 3.45" fill="none"></path></svg>'
+      button.addEventListener('click', () => fileInput.click())
+
+      const actionBar = root.querySelector('.tk-row-actions-start, .tk-submit-action, .tk-footer, .tk-comments-container + .tk-submit')
+      const owoButton = actionBar && actionBar.querySelector('.OwO')
+      if (owoButton && owoButton.nextSibling) actionBar.insertBefore(button, owoButton.nextSibling)
+      else if (actionBar) actionBar.appendChild(button)
+      else textarea.insertAdjacentElement('afterend', button)
+    }
+
+    fileInput.addEventListener('change', () => {
+      uploadFiles(fileInput.files)
+      fileInput.value = ''
+    })
+
+    new MutationObserver(bindUploader).observe(commentRoot, { childList: true, subtree: true })
+    bindUploader()
+    setTimeout(bindUploader, 1000)
+  }
+
+  const installQQNickFallback = () => {
+    const commentRoot = document.getElementById('post-comment') || document
+    const getTwikooRoot = () => document.getElementById('twikoo') || document.getElementById('twikoo-wrap') || commentRoot
+    if (commentRoot.dataset && commentRoot.dataset.qqNickFallback === 'true') return
+    if (commentRoot.dataset) commentRoot.dataset.qqNickFallback = 'true'
+
+    const cache = {}
+    const qqNickCacheKey = 'anzhiyu_qq_nick_cache_v2'
+    const qqNickApi = '/api/qqinfo?qq={qq}&v=2026062206'
+    const getInputText = input => {
+      const field = input.closest('.tk-input, .tk-meta-input, .el-form-item, .el-input, label, div') || input.parentElement
+      return [
+        input.name,
+        input.id,
+        input.type,
+        input.placeholder,
+        input.autocomplete,
+        input.getAttribute('aria-label'),
+        field && field.textContent
+      ].join(' ').toLowerCase()
+    }
+
+    const getInputs = () => {
+      const inputs = [...getTwikooRoot().querySelectorAll('input.el-input__inner, input')]
+        .filter(input => input.offsetParent !== null && input.type !== 'hidden')
+      const findInput = patterns => inputs.find(input => patterns.some(pattern => pattern.test(getInputText(input))))
+      const nick = findInput([/nick/, /name/, /昵称/, /暱稱/, /qq/]) || inputs[0]
+      const mail = findInput([/mail/, /email/, /邮箱/, /郵箱/]) || inputs.find(input => input !== nick && input.type === 'email') || inputs.find(input => input !== nick)
+      return { nick, mail }
+    }
+
+    const setValue = (input, value) => {
+      if (!input || !value) return
+      if (input.value === value) return
+      const setter = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value').set
+      if (commentRoot.dataset) commentRoot.dataset.qqNickSetting = 'true'
+      setter.call(input, value)
+      input.dispatchEvent(new Event('input', { bubbles: true }))
+      input.dispatchEvent(new Event('change', { bubbles: true }))
+      window.setTimeout(() => {
+        if (commentRoot.dataset) delete commentRoot.dataset.qqNickSetting
+      }, 0)
+    }
+
+    const ensureNickIconFont = input => {
+      if (!input || input.dataset.qqNickIconFont === 'true') return
+      input.dataset.qqNickIconFont = 'true'
+      const currentFont = window.getComputedStyle(input).fontFamily || ''
+      input.style.fontFamily = `${currentFont}, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji", sans-serif`
+    }
+
+    const readStoredNick = qq => {
+      if (Object.prototype.hasOwnProperty.call(cache, qq)) return cache[qq]
+      try {
+        const stored = JSON.parse(localStorage.getItem(qqNickCacheKey) || '{}')
+        if (stored[qq] && typeof stored[qq].nick === 'string') {
+          cache[qq] = stored[qq].nick
+          return stored[qq].nick
+        }
+        return null
+      } catch (e) {
+        return null
+      }
+    }
+
+    const saveStoredNick = (qq, nick) => {
+      if (!qq || typeof nick !== 'string') return
+      cache[qq] = nick
+      try {
+        const stored = JSON.parse(localStorage.getItem(qqNickCacheKey) || '{}')
+        stored[qq] = { nick, time: Date.now() }
+        localStorage.setItem(qqNickCacheKey, JSON.stringify(stored))
+      } catch (e) {}
+    }
+
+    const decodeNickText = text => {
+      if (typeof text !== 'string') return ''
+      const textarea = document.createElement('textarea')
+      textarea.innerHTML = text
+      return textarea.value.normalize ? textarea.value.normalize('NFC') : textarea.value
+    }
+
+    const pickNickFromApiData = data => {
+      if (!data) return ''
+      const candidates = [
+        data.nickname,
+        data.name,
+        data.nick,
+        data.qqname,
+        data.user,
+        data.data && data.data.nickname,
+        data.data && data.data.name,
+        data.data && data.data.nick,
+        data.data && data.data.qqname,
+        data.result && data.result.nickname,
+        data.result && data.result.name,
+        data.result && data.result.nick
+      ]
+      const nick = candidates.find(item => typeof item === 'string' && item.trim())
+      return nick ? decodeNickText(nick).trim() : ''
+    }
+
+    const fetchQQNick = qq => new Promise(resolve => {
+      const controller = new AbortController()
+      const timer = window.setTimeout(() => controller.abort(), 6000)
+      const apiUrl = qqNickApi.replace('{qq}', encodeURIComponent(qq))
+      fetch(apiUrl, { signal: controller.signal })
+        .then(res => res.ok ? res.json() : null)
+        .then(data => resolve({
+          nick: pickNickFromApiData(data).trim()
+        }))
+        .catch(() => resolve({ nick: '' }))
+        .finally(() => window.clearTimeout(timer))
+    })
+
+    const timeoutValue = (ms, value) => new Promise(resolve => {
+      window.setTimeout(() => resolve(value), ms)
+    })
+
+    const queryQQNick = async qq => {
+      const storedNick = readStoredNick(qq)
+      if (storedNick !== null) {
+        return { nick: storedNick }
+      }
+
+      try {
+        const apiResult = await Promise.race([
+          fetchQQNick(qq),
+          timeoutValue(7000, { nick: '' })
+        ])
+        const finalNick = apiResult.nick || qq
+        saveStoredNick(qq, finalNick)
+        return { nick: finalNick }
+      } catch (e) {
+        saveStoredNick(qq, qq)
+        return { nick: qq }
+      }
+    }
+
+    const handleQQInput = async () => {
+      const { nick, mail } = getInputs()
+      if (!nick) return
+      const nickValue = nick ? nick.value.trim() : ''
+      const qq = /^[1-9]\d{4,11}$/.test(nickValue) ? nickValue : ''
+      if (!qq) {
+        if (commentRoot.dataset) delete commentRoot.dataset.qqNickPending
+        return
+      }
+      if (nick.dataset.qqNickRunning === qq) return
+      const requestId = `${qq}:${Date.now()}`
+      nick.dataset.qqNickRequest = requestId
+      nick.dataset.qqNickRequestQQ = qq
+      nick.dataset.qqNickRunning = qq
+      if (commentRoot.dataset) commentRoot.dataset.qqNickLast = qq
+      if (commentRoot.dataset) commentRoot.dataset.qqNickPending = qq
+      const qqResult = await queryQQNick(qq)
+      const { nick: latestNick } = getInputs()
+      if (!latestNick) return
+      if (latestNick.dataset.qqNickRunning === qq) delete latestNick.dataset.qqNickRunning
+      if (latestNick.dataset.qqNickRequest !== requestId) return
+      if (latestNick.dataset.qqNickUserCancel === requestId) return
+      const finalNick = qqResult.nick || qq
+      const applyFinalNick = () => {
+        const { nick: targetNick, mail: targetMail } = getInputs()
+        if (!targetNick) return
+        if (targetNick.dataset.qqNickRequest !== requestId) return
+        if (targetNick.dataset.qqNickUserCancel === requestId) return
+        const currentNick = targetNick.value.trim()
+        if (currentNick === qq) {
+          setValue(targetNick, finalNick)
+          setValue(targetMail, `${qq}@qq.com`)
+          targetNick.dataset.qqNickAutoValue = finalNick
+        }
+      }
+      applyFinalNick()
+      if (commentRoot.dataset && commentRoot.dataset.qqNickPending === qq) delete commentRoot.dataset.qqNickPending
+    }
+
+    const safeHandleQQInput = () => {
+      handleQQInput().catch(() => {
+        if (commentRoot.dataset) delete commentRoot.dataset.qqNickPending
+      })
+    }
+
+    const bindNickInput = () => {
+      const { nick } = getInputs()
+      if (!nick || nick.dataset.qqNickFallbackBinded === 'true') return
+      nick.dataset.qqNickFallbackBinded = 'true'
+      ensureNickIconFont(nick)
+      nick.addEventListener('input', event => {
+        if (commentRoot.dataset && commentRoot.dataset.qqNickSetting === 'true') return
+        const value = nick.value.trim()
+        if (event.isTrusted) {
+          const requestQQ = nick.dataset.qqNickRequestQQ || ''
+          delete nick.dataset.qqNickAutoValue
+          if (requestQQ && value !== requestQQ) {
+            nick.dataset.qqNickUserCancel = nick.dataset.qqNickRequest || ''
+            if (commentRoot.dataset) delete commentRoot.dataset.qqNickPending
+          }
+        }
+      })
+      nick.addEventListener('keydown', event => {
+        if (event.key === 'Enter' && /^[1-9]\d{4,11}$/.test(nick.value.trim())) {
+          event.preventDefault()
+          safeHandleQQInput()
+        }
+      })
+      nick.addEventListener('blur', safeHandleQQInput)
+    }
+
+    new MutationObserver(bindNickInput).observe(commentRoot, { childList: true, subtree: true })
+    bindNickInput()
+    setTimeout(bindNickInput, 1000)
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') setTimeout(runFn,0)
+    else getScript('https://cdn.cbd.int/twikoo@1.7.13/dist/twikoo.all.min.js').then(runFn)
+  }
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'https://twikoo.zhengdengliang.com/',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(res => {
+      countELement.textContent = res[0].count
+    }).catch(err => {
+      console.error(err)
+    })
+  }
+
+  const runFn = () => {
+    init();
+    
+  }
+
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) anzhiyu.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else {
+      loadTwikoo()
+    }
+  } else {
+    window.loadOtherComment = loadTwikoo
+  }
+})()</script><input type="hidden" name="page-type" id="page-type" value="anzhiyu"></div><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getComment = () => {
+    const runTwikoo = () => {
+      twikoo.getRecentComments({
+        envId: 'https://twikoo.zhengdengliang.com/',
+        region: '',
+        pageSize: 6,
+        includeReply: true
+      }).then(function (res) {
+        const twikooArray = res.map(e => {
+          return {
+            'content': changeContent(e.comment),
+            'avatar': e.avatar,
+            'nick': e.nick,
+            'url': e.url + '#' + e.id,
+            'date': new Date(e.created).toISOString()
+          }
+        })
+
+        saveToLocal.set('twikoo-newest-comments', JSON.stringify(twikooArray), 10/(60*24))
+        generateHtml(twikooArray)
+      }).catch(function (err) {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.textContent= "无法获取评论，请确认相关配置是否正确"
+      })
+    }
+
+    if (typeof twikoo === 'object') {
+      runTwikoo()
+    } else {
+      getScript('https://cdn.cbd.int/twikoo@1.7.13/dist/twikoo.all.min.js').then(runTwikoo)
+    }
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'data-lazy-src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'><div class='name'><span>${array[i].nick} </span></div></a>`
+        }
+        
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <time datetime="${array[i].date}">${anzhiyu.diffDate(array[i].date, true)}</time></div>
+        </div>`
+      }
+    } else {
+      result += '没有评论'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom && ($dom.innerHTML= result)
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('twikoo-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><script>var visitorMail = "";
+</script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://cdn.cbd.int/qrcodejs@1.0.0/qrcode.min.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><canvas class="fireworks" mobile="true"></canvas><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/fireworks.min.js"></script><script defer="defer" id="ribbon" src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="false"></script><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["meta[property=\"og:image\"]","meta[property=\"og:title\"]","meta[property=\"og:url\"]","meta[property=\"og:type\"]","meta[property=\"og:site_name\"]","meta[property=\"og:description\"]","head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script charset="UTF-8" src="https://cdn.cbd.int/anzhiyu-theme-static@1.1.5/accesskey/accesskey.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>
