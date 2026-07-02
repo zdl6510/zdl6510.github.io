@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">WindTerm cover</title>
+  <desc id="desc">A terminal workspace cover image for WindTerm.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#102033"/>
+      <stop offset="0.52" stop-color="#173d3f"/>
+      <stop offset="1" stop-color="#2d3146"/>
+    </linearGradient>
+    <linearGradient id="panel" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#17212f"/>
+      <stop offset="1" stop-color="#0c141f"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="22" stdDeviation="24" flood-color="#000" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="675" fill="url(#bg)"/>
+  <path d="M0 526 C190 450 320 571 510 492 C704 411 805 486 1010 404 C1100 368 1158 351 1200 351 L1200 675 L0 675 Z" fill="#20b486" opacity="0.16"/>
+  <path d="M0 118 C200 177 351 72 541 128 C758 192 893 83 1200 142 L1200 0 L0 0 Z" fill="#61d7c3" opacity="0.10"/>
+  <g filter="url(#shadow)">
+    <rect x="156" y="105" width="888" height="465" rx="22" fill="url(#panel)" stroke="#6fe7cf" stroke-opacity="0.28"/>
+    <rect x="156" y="105" width="888" height="56" rx="22" fill="#202d3d"/>
+    <path d="M156 139 C156 120 171 105 190 105 L1010 105 C1029 105 1044 120 1044 139 L1044 161 L156 161 Z" fill="#202d3d"/>
+    <circle cx="199" cy="133" r="9" fill="#ff6b6b"/>
+    <circle cx="229" cy="133" r="9" fill="#ffd166"/>
+    <circle cx="259" cy="133" r="9" fill="#45d483"/>
+    <rect x="304" y="121" width="178" height="25" rx="12" fill="#0f1824"/>
+    <text x="327" y="139" fill="#b8c7d9" font-family="Consolas, monospace" font-size="15">ssh prod-server</text>
+    <rect x="511" y="121" width="126" height="25" rx="12" fill="#2b3b50"/>
+    <text x="535" y="139" fill="#d8f8f0" font-family="Consolas, monospace" font-size="15">SFTP</text>
+    <rect x="190" y="190" width="238" height="335" rx="14" fill="#101a27" stroke="#ffffff" stroke-opacity="0.08"/>
+    <text x="218" y="226" fill="#6fe7cf" font-family="Consolas, monospace" font-size="22" font-weight="700">Sessions</text>
+    <text x="220" y="267" fill="#d5e5f3" font-family="Consolas, monospace" font-size="18">dev-box</text>
+    <text x="220" y="303" fill="#d5e5f3" font-family="Consolas, monospace" font-size="18">staging-api</text>
+    <rect x="209" y="326" width="188" height="38" rx="9" fill="#1f6f65"/>
+    <text x="220" y="351" fill="#ffffff" font-family="Consolas, monospace" font-size="18">prod-server</text>
+    <text x="220" y="399" fill="#d5e5f3" font-family="Consolas, monospace" font-size="18">backup-node</text>
+    <text x="220" y="435" fill="#d5e5f3" font-family="Consolas, monospace" font-size="18">jump-host</text>
+    <rect x="458" y="190" width="552" height="335" rx="14" fill="#07111c" stroke="#ffffff" stroke-opacity="0.08"/>
+    <text x="490" y="232" fill="#7cf0d2" font-family="Consolas, monospace" font-size="21">$ ssh admin@prod-server</text>
+    <text x="490" y="270" fill="#d9e6f2" font-family="Consolas, monospace" font-size="19">Last login: Thu Jul 02 10:24</text>
+    <text x="490" y="312" fill="#9be7ff" font-family="Consolas, monospace" font-size="19">admin@prod:~$ docker ps</text>
+    <text x="490" y="350" fill="#c7d4e2" font-family="Consolas, monospace" font-size="18">web      Up 8 days      0.0.0.0:443</text>
+    <text x="490" y="384" fill="#c7d4e2" font-family="Consolas, monospace" font-size="18">mysql    Up 8 days      3306/tcp</text>
+    <text x="490" y="426" fill="#9be7ff" font-family="Consolas, monospace" font-size="19">admin@prod:~$ tail -f app.log</text>
+    <rect x="490" y="455" width="302" height="22" rx="4" fill="#1fc39a" opacity="0.85"/>
+    <rect x="490" y="488" width="190" height="22" rx="4" fill="#55b8ff" opacity="0.72"/>
+    <text x="847" y="493" fill="#6fe7cf" font-family="Consolas, monospace" font-size="44" font-weight="700">WT</text>
+  </g>
+</svg>
