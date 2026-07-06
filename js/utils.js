@@ -887,6 +887,18 @@ const anzhiyu = {
     const playlistId = playlist.id || ((playlist.url || "").match(/playlist\/([^?]+)/) || [])[1];
     return playlistId ? `https://open.spotify.com/embed/playlist/${playlistId}?utm_source=generator` : "";
   },
+  getFallbackPlaylist: function (playlist) {
+    if (!playlist || !playlist.fallback || !playlist.fallback.id || !playlist.fallback.server) return null;
+    return {
+      key: `${playlist.key || playlist.id}-fallback`,
+      name: playlist.fallback.name || `${playlist.name || "当前歌单"} · 国内备用`,
+      description: "网易云备用",
+      id: playlist.fallback.id,
+      server: playlist.fallback.server,
+      type: playlist.fallback.type || "playlist",
+      url: playlist.fallback.url,
+    };
+  },
   bindMusicPlaylistControls: function () {
     const anMusicPage = document.getElementById("anMusic-page");
     if (!anMusicPage || anMusicPage.dataset.playlistControlsBound === "true") return;
@@ -970,7 +982,18 @@ const anzhiyu = {
     const type = playlist.type || "playlist";
     if (anzhiyu.isSpotifyPlaylist(playlist)) {
       const embedUrl = anzhiyu.getSpotifyEmbedUrl(playlist);
-      anMusicPageMeting.innerHTML = `<div class="anMusicSpotify"><iframe title="${playlist.name || "Spotify playlist"}" src="${embedUrl}" width="100%" height="100%" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe></div>`;
+      const fallback = anzhiyu.getFallbackPlaylist(playlist);
+      const fallbackButton = fallback
+        ? `<button class="anMusicFallbackBtn" type="button" data-fallback='${JSON.stringify(fallback)}'>无法访问 Spotify？切换网易云备用</button>`
+        : "";
+      anMusicPageMeting.innerHTML = `<div class="anMusicSpotify"><iframe title="${playlist.name || "Spotify playlist"}" src="${embedUrl}" width="100%" height="100%" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>${fallbackButton}</div>`;
+      const fallbackBtn = anMusicPageMeting.querySelector(".anMusicFallbackBtn");
+      if (fallbackBtn) {
+        fallbackBtn.addEventListener("click", () => {
+          const fallbackPlaylist = JSON.parse(fallbackBtn.dataset.fallback || "{}");
+          anzhiyu.switchMusicPlaylist(fallbackPlaylist);
+        });
+      }
     } else {
       anMusicPageMeting.innerHTML = `<meting-js id="${playlist.id}" server="${playlist.server}" type="${type}" mutex="true" preload="auto" theme="var(--anzhiyu-main)" order="list" list-max-height="calc(100vh - 169px)!important"></meting-js>`;
     }
