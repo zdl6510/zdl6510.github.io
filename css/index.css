@@ -7866,6 +7866,269 @@ body:has(#console.show) #nav-music {
 #anMusic-page #anMusicSwitching {
   right: 15vw;
 }
+#anMusic-page #anMusicPlaylistPanel {
+  position: fixed;
+  inset: 0;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: box;
+  display: flex;
+  -webkit-box-pack: end;
+  -moz-box-pack: end;
+  -o-box-pack: end;
+  -ms-flex-pack: end;
+  -webkit-justify-content: flex-end;
+  justify-content: flex-end;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -o-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  padding: 80px 7vw 110px;
+  background: rgba(0,0,0,0.22);
+  opacity: 0;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: alpha(opacity=0);
+  pointer-events: none;
+  -webkit-transition: opacity 0.2s ease;
+  -moz-transition: opacity 0.2s ease;
+  -o-transition: opacity 0.2s ease;
+  -ms-transition: opacity 0.2s ease;
+  transition: opacity 0.2s ease;
+  z-index: 1001;
+}
+#anMusic-page #anMusicPlaylistPanel.show {
+  opacity: 1;
+  -ms-filter: none;
+  filter: none;
+  pointer-events: auto;
+}
+#anMusic-page #anMusicPlaylistPanel.show .anMusicPlaylistPanel-inner {
+  -webkit-transform: translateY(0);
+  -moz-transform: translateY(0);
+  -o-transform: translateY(0);
+  -ms-transform: translateY(0);
+  transform: translateY(0);
+}
+#anMusic-page #anMusicPlaylistPanel .anMusicPlaylistPanel-inner {
+  width: 320px;
+  max-height: 560px;
+  max-height: min(560px, calc(100vh - 180px));
+  padding: 18px;
+  border: 1px solid rgba(255,255,255,0.22);
+  border-radius: 14px;
+  background: rgba(20,24,28,0.48);
+  -webkit-box-shadow: 0 18px 50px rgba(0,0,0,0.28);
+  box-shadow: 0 18px 50px rgba(0,0,0,0.28);
+  backdrop-filter: saturate(180%) blur(22px);
+  -webkit-backdrop-filter: saturate(180%) blur(22px);
+  -webkit-transform: translateY(14px);
+  -moz-transform: translateY(14px);
+  -o-transform: translateY(14px);
+  -ms-transform: translateY(14px);
+  transform: translateY(14px);
+  -webkit-transition: -webkit-transform 0.2s ease;
+  -moz-transition: -moz-transform 0.2s ease;
+  -o-transition: -o-transform 0.2s ease;
+  -ms-transition: -ms-transform 0.2s ease;
+  transition: transform 0.2s ease;
+}
+#anMusic-page #anMusicPlaylistPanel .anMusicPlaylistPanel-head {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: box;
+  display: flex;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -o-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -moz-box-pack: justify;
+  -o-box-pack: justify;
+  -ms-flex-pack: justify;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+  margin-bottom: 14px;
+  color: #fff;
+}
+#anMusic-page #anMusicPlaylistPanel .anMusicPlaylistPanel-title {
+  font-size: 18px;
+  font-weight: 700;
+}
+#anMusic-page #anMusicPlaylistPanel #anMusicPlaylistClose {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: box;
+  display: flex;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -o-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -o-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border: 0;
+  border-radius: 50%;
+  color: #fff;
+  background: rgba(255,255,255,0.16);
+  cursor: pointer;
+}
+#anMusic-page #anMusicPlaylistPanel #anMusicPlaylistList {
+  display: grid;
+  gap: 10px;
+  overflow-y: auto;
+  max-height: 490px;
+  max-height: calc(min(560px, calc(100vh - 180px)) - 70px);
+  padding-right: 4px;
+}
+#anMusic-page #anMusicPlaylistPanel .anMusicPlaylist-card {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: box;
+  display: flex;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -o-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  width: 100%;
+  min-height: 68px;
+  padding: 10px;
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: 10px;
+  color: #fff;
+  background: rgba(255,255,255,0.12);
+  cursor: pointer;
+  text-align: left;
+  -webkit-transition: background 0.2s ease, border-color 0.2s ease, -webkit-transform 0.2s ease;
+  -moz-transition: background 0.2s ease, border-color 0.2s ease, -moz-transform 0.2s ease;
+  -o-transition: background 0.2s ease, border-color 0.2s ease, -o-transform 0.2s ease;
+  -ms-transition: background 0.2s ease, border-color 0.2s ease, -ms-transform 0.2s ease;
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+#anMusic-page #anMusicPlaylistPanel .anMusicPlaylist-card:hover {
+  background: rgba(255,255,255,0.2);
+  -webkit-transform: translateY(-1px);
+  -moz-transform: translateY(-1px);
+  -o-transform: translateY(-1px);
+  -ms-transform: translateY(-1px);
+  transform: translateY(-1px);
+}
+#anMusic-page #anMusicPlaylistPanel .anMusicPlaylist-card.active {
+  border-color: rgba(255,255,255,0.72);
+  background: rgba(255,255,255,0.26);
+}
+#anMusic-page #anMusicPlaylistPanel .anMusicPlaylist-cover {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: box;
+  display: flex;
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  -o-box-flex: 1;
+  box-flex: 1;
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -o-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -o-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  margin-right: 12px;
+  border-radius: 8px;
+  background: -webkit-linear-gradient(315deg, rgba(67,150,255,0.8), rgba(255,115,191,0.72));
+  background: -moz-linear-gradient(315deg, rgba(67,150,255,0.8), rgba(255,115,191,0.72));
+  background: -o-linear-gradient(315deg, rgba(67,150,255,0.8), rgba(255,115,191,0.72));
+  background: -ms-linear-gradient(315deg, rgba(67,150,255,0.8), rgba(255,115,191,0.72));
+  background: linear-gradient(135deg, rgba(67,150,255,0.8), rgba(255,115,191,0.72));
+  background-size: cover;
+  background-position: center;
+  font-size: 20px;
+  font-weight: 800;
+}
+#anMusic-page #anMusicPlaylistPanel .anMusicPlaylist-meta {
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+}
+#anMusic-page #anMusicPlaylistPanel .anMusicPlaylist-name {
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 15px;
+  font-weight: 700;
+}
+#anMusic-page #anMusicPlaylistPanel .anMusicPlaylist-desc {
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 12px;
+  opacity: 0.72;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=72)";
+  filter: alpha(opacity=72);
+}
+#anMusic-page #anMusicPlaylistPanel .anMusicPlaylist-empty {
+  padding: 18px;
+  border-radius: 10px;
+  color: rgba(255,255,255,0.72);
+  background: rgba(255,255,255,0.12);
+}
+#anMusic-page .anMusicSpotify {
+  position: fixed;
+  left: 50%;
+  top: 52%;
+  width: 760px;
+  width: min(760px, 86vw);
+  height: 620px;
+  height: min(620px, 68vh);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+#anMusic-page .anMusicSpotify iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  border-radius: 14px;
+  -webkit-box-shadow: 0 20px 60px rgba(0,0,0,0.28);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.28);
+}
 @media screen and (max-width: 768px) {
   #anMusic-page div#anMusicBtnGetSong {
     right: 80px;
@@ -7878,6 +8141,28 @@ body:has(#console.show) #nav-music {
   #anMusic-page div#anMusicSwitching {
     right: 140px;
     bottom: 150px;
+  }
+  #anMusic-page #anMusicPlaylistPanel {
+    -webkit-box-align: end;
+    -moz-box-align: end;
+    -o-box-align: end;
+    -ms-flex-align: end;
+    -webkit-align-items: flex-end;
+    align-items: flex-end;
+    padding: 20px;
+  }
+  #anMusic-page #anMusicPlaylistPanel .anMusicPlaylistPanel-inner {
+    width: 100%;
+    max-height: 56vh;
+    border-radius: 16px 16px 0 0;
+  }
+  #anMusic-page #anMusicPlaylistPanel #anMusicPlaylistList {
+    max-height: calc(56vh - 70px);
+  }
+  #anMusic-page .anMusicSpotify {
+    top: 48%;
+    width: calc(100vw - 32px);
+    height: 58vh;
   }
 }
 #anMusic-page meting-js .aplayer {

@@ -811,20 +811,29 @@ const anzhiyu = {
   // 音乐节目切换背景
   changeMusicBg: function (isChangeBg = true) {
     const anMusicBg = document.getElementById("an_music_bg");
+    const anMusicPage = document.getElementById("anMusic-page");
 
     if (isChangeBg) {
       // player listswitch 会进入此处
       const musiccover = document.querySelector("#anMusic-page .aplayer-pic");
-      anMusicBg.style.backgroundImage = musiccover.style.backgroundImage;
+      if (anMusicBg && musiccover) anMusicBg.style.backgroundImage = musiccover.style.backgroundImage;
     } else {
       // 第一次进入，绑定事件，改背景
       let timer = setInterval(() => {
         const musiccover = document.querySelector("#anMusic-page .aplayer-pic");
+        const metingAplayer = anzhiyu.getMusicPageAplayer();
         // 确保player加载完成
-        if (musiccover) {
+        if (musiccover && metingAplayer) {
           clearInterval(timer);
-          // 绑定事件
-          anzhiyu.addEventListenerMusic();
+          metingAplayer.volume(0.8, true);
+          metingAplayer.on("loadeddata", function () {
+            anzhiyu.changeMusicBg();
+          });
+          if (anMusicPage && anMusicPage.dataset.musicEventsBound !== "true") {
+            // 绑定事件
+            anzhiyu.addEventListenerMusic();
+            anMusicPage.dataset.musicEventsBound = "true";
+          }
           // 确保第一次能够正确替换背景
           anzhiyu.changeMusicBg();
 
@@ -839,23 +848,156 @@ const anzhiyu = {
       }, 100);
     }
   },
+  getMusicPageAplayer: function () {
+    const anMusicPage = document.getElementById("anMusic-page");
+    const meting = anMusicPage && anMusicPage.querySelector("meting-js");
+    return meting && meting.aplayer ? meting.aplayer : null;
+  },
+  getMusicPlaylistConfig: function () {
+    const playlistConfig = GLOBAL_CONFIG.musicPlaylists;
+    const list = playlistConfig && Array.isArray(playlistConfig.list) ? playlistConfig.list : [];
+    return {
+      default: playlistConfig && playlistConfig.default,
+      list: list.filter(item => item && item.id && item.server),
+    };
+  },
+  getSelectedMusicPlaylist: function () {
+    const { default: defaultKey, list } = anzhiyu.getMusicPlaylistConfig();
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get("id") && urlParams.get("server")) {
+      const id = urlParams.get("id");
+      const server = urlParams.get("server");
+      const type = urlParams.get("type") || "playlist";
+      const matched = list.find(item => String(item.id) === id && item.server === server && (item.type || "playlist") === type);
+      return matched || { key: "query", name: "当前歌单", description: "URL 参数", id, server, type };
+    }
+    return list.find(item => item.key === defaultKey) || list[0] || {
+      key: "nav",
+      name: "默认歌单",
+      description: "站点默认",
+      id: "8152976493",
+      server: "netease",
+      type: "playlist",
+    };
+  },
+  isSpotifyPlaylist: function (playlist) {
+    return playlist && (playlist.server === "spotify" || /open\.spotify\.com/.test(playlist.url || ""));
+  },
+  getSpotifyEmbedUrl: function (playlist) {
+    const playlistId = playlist.id || ((playlist.url || "").match(/playlist\/([^?]+)/) || [])[1];
+    return playlistId ? `https://open.spotify.com/embed/playlist/${playlistId}?utm_source=generator` : "";
+  },
+  bindMusicPlaylistControls: function () {
+    const anMusicPage = document.getElementById("anMusic-page");
+    if (!anMusicPage || anMusicPage.dataset.playlistControlsBound === "true") return;
+    const anMusicSwitchingBtn = anMusicPage.querySelector("#anMusicSwitching");
+    const anMusicPlaylistClose = anMusicPage.querySelector("#anMusicPlaylistClose");
+    const anMusicPlaylistPanel = anMusicPage.querySelector("#anMusicPlaylistPanel");
+    if (anMusicSwitchingBtn) {
+      anMusicSwitchingBtn.addEventListener("click", () => {
+        anzhiyu.toggleMusicPlaylistPanel();
+      });
+    }
+    if (anMusicPlaylistClose) {
+      anMusicPlaylistClose.addEventListener("click", () => anzhiyu.toggleMusicPlaylistPanel(false));
+    }
+    if (anMusicPlaylistPanel) {
+      anMusicPlaylistPanel.addEventListener("click", event => {
+        if (event.target === anMusicPlaylistPanel) anzhiyu.toggleMusicPlaylistPanel(false);
+      });
+    }
+    anMusicPage.dataset.playlistControlsBound = "true";
+  },
+  renderMusicPlaylistPanel: function () {
+    const listWrap = document.getElementById("anMusicPlaylistList");
+    if (!listWrap) return;
+    const { list } = anzhiyu.getMusicPlaylistConfig();
+    listWrap.innerHTML = "";
+    if (!list.length) {
+      const empty = document.createElement("div");
+      empty.className = "anMusicPlaylist-empty";
+      empty.textContent = "还没有配置歌手专栏";
+      listWrap.appendChild(empty);
+      return;
+    }
+    const selected = anzhiyu.getSelectedMusicPlaylist();
+    list.forEach(item => {
+      const button = document.createElement("button");
+      button.className = "anMusicPlaylist-card";
+      button.type = "button";
+      button.dataset.key = item.key || "";
+      if ((item.key && item.key === selected.key) || (String(item.id) === String(selected.id) && item.server === selected.server)) {
+        button.classList.add("active");
+      }
+
+      const cover = document.createElement("span");
+      cover.className = "anMusicPlaylist-cover";
+      cover.textContent = (item.name || "歌").slice(0, 1);
+      if (item.cover) cover.style.backgroundImage = `url("${item.cover}")`;
+
+      const meta = document.createElement("span");
+      meta.className = "anMusicPlaylist-meta";
+      const name = document.createElement("span");
+      name.className = "anMusicPlaylist-name";
+      name.textContent = item.name || "未命名歌单";
+      const desc = document.createElement("span");
+      desc.className = "anMusicPlaylist-desc";
+      desc.textContent = item.description || `${item.server} / ${item.type || "playlist"}`;
+      meta.appendChild(name);
+      meta.appendChild(desc);
+      button.appendChild(cover);
+      button.appendChild(meta);
+      button.addEventListener("click", () => anzhiyu.switchMusicPlaylist(item));
+      listWrap.appendChild(button);
+    });
+  },
+  toggleMusicPlaylistPanel: function (show) {
+    const panel = document.getElementById("anMusicPlaylistPanel");
+    if (!panel) return;
+    const isShow = typeof show === "boolean" ? show : !panel.classList.contains("show");
+    panel.classList.toggle("show", isShow);
+    panel.setAttribute("aria-hidden", String(!isShow));
+  },
+  switchMusicPlaylist: function (playlist, updateUrl = true) {
+    const anMusicPageMeting = document.getElementById("anMusic-page-meting");
+    if (!anMusicPageMeting || !playlist) return;
+    const oldPlayer = anzhiyu.getMusicPageAplayer();
+    if (oldPlayer && typeof oldPlayer.destroy === "function") {
+      try {
+        oldPlayer.destroy();
+      } catch (e) {}
+    }
+    const type = playlist.type || "playlist";
+    if (anzhiyu.isSpotifyPlaylist(playlist)) {
+      const embedUrl = anzhiyu.getSpotifyEmbedUrl(playlist);
+      anMusicPageMeting.innerHTML = `<div class="anMusicSpotify"><iframe title="${playlist.name || "Spotify playlist"}" src="${embedUrl}" width="100%" height="100%" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe></div>`;
+    } else {
+      anMusicPageMeting.innerHTML = `<meting-js id="${playlist.id}" server="${playlist.server}" type="${type}" mutex="true" preload="auto" theme="var(--anzhiyu-main)" order="list" list-max-height="calc(100vh - 169px)!important"></meting-js>`;
+    }
+    if (updateUrl) {
+      const url = new URL(window.location.href);
+      url.searchParams.set("id", playlist.id);
+      url.searchParams.set("server", playlist.server);
+      url.searchParams.set("type", type);
+      history.replaceState(null, "", url);
+    }
+    anzhiyu.toggleMusicPlaylistPanel(false);
+    anzhiyu.renderMusicPlaylistPanel();
+    if (anzhiyu.isSpotifyPlaylist(playlist)) {
+      const anMusicBg = document.getElementById("an_music_bg");
+      if (anMusicBg) anMusicBg.style.backgroundImage = "";
+    } else {
+      anzhiyu.changeMusicBg(false);
+    }
+  },
   // 获取自定义播放列表
   getCustomPlayList: function () {
     if (!window.location.pathname.startsWith("/music/")) {
       return;
     }
-    const urlParams = new URLSearchParams(window.location.search);
-    const userId = "8152976493";
-    const userServer = "netease";
-    const anMusicPageMeting = document.getElementById("anMusic-page-meting");
-    if (urlParams.get("id") && urlParams.get("server")) {
-      const id = urlParams.get("id");
-      const server = urlParams.get("server");
-      anMusicPageMeting.innerHTML = `<meting-js id="${id}" server=${server} type="playlist" type="playlist" mutex="true" preload="auto" theme="var(--anzhiyu-main)" order="list" list-max-height="calc(100vh - 169px)!important"></meting-js>`;
-    } else {
-      anMusicPageMeting.innerHTML = `<meting-js id="${userId}" server="${userServer}" type="playlist" mutex="true" preload="auto" theme="var(--anzhiyu-main)" order="list" list-max-height="calc(100vh - 169px)!important"></meting-js>`;
-    }
-    anzhiyu.changeMusicBg(false);
+    anzhiyu.bindMusicPlaylistControls();
+    anzhiyu.renderMusicPlaylistPanel();
+    anzhiyu.switchMusicPlaylist(anzhiyu.getSelectedMusicPlaylist(), false);
   },
   //隐藏今日推荐
   hideTodayCard: function () {
@@ -875,7 +1017,6 @@ const anzhiyu = {
     const aplayerIconMenu = anMusicPage.querySelector(".aplayer-info .aplayer-time .aplayer-icon-menu");
     const anMusicBtnGetSong = anMusicPage.querySelector("#anMusicBtnGetSong");
     const anMusicRefreshBtn = anMusicPage.querySelector("#anMusicRefreshBtn");
-    const anMusicSwitchingBtn = anMusicPage.querySelector("#anMusicSwitching");
     const metingAplayer = anMusicPage.querySelector("meting-js").aplayer;
     //初始化音量
     metingAplayer.volume(0.8, true);
@@ -917,10 +1058,6 @@ const anzhiyu = {
       localStorage.removeItem("musicData");
       anzhiyu.snackbarShow("已移除相关缓存歌曲");
     });
-    anMusicSwitchingBtn.addEventListener("click", () => {
-      anzhiyu.changeMusicList();
-    });
-
     // 默认加载的歌单
     if (GLOBAL_CONFIG.music_page_default === "custom") {
       anzhiyu.changeMusicList();
@@ -932,30 +1069,35 @@ const anzhiyu = {
       //暂停开启音乐
       if (event.code === "Space") {
         event.preventDefault();
-        metingAplayer.toggle();
+        const currentAplayer = anzhiyu.getMusicPageAplayer();
+        currentAplayer && currentAplayer.toggle();
       }
       //切换下一曲
       if (event.keyCode === 39) {
         event.preventDefault();
-        metingAplayer.skipForward();
+        const currentAplayer = anzhiyu.getMusicPageAplayer();
+        currentAplayer && currentAplayer.skipForward();
       }
       //切换上一曲
       if (event.keyCode === 37) {
         event.preventDefault();
-        metingAplayer.skipBack();
+        const currentAplayer = anzhiyu.getMusicPageAplayer();
+        currentAplayer && currentAplayer.skipBack();
       }
       //增加音量
       if (event.keyCode === 38) {
         if (musicVolume <= 1) {
           musicVolume += 0.1;
-          metingAplayer.volume(musicVolume, true);
+          const currentAplayer = anzhiyu.getMusicPageAplayer();
+          currentAplayer && currentAplayer.volume(musicVolume, true);
         }
       }
       //减小音量
       if (event.keyCode === 40) {
         if (musicVolume >= 0) {
           musicVolume += -0.1;
-          metingAplayer.volume(musicVolume, true);
+          const currentAplayer = anzhiyu.getMusicPageAplayer();
+          currentAplayer && currentAplayer.volume(musicVolume, true);
         }
       }
     });
