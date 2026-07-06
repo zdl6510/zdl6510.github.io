@@ -8,6 +8,7 @@
     gptName,
     switchBtn,
     mode: initialMode,
+    summaryApi,
   } = GLOBAL_CONFIG.postHeadAiDescription;
 
   const { title, postAI, pageFillDescription } = GLOBAL_CONFIG_SITE;
@@ -205,8 +206,62 @@
   async function aiAbstract(num = basicWordCount) {
     if (mode === "tianli") {
       await aiAbstractTianli(num);
+    } else if (mode === "custom") {
+      await aiAbstractCustom(num);
     } else {
       aiAbstractLocal();
+    }
+  }
+
+  async function aiAbstractCustom(num) {
+    indexI = 0;
+    indexJ = 1;
+    clearTimeouts();
+    animationRunning = false;
+    elapsed = 0;
+    observer.disconnect();
+
+    num = Math.max(10, Math.min(6000, num || basicWordCount || 1000));
+    const truncateDescription = (title + pageFillDescription).trim().substring(0, num);
+
+    const requestOptions = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        title,
+        content: truncateDescription,
+        url: location.href,
+      }),
+    };
+
+    try {
+      let animationInterval = null;
+      if (animationInterval) clearInterval(animationInterval);
+      animationInterval = setInterval(() => {
+        const animationText = "生成中" + ".".repeat(indexJ);
+        explanation.innerHTML = animationText;
+        indexJ = (indexJ % 3) + 1;
+      }, 500);
+
+      const response = await fetch(summaryApi || "/api/ai-summary", requestOptions);
+      const result = await response.json();
+      const summary = (result.summary || "").trim();
+      summaryID = result.id;
+
+      setTimeout(() => {
+        aiTitleRefreshIcon.style.opacity = "1";
+      }, 300);
+      if (summary) {
+        startAI(summary);
+      } else {
+        startAI(result.error ? `摘要获取失败：${result.error}` : "摘要获取失败，请稍后再试。");
+      }
+      clearInterval(animationInterval);
+    } catch (error) {
+      console.error(error);
+      explanation.innerHTML = "发生异常：" + error;
     }
   }
 
@@ -359,6 +414,10 @@
   }
 
   function introduce() {
+    if (mode === "custom") {
+      startAI(`我是文章辅助 AI: ${gptName} GPT，点击下方按钮，让我生成本文简介、推荐相关文章等。`);
+      return;
+    }
     if (mode == "tianli") {
       startAI("我是文章辅助AI: TianliGPT，点击下方的按钮，让我生成本文简介、推荐相关文章等。");
     } else {
@@ -431,6 +490,10 @@
   function showAiBtn() {
     if (mode === "tianli") {
       document.getElementById("ai-tag").innerHTML = "TianliGPT";
+    } else if (mode === "custom") {
+      document.getElementById("ai-tag").innerHTML = gptName + " GPT";
+      aiReadAloudIcon.style.opacity = "0";
+      aiReadAloudIcon.style.cursor = "auto";
     } else {
       document.getElementById("ai-tag").innerHTML = gptName + " GPT";
     }
