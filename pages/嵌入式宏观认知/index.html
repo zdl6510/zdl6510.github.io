@@ -1,0 +1,1378 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>聊聊嵌入式的历史与生态 | 星野暗涌</title><meta name="keywords" content="嵌入式开发,STM32,MCU,ARM"><meta name="author" content="星野暗涌"><meta name="copyright" content="星野暗涌"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#18171d"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="聊聊嵌入式的历史与生态"><meta name="application-name" content="聊聊嵌入式的历史与生态"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#18171d"><meta property="og:type" content="article"><meta property="og:title" content="聊聊嵌入式的历史与生态"><meta property="og:url" content="http://example.com/pages/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%AE%8F%E8%A7%82%E8%AE%A4%E7%9F%A5/index.html"><meta property="og:site_name" content="星野暗涌"><meta property="og:description" content="从计算机历史、半导体演进、专用计算机、ARM&amp;#x2F;STM32 产业链、文档生态和工具链出发，建立嵌入式系统的宏观认知。"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://img.zhengdengliang.com/file/blog/AI/tools/1781166275928_20260611162422433.png"><meta property="article:author" content="星野暗涌"><meta property="article:tag"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://img.zhengdengliang.com/file/blog/AI/tools/1781166275928_20260611162422433.png"><meta name="description" content="从计算机历史、半导体演进、专用计算机、ARM&amp;#x2F;STM32 产业链、文档生态和工具链出发，建立嵌入式系统的宏观认知。"><link rel="shortcut icon" href="/favicon.ico"><link rel="canonical" href="http://example.com/pages/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%AE%8F%E8%A7%82%E8%AE%A4%E7%9F%A5/"><link rel="preconnect" href="//cdn.cbd.int"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="code-xxx"/><meta name="msvalidate.01" content="xxx"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/@fortawesome/fontawesome-free@7.1.0/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@6.1.6/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: {"enable":true,"img":"https://upload-bbs.miyoushe.com/upload/2024/07/27/125766904/ba62475f396df9de3316a08ed9e65d86_5680958632268053399..png"},
+  postHeadAiDescription: {"enable":true,"gptName":"Zai","mode":"custom","switchBtn":false,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":"xxxx","Referer":"https://xx.xx/","summaryApi":"/api/ai-summary"},
+  diytitle: {"enable":true,"leaveTitle":"w(ﾟДﾟ)w 不要走！再看看嘛！","backTitle":"♪(^∇^*)欢迎肥来！"},
+  LA51: undefined,
+  greetingBox: undefined,
+  twikooEnvId: 'https://twikoo.zhengdengliang.com/',
+  commentBarrageConfig:{"enable":true,"maxBarrage":1,"barrageTime":4000,"accessToken":"","mailMd5":""},
+  music_page_default: "nav_music",
+  musicPlaylists: {"enable":true,"default":"taylor","list":[{"key":"taylor","name":"霉霉","description":"Spotify 歌单","id":"3cMAxMc8Y43HmcOAa3Oad8","server":"spotify","type":"playlist","url":"https://open.spotify.com/playlist/3cMAxMc8Y43HmcOAa3Oad8","fallback":{"name":"Taylor Swift霉霉免费听","id":2359617932,"server":"netease","type":"playlist","url":"https://music.163.com/#/playlist?id=2359617932"}},{"key":"xue","name":"薛之谦","description":"Spotify 歌单","id":"5BHJi186HQpaOUkj95vs4W","server":"spotify","type":"playlist","url":"https://open.spotify.com/playlist/5BHJi186HQpaOUkj95vs4W","fallback":{"name":"听薛之谦热门精选","id":8181670003,"server":"netease","type":"playlist","url":"https://music.163.com/#/playlist?id=8181670003"}},{"key":"zhou","name":"周杰伦","description":"Spotify 歌单","id":"3EQQdI85i47bp6bUOkmkdT","server":"spotify","type":"playlist","url":"https://open.spotify.com/playlist/3EQQdI85i47bp6bUOkmkdT","fallback":{"name":"周杰伦全免费听","id":10057662169,"server":"netease","type":"playlist","url":"https://music.163.com/#/playlist?id=10057662169"}}]},
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: undefined,
+  authorStatus: {"skills":["🔭 每一次仰望，都是对未知的无畏奔赴","💡 数字工具不该有门槛🌊 技术平权，从我做起","📬 联系邮箱：blog@zdl.dpdns.org"]},
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    simplehomepage: true,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":false,"limitCount":50,"languages":{"author":"作者: 星野暗涌","link":"链接: ","source":"来源: 星野暗涌","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.2.0/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.2.0/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  shortcutKey: undefined,
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: '星野暗涌',
+  title: '聊聊嵌入式的历史与生态',
+  postAI: 'true',
+  pageFillDescription: '聊聊嵌入式的历史与生态, 01. 先把全局地图展开, 02. 计算机为什么会诞生, 03. 摩尔定律改变了计算机的形态, 04. 通用计算机 vs 专用计算机, 05. 什么是嵌入式系统, 06. 嵌入式的四条主线, 07. ARM、STM32 与产业分工, 08. 文档是嵌入式世界的通用语言, 09. STM32 工具链到底在做什么, 10. 嵌入式软件的分层结构, 11. 裸机、RTOS 与 Linux 的选择, 12. 嵌入式行业应用版图, 13. 从 STM32 入门的学习路线, 14. 最后把这张图记住, 参考资料聊聊嵌入式的历史与生态学习嵌入式很多人一上来就想点灯配串口看寄存器写驱动这些当然重要但如果没有宏观认知很容易把看成一堆孤立知识点这篇文章先不急着写代码而是先回答一个更底层的问题嵌入式系统从哪里来它为什么会长成今天这个样子提示嵌入式不是单纯的单片机编程它是计算机半导体控制系统软件工程和产业供应链共同演化出来的一类工程体系先把全局地图展开嵌入式宏观认知历史动力军事计算冷战科技竞争军转民摩尔定律系统本质专用计算机软硬件结合实时性资源受限技术方向应用处理器产业生态芯片厂商开发板厂商产品公司工程能力读文档用工具链调试系统做产品嵌入式学习的难点不在于某一个外设真的有多玄而在于它横跨了太多层次底层有寄存器总线和电路上层有业务逻辑通信协议和产品场景中间还有编译链接烧录调试文档工具链所以第一步不是背知识点而是先建立一张地图地图有了后面学每个模块时才知道它在整个系统中处于什么位置计算机为什么会诞生早期计算机不是为了打游戏写文档刷网页而出现的它首先服务的是军事科研和国家级工程需求年问世它常被视为现代电子计算机的重要开端之一早期用途就包括弹道计算第二次世界大战之后世界进入冷战阶段国家竞争进一步推动了计算机互联网集成电路和航天技术的发展计算机与嵌入式的历史底色电子计算机起步等早期电子计算机服务于军事计算和科研计算半导体与集成电路发展晶体管集成电路和微处理器逐步成熟嵌入式系统成形计算机被嵌入导弹飞机雷达工业设备和家电移动互联网与物联网等生态不断扩展今天边缘智能与万物互联设备端承担联网交互安全推理和边缘计算任务极限需求推动技术突破国家投入完成早期研发民用市场完成规模化扩散这就是很多现代技术背后的共同路径先在高成本高风险高价值场景中诞生再通过产业化进入普通人的生活摩尔定律改变了计算机的形态年观察到集成电路上的晶体管数量会随时间快速增长后来业界通常将其概括为晶体管数量大约每到个月翻一倍它带来的不只是芯片越来越快更重要的是计算能力开始不断下沉大型计算机昂贵庞大集中小型机与服务器企业与科研使用个人电脑计算能力进入桌面智能手机计算能力进入口袋嵌入式设备计算能力进入万物边缘智能设备端感知决策联网当计算能力足够便宜足够小足够省电它就不再只属于机房和电脑而是进入汽车空调耳机手表传感器机器人和医疗设备嵌入式系统就是在这个趋势中长出来的通用计算机专用计算机计算机并不只等于我们桌上的根据目标不同它可以分成几种形态类型代表设备核心目标典型特点通用计算机服务器手机一台机器做很多事功能由软件生态决定高性能计算机超算训练集群解决超大规模计算追求算力吞吐和并行专用计算机空调飞控手表稳定完成特定任务低成本低功耗强实时核心结论通用计算机追求我什么都能干嵌入式系统追求我把这件事稳定便宜低功耗地干好空调里的控制板不需要运行电饭煲里的不需要剪视频汽车刹车系统也不需要打开浏览器它们需要的是在确定时间内稳定完成特定动作这就是嵌入式系统的根本定位专用计算机什么是嵌入式系统更大的产品或设备汽车空调无人机医疗设备嵌入式系统产品内部的控制与计算核心硬件层存储器传感器执行器电源软件层裸机驱动协议栈业务逻辑约束条件成本功耗体积实时性可靠性特定任务采集控制通信显示判断嵌入式系统不是一个单独摆在桌面上的电脑而是嵌入到更大设备里的计算系统用户买的是汽车空调手表无人机不是嵌入式系统本身它通常有几个核心特征特征说明嵌入产品内部它是产品的一部分用户通常看不见它但产品的智能化和自动控制都依赖它面向特定任务微波炉控制加热管理电池无人机飞控控制姿态每个系统都有明确使命资源天然受限算力功耗体积和成本都有限不能像一样随意堆配置强调实时可靠刹车电机医疗报警工业控制不能卡一下很多动作必须在确定时间内完成嵌入式的四条主线嵌入式不是只有也不是只有单片机按核心计算架构看常见方向可以这样理解嵌入式技术方向低成本低功耗实时控制应用处理器多媒体复杂交互硬件并行低延迟可重构数字信号处理音频通信电机树莓派高云安路方向关键词典型场景初学建议控制实时低功耗家电传感器电机汽车节点适合作为入门主线应用处理器图形多媒体智能屏网关视觉设备有基础后更容易理解并行低延迟硬件逻辑通信雷达视频高速采集更偏数字电路与硬件设计信号处理乘加滤波音频通信电机控制独立芯片减少能力常集成到真实产品往往不是单一方向而是多种技术的组合例如一个机器人可能同时包含应用处理器传感器驱动器通信模块和模型与产业分工很多初学者会把单片机混在一起其实它们处在产业链的不同位置提供架构与内核等芯片厂商集成内核和外设开放指令集生态芯片厂商设计自有具体可购买可编程的芯片其他开发板核心板最小系统板嵌入式工程师写驱动调系统做产品终端产品汽车家电工业医疗机器人通常不直接卖这样的它更像是提供内核和架构授权的公司等芯片厂商基于这些内核再集成自己的外设电源存储和封装最终做出具体芯片就是基于生态推出的一大类产品注意学习时不要只记这是一个单片机更重要的是理解是内核外设设计芯片文档开发工具和社区生态共同组成的产品体系文档是嵌入式世界的通用语言嵌入式产业建立在分工之上有人设计有人制造有人画有人写驱动有人做产品分工越细越需要文档来协作我要开发一个功能我需要知道什么芯片型号引脚电气特性封装外设功能寄存器时钟中断原理图芯片引脚如何连接板上外设官方专题方案与案例芯片已知问题与规避方法硬件选型与画板软件驱动开发开发板功能定位功能实现参考疑难问题排查文档你可以把它理解成主要回答的问题芯片体检表这颗芯片有什么资源怎么供电哪些引脚能用外设说明书等外设怎么工作内核编程手册内核中断异常编程等底层机制官方避坑清单芯片有哪些已知问题如何规避官方实战教程某个具体功能如何设计和实现原理图板级连接地图引脚和按键传感器接口如何连接数据手册告诉你芯片是什么参考手册告诉你芯片怎么用原理图告诉你芯片和板子怎么连所以读文档不是额外负担而是嵌入式工程师真正进入工业世界的基本能力工具链到底在做什么写代码只是开始代码要真正跑到芯片里需要经过一整条工具链开发者编译器与链接器配置引脚时钟外设生成初始化代码编写业务逻辑与驱动代码编译链接生成下载与调试写入控制断点读取寄存器在真实硬件上运行和反馈工具作用负责编译链接下载调试是企业中仍然常见的开发环境负责提供更现代的代码编辑体验适合阅读源码写业务逻辑和管理项目负责图形化配置引脚时钟和外设并生成初始化代码库提供硬件抽象层降低直接操作寄存器的入门门槛不要误解可以帮你生成配置代码但不能替你理解时钟树中断寄存器和外设工作原理正确姿势是先跑通再读源码再回到参考手册嵌入式软件的分层结构嵌入式代码不是一坨函数堆在一起成熟工程一般会形成分层应用层业务逻辑状态机控制策略通信协议中间层文件系统网络协议栈算法库驱动层板级支持包与硬件抽象芯片与硬件层寄存器时钟中断总线电路只看应用层会不理解硬件为什么这样响应只看寄存器又容易缺少工程组织能力真正成熟的嵌入式开发需要能在不同层之间来回切换裸机与的选择不同复杂度的嵌入式系统会选择不同软件形态简单控制点灯按键串口定时器裸机开发直接运行在上多任务控制采集显示通信存储并行复杂交互与联网摄像头文件系统图形界面嵌入式驱动内核应用系统集成软件形态适合场景裸机适合打基础理解芯片外设中断和时钟适合多任务系统解决调度同步和资源管理适合复杂设备处理网络多媒体文件系统和图形界面入门通常从裸机开始等外设中断时钟和调试能力稳定后再进入会顺很多嵌入式行业应用版图嵌入式应用消费电子耳机手表智能音箱小家电工业控制电机驱动传感采集工业网关汽车电子车身控制智能座舱物联网智能门锁环境监测无线模组边缘网关医疗设备血糖仪血氧仪监护仪便携检测机器人与无人机飞控电机控制传感器融合视觉感知边缘语音唤醒图像识别缺陷检测本地推理嵌入式几乎存在于所有设备智能化的场景中它不是一个窄方向而是一组横跨行业的底层能力从入门的学习路线与其把学习路线写成一长串清单不如把它看成一条能力升级路径硬件直觉按键原理图引脚基础外设通信与采集系统机制中断启动文件内存布局工程能力模块化驱动封装调试读文档任务队列信号量互斥锁方向深化工业车载机器人这个路线的关键不是学完多少外设而是每学一个外设都要补齐三件事能力具体表现看得懂硬件知道外设接在哪个引脚电平如何变化原理图中对应哪一部分查得懂文档能从参考手册中找到寄存器时钟中断和工作模式的依据调得动系统能用串口断点寄存器窗口逻辑分析仪等方法定位问题最后把这张图记住历史动力战争科研国家竞争军转民半导体进步摩尔定律集成电路微处理器计算机形态分化通用计算高性能计算专用计算嵌入式系统嵌入产品内部的专用计算机产业生态开发板工具链文档工程师能力软硬件结合调试读文档做系统真实产品工业汽车医疗机器人边缘嵌入式系统不是从某一颗芯片开始的而是从计算机发展半导体进步产业分工和真实场景需求中生长出来的它的本质是专用计算机系统它的目标不是什么都能做而是在具体产品中稳定实时低成本低功耗地完成特定任务等这张地图建立起来再回头看寄存器就会发现它们不再是零散知识点而是嵌入式世界里一块块可以拼起来的系统组件参考资料资料链接官方历史处理器家族官方介绍官方介绍官方网站官方网站',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2026-07-07 22:46:20',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><meta name="generator" content="Hexo 8.1.2"></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="https://img.zhengdengliang.com/file/blog/AI/tools/1781160700966_image-20260611145132490.png"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><a id="site-name" href="/" accesskey="h"><div class="title">星野暗涌</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 归档</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 我的</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/"><i class="anzhiyufont anzhiyu-icon-music faa-tada" style="font-size: 0.9em;"></i><span> 音乐</span></a></li></ul></div></div></div><div id="nav-right"><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><div class="nav-button" id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" title="搜索🔍" accesskey="s"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span> 搜索</span></a></div><input id="center-console" type="checkbox"><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="/img/reward/wechat-reward.png" target="_blank"><img class="post-qr-code-img" alt="微信" src="/img/reward/wechat-reward.png"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/img/reward/alipay-reward.jpg" target="_blank"><img class="post-qr-code-img" alt="支付宝" src="/img/reward/alipay-reward.jpg"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> 最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">兴趣点</div><span class="author-content-item-title">寻找你感兴趣的领域</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/ARM/" style="font-size: 1.05rem;">ARM<sup>1</sup></a><a href="/tags/MCU/" style="font-size: 1.05rem;">MCU<sup>1</sup></a><a href="/tags/STM32/" style="font-size: 1.05rem;">STM32<sup>1</sup></a><a href="/tags/ai%E5%B7%A5%E5%85%B7/" style="font-size: 1.05rem;">ai工具<sup>3</sup></a><a href="/tags/ai%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/" style="font-size: 1.05rem;">ai应用开发<sup>2</sup></a><a href="/tags/claude-code/" style="font-size: 1.05rem;">claude code<sup>3</sup></a><a href="/tags/cpp/" style="font-size: 1.05rem;">cpp<sup>8</sup></a><a href="/tags/docker/" style="font-size: 1.05rem;">docker<sup>1</sup></a><a href="/tags/go/" style="font-size: 1.05rem;">go<sup>3</sup></a><a href="/tags/mysql/" style="font-size: 1.05rem;">mysql<sup>1</sup></a><a href="/tags/qt/" style="font-size: 1.05rem;">qt<sup>1</sup></a><a href="/tags/vue3/" style="font-size: 1.05rem;">vue3<sup>1</sup></a><a href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/" style="font-size: 1.05rem;">嵌入式开发<sup>1</sup></a><a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 1.05rem;">数据库<sup>1</sup></a></div></div><hr/></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/06/"><span class="card-archive-list-date">六月 2026</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">4</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/05/"><span class="card-archive-list-date">五月 2026</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">17</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item on" id="consoleCommentBarrage" onclick="anzhiyu.switchCommentBarrage()" title="热评开关"><a class="commentBarrage"><i class="anzhiyufont anzhiyu-icon-message"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="post-meta-categories"><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F/" itemprop="url">嵌入式</a></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>嵌入式开发</span></a><a class="article-meta__tags" href="/tags/STM32/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>STM32</span></a><a class="article-meta__tags" href="/tags/MCU/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>MCU</span></a><a class="article-meta__tags" href="/tags/ARM/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>ARM</span></a></span></div></div><h1 class="post-title" itemprop="name headline">聊聊嵌入式的历史与生态</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2026-06-10T16:00:00.000Z" title="发表于 2026-06-11 00:00:00">2026-06-11</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2026-07-07T14:46:20.585Z" title="更新于 2026-07-07 22:46:20">2026-07-07</time></span></div><div class="meta-secondline"><span class="post-meta-separator"></span><span class="post-meta-wordcount"><i class="anzhiyufont anzhiyu-icon-file-word post-meta-icon" title="文章字数"></i><span class="post-meta-label" title="文章字数">字数总计:</span><span class="word-count" title="文章字数">14k</span><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-clock post-meta-icon" title="阅读时长"></i><span class="post-meta-label" title="阅读时长">阅读时长:</span><span>50 mins.分钟</span></span><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为爱沙尼亚"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>爱沙尼亚</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src="https://img.zhengdengliang.com/file/blog/AI/tools/1781166275928_20260611162422433.png"></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><div class="post-ai-description"><div class="ai-title"><i class="anzhiyufont anzhiyu-icon-bilibili"></i><div class="ai-title-text">AI-摘要</div><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right"></i><i class="anzhiyufont anzhiyu-icon-circle-dot" title="朗读摘要"></i><div id="ai-tag">Zai GPT</div></div><div class="ai-explanation">AI初始化中...</div><div class="ai-btn-box"><div class="ai-btn-item">介绍自己 🙈</div><div class="ai-btn-item">生成本文简介 👋</div><div class="ai-btn-item">推荐相关文章 📖</div><div class="ai-btn-item">前往主页 🏠</div><div class="ai-btn-item" id="go-tianli-blog">前往爱发电购买</div></div><script data-pjax src="/js/anzhiyu/ai_abstract.js"></script></div><article class="post-content" id="article-container" itemscope itemtype="http://example.com/pages/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%AE%8F%E8%A7%82%E8%AE%A4%E7%9F%A5/"><header><a class="post-meta-categories" href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F/" itemprop="url">嵌入式</a><a href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/" tabindex="-1" itemprop="url">嵌入式开发</a><a href="/tags/STM32/" tabindex="-1" itemprop="url">STM32</a><a href="/tags/MCU/" tabindex="-1" itemprop="url">MCU</a><a href="/tags/ARM/" tabindex="-1" itemprop="url">ARM</a><h1 id="CrawlerTitle" itemprop="name headline">聊聊嵌入式的历史与生态</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">星野暗涌</span><time itemprop="dateCreated datePublished" datetime="2026-06-10T16:00:00.000Z" title="发表于 2026-06-11 00:00:00">2026-06-11</time><time itemprop="dateCreated datePublished" datetime="2026-07-07T14:46:20.585Z" title="更新于 2026-07-07 22:46:20">2026-07-07</time></header><h1 id="聊聊嵌入式的历史与生态"><a href="#聊聊嵌入式的历史与生态" class="headerlink" title="聊聊嵌入式的历史与生态"></a>聊聊嵌入式的历史与生态</h1><blockquote>
+<p>学习嵌入式，很多人一上来就想点灯、配串口、看寄存器、写驱动。这些当然重要，但如果没有宏观认知，很容易把 GPIO、RCC、USART、I2C 看成一堆孤立知识点。</p>
+<p>**这篇文章先不急着写代码，而是先回答一个更底层的问题：**嵌入式系统从哪里来，它为什么会长成今天这个样子？</p>
+</blockquote>
+<blockquote>
+<p><strong>提示：</strong> 嵌入式不是单纯的“单片机编程”。它是计算机、半导体、控制系统、软件工程和产业供应链共同演化出来的一类工程体系。</p>
+</blockquote>
+<h2 id="01-先把全局地图展开"><a href="#01-先把全局地图展开" class="headerlink" title="01. 先把全局地图展开"></a>01. 先把全局地图展开</h2><div class="mermaid-wrap"><pre class="mermaid-src" hidden>
+  mindmap
+  root((嵌入式宏观认知))
+    历史动力
+      军事计算
+      冷战科技竞争
+      军转民
+      摩尔定律
+    系统本质
+      专用计算机
+      软硬件结合
+      实时性
+      资源受限
+    技术方向
+      MCU
+      应用处理器
+      FPGA
+      DSP
+    产业生态
+      ARM&#x2F;RISC-V
+      芯片厂商
+      开发板厂商
+      产品公司
+    工程能力
+      读文档
+      用工具链
+      调试系统
+      做产品
+  </pre></div>
+
+<p>嵌入式学习的难点，不在于某一个外设真的有多玄，而在于它横跨了太多层次：底层有 CPU、寄存器、总线和电路，上层有业务逻辑、通信协议和产品场景，中间还有编译、链接、烧录、调试、文档、工具链。</p>
+<p>所以第一步不是背知识点，而是先建立一张地图。地图有了，后面学每个模块时，才知道它在整个系统中处于什么位置。</p>
+<h2 id="02-计算机为什么会诞生"><a href="#02-计算机为什么会诞生" class="headerlink" title="02. 计算机为什么会诞生"></a>02. 计算机为什么会诞生</h2><p>早期计算机不是为了打游戏、写文档、刷网页而出现的。它首先服务的是军事、科研和国家级工程需求。</p>
+<p>1946 年，ENIAC 问世。它常被视为现代电子计算机的重要开端之一，早期用途就包括弹道计算。第二次世界大战之后，世界进入冷战阶段，国家竞争进一步推动了计算机、互联网、GPS、集成电路和航天技术的发展。</p>
+<div class="mermaid-wrap"><pre class="mermaid-src" hidden>
+  timeline
+    title 计算机与嵌入式的历史底色
+    1940s : 电子计算机起步 : ENIAC 等早期电子计算机服务于军事计算和科研计算
+    1950s-1970s : 半导体与集成电路发展 : 晶体管、集成电路和微处理器逐步成熟
+    1970s-1980s : 嵌入式系统成形 : 计算机被嵌入导弹、飞机、雷达、工业设备和家电
+    1990s-2010s : MCU、移动互联网与物联网 : ARM、STM32、AVR、MSP430、ESP32 等生态不断扩展
+    今天 : 边缘智能与万物互联 : 设备端承担联网、交互、安全、AI 推理和边缘计算任务
+  </pre></div>
+
+<blockquote>
+<p><strong>极限需求推动技术突破，国家投入完成早期研发，民用市场完成规模化扩散。</strong></p>
+</blockquote>
+<p>这就是很多现代技术背后的共同路径：先在高成本、高风险、高价值场景中诞生，再通过产业化进入普通人的生活。</p>
+<h2 id="03-摩尔定律改变了计算机的形态"><a href="#03-摩尔定律改变了计算机的形态" class="headerlink" title="03. 摩尔定律改变了计算机的形态"></a>03. 摩尔定律改变了计算机的形态</h2><p>1965 年，Gordon Moore 观察到集成电路上的晶体管数 量会随时间快速增长。后来业界通常将其概括为：晶体管数量大约每 18 到 24 个月翻一倍。</p>
+<p>它带来的不只是“芯片越来越快”，更重要的是计算能力开始不断下沉。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://img.zhengdengliang.com/file/blog/nice_things/1783431093284_1783431082584.png" alt="688"></p>
+<div class="mermaid-wrap"><pre class="mermaid-src" hidden>
+  flowchart LR
+    A[大型计算机：昂贵、庞大、集中] --&gt; B[小型机与服务器：企业与科研使用]
+    B --&gt; C[个人电脑：计算能力进入桌面]
+    C --&gt; D[智能手机：计算能力进入口袋]
+    D --&gt; E[嵌入式设备：计算能力进入万物]
+    E --&gt; F[边缘智能：设备端感知、决策、联网]
+  </pre></div>
+
+<p>当计算能力足够便宜、足够小、足够省电，它就不再只属于机房和电脑，而是进入汽车、空调、耳机、手表、传感器、机器人和医疗设备。</p>
+<p>嵌入式系统就是在这个趋势中长出来的。</p>
+<h2 id="04-通用计算机-vs-专用计算机"><a href="#04-通用计算机-vs-专用计算机" class="headerlink" title="04. 通用计算机 vs 专用计算机"></a>04. 通用计算机 vs 专用计算机</h2><p>计算机并不只等于我们桌上的 PC。根据目标不同，它可以分成几种形态。</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>代表设备</th>
+<th>核心目标</th>
+<th>典型特点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>通用计算机</td>
+<td>PC、服务器、手机</td>
+<td>一台机器做很多事</td>
+<td>功能由软件生态决定</td>
+</tr>
+<tr>
+<td>高性能计算机</td>
+<td>超算、AI 训练集群</td>
+<td>解决超大规模计算</td>
+<td>追求算力、吞吐和并行</td>
+</tr>
+<tr>
+<td>专用计算机</td>
+<td>空调、ECU、飞控、手表</td>
+<td>稳定完成特定任务</td>
+<td>低成本、低功耗、强实时</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>核心结论：</strong> 通用计算机追求“我什么都能干”，嵌入式系统追求“我把这件事稳定、便宜、低功耗地干好”。</p>
+</blockquote>
+<p>空调里的控制板不需要运行 Photoshop，电饭煲里的 MCU 不需要剪视频，汽车刹车系统也不需要打开浏览器。它们需要的是在确定时间内稳定完成特定动作。</p>
+<p>这就是嵌入式系统的根本定位：专用计算机。</p>
+<h2 id="05-什么是嵌入式系统"><a href="#05-什么是嵌入式系统" class="headerlink" title="05. 什么是嵌入式系统"></a>05. 什么是嵌入式系统</h2><div class="mermaid-wrap"><pre class="mermaid-src" hidden>
+  flowchart TB
+    Product[更大的产品或设备：汽车、空调、无人机、医疗设备] --&gt; Embedded[嵌入式系统：产品内部的控制与计算核心]
+    Embedded --&gt; HW[硬件层：MCU&#x2F;SoC、存储器、传感器、执行器、电源]
+    Embedded --&gt; SW[软件层：裸机、驱动、RTOS、协议栈、业务逻辑]
+    Embedded --&gt; Constraint[约束条件：成本、功耗、体积、实时性、可靠性]
+    Embedded --&gt; Mission[特定任务：采集、控制、通信、显示、判断]
+  </pre></div>
+
+<p>嵌入式系统不是一个单独摆在桌面上的“电脑”，而是嵌入到更大设备里的计算系统。用户买的是汽车、空调、手表、无人机，不是“嵌入式系统”本身。</p>
+<p>它通常有几个核心特征。</p>
+<table>
+<thead>
+<tr>
+<th>特征</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>嵌入产品内部</td>
+<td>它是产品的一部分，用户通常看不见它，但产品的智能化和自动控制都依赖它。</td>
+</tr>
+<tr>
+<td>面向特定任务</td>
+<td>微波炉控制加热，BMS 管理电池，无人机飞控控制姿态，每个系统都有明确使命。</td>
+</tr>
+<tr>
+<td>资源天然受限</td>
+<td>Flash、RAM、算力、功耗、体积和成本都有限，不能像 PC 一样随意堆配置。</td>
+</tr>
+<tr>
+<td>强调实时可靠</td>
+<td>刹车、电机、医疗报警、工业控制不能“卡一下”，很多动作必须在确定时间内完成。</td>
+</tr>
+</tbody></table>
+<h2 id="06-嵌入式的四条主线"><a href="#06-嵌入式的四条主线" class="headerlink" title="06. 嵌入式的四条主线"></a>06. 嵌入式的四条主线</h2><p>嵌入式不是只有 STM32，也不是只有单片机。按核心计算架构看，常见方向可以这样理解：</p>
+<div class="mermaid-wrap"><pre class="mermaid-src" hidden>
+  flowchart LR
+    E((嵌入式技术方向))
+    E --&gt; MCU[MCU：低成本、低功耗、实时控制]
+    E --&gt; MPU[应用处理器：Linux&#x2F;Android、多媒体、复杂交互]
+    E --&gt; FPGA[FPGA：硬件并行、低延迟、可重构]
+    E --&gt; DSP[DSP：数字信号处理、音频、通信、电机]
+
+    MCU --&gt; M1[STM32 &#x2F; GD32 &#x2F; ESP32 &#x2F; AVR]
+    MPU --&gt; P1[i.MX &#x2F; RK3568 &#x2F; RK3588 &#x2F; 树莓派]
+    FPGA --&gt; F1[Xilinx &#x2F; Intel FPGA &#x2F; 高云 &#x2F; 安路]
+    DSP --&gt; D1[TI C2000 &#x2F; SHARC &#x2F; DSP IP]
+  </pre></div>
+
+<table>
+<thead>
+<tr>
+<th>方向</th>
+<th>关键词</th>
+<th>典型场景</th>
+<th>初学建议</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>MCU</td>
+<td>控制、实时、低功耗</td>
+<td>家电、传感器、电机、汽车节点</td>
+<td>适合作为入门主线</td>
+</tr>
+<tr>
+<td>应用处理器</td>
+<td>Linux、图形、多媒体</td>
+<td>智能屏、网关、视觉设备</td>
+<td>有 MCU 基础后更容易理解</td>
+</tr>
+<tr>
+<td>FPGA</td>
+<td>并行、低延迟、硬件逻辑</td>
+<td>通信、雷达、视频、高速采集</td>
+<td>更偏数字电路与硬件设计</td>
+</tr>
+<tr>
+<td>DSP</td>
+<td>信号处理、乘加、滤波</td>
+<td>音频、通信、电机控制</td>
+<td>独立芯片减少，能力常集成到 SoC&#x2F;MCU</td>
+</tr>
+</tbody></table>
+<p>真实产品往往不是单一方向，而是多种技术的组合。例如一个机器人可能同时包含 MCU、应用处理器、传感器、驱动器、通信模块和 AI 模型。</p>
+<h2 id="07-ARM、STM32-与产业分工"><a href="#07-ARM、STM32-与产业分工" class="headerlink" title="07. ARM、STM32 与产业分工"></a>07. ARM、STM32 与产业分工</h2><p>很多初学者会把 ARM、STM32、单片机混在一起。其实它们处在产业链的不同位置。</p>
+<div class="mermaid-wrap"><pre class="mermaid-src" hidden>
+  flowchart TD
+    ARM[ARM：提供 CPU 架构与 Cortex-M 内核 IP] --&gt; ST[ST 等芯片厂商：集成内核、Flash、RAM 和外设]
+    RISC[RISC-V：开放指令集生态] --&gt; Chip[芯片厂商：设计自有 MCU&#x2F;SoC]
+    ST --&gt; STM32[STM32 MCU：具体可购买、可编程的芯片]
+    Chip --&gt; OtherMCU[GD32 &#x2F; ESP32 &#x2F; 其他 MCU]
+    STM32 --&gt; Board[开发板&#x2F;核心板&#x2F;最小系统板]
+    OtherMCU --&gt; Board
+    Board --&gt; Engineer[嵌入式工程师：写驱动、调系统、做产品]
+    Engineer --&gt; Product[终端产品：汽车、家电、工业、医疗、机器人]
+  </pre></div>
+
+<p>ARM 通常不直接卖 STM32 这样的 MCU。它更像是提供 CPU 内核和架构授权的公司。ST、NXP、TI、Microchip 等芯片厂商基于这些内核，再集成自己的外设、电源、存储和封装，最终做出具体芯片。</p>
+<p>STM32 就是 ST 基于 ARM Cortex-M 生态推出的一大类 MCU 产品。</p>
+<blockquote>
+<p><strong>注意：</strong> 学习 STM32 时，不要只记“这是一个单片机”。更重要的是理解：STM32 是 ARM 内核、ST 外设设计、芯片文档、开发工具和社区生态共同组成的产品体系。</p>
+</blockquote>
+<h2 id="08-文档是嵌入式世界的通用语言"><a href="#08-文档是嵌入式世界的通用语言" class="headerlink" title="08. 文档是嵌入式世界的通用语言"></a>08. 文档是嵌入式世界的通用语言</h2><p>嵌入式产业建立在分工之上。有人设计 CPU，有人制造 MCU，有人画 PCB，有人写驱动，有人做产品。分工越细，越需要文档来协作。</p>
+<div class="mermaid-wrap"><pre class="mermaid-src" hidden>
+  flowchart LR
+    Need[我要开发一个功能] --&gt; Q1{我需要知道什么?}
+    Q1 --&gt; DS[Datasheet：芯片型号、引脚、电气特性、封装]
+    Q1 --&gt; RM[Reference Manual：外设功能、寄存器、时钟、中断]
+    Q1 --&gt; SCH[原理图：芯片引脚如何连接板上外设]
+    Q1 --&gt; AN[Application Note：官方专题方案与案例]
+    Q1 --&gt; ES[Errata：芯片已知问题与规避方法]
+
+    DS --&gt; HW[硬件选型与画板]
+    RM --&gt; Driver[软件驱动开发]
+    SCH --&gt; BoardUse[开发板功能定位]
+    AN --&gt; Practice[功能实现参考]
+    ES --&gt; Debug[疑难问题排查]
+  </pre></div>
+
+<table>
+<thead>
+<tr>
+<th>文档</th>
+<th>你可以把它理解成</th>
+<th>主要回答的问题</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Datasheet</td>
+<td>芯片体检表</td>
+<td>这颗芯片有什么资源，怎么供电，哪些引脚能用</td>
+</tr>
+<tr>
+<td>Reference Manual</td>
+<td>外设说明书</td>
+<td>GPIO、USART、I2C、Timer、ADC 等外设怎么工作</td>
+</tr>
+<tr>
+<td>Programming Manual</td>
+<td>内核编程手册</td>
+<td>CPU 内核、中断、异常、Flash 编程等底层机制</td>
+</tr>
+<tr>
+<td>Errata</td>
+<td>官方避坑清单</td>
+<td>芯片有哪些已知问题，如何规避</td>
+</tr>
+<tr>
+<td>Application Note</td>
+<td>官方实战教程</td>
+<td>某个具体功能如何设计和实现</td>
+</tr>
+<tr>
+<td>原理图</td>
+<td>板级连接地图</td>
+<td>MCU 引脚和 LED、按键、传感器、接口如何连接</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>数据手册告诉你芯片是什么，参考手册告诉你芯片怎么用，原理图告诉你芯片和板子怎么连。</strong></p>
+</blockquote>
+<p>所以，读文档不是额外负担，而是嵌入式工程师真正进入工业世界的基本能力。</p>
+<h2 id="09-STM32-工具链到底在做什么"><a href="#09-STM32-工具链到底在做什么" class="headerlink" title="09. STM32 工具链到底在做什么"></a>09. STM32 工具链到底在做什么</h2><p>写 C 代码只是开始。代码要真正跑到芯片里，需要经过一整条工具链。</p>
+<div class="mermaid-wrap"><pre class="mermaid-src" hidden>
+  sequenceDiagram
+    participant Dev as 开发者
+    participant Editor as VS Code &#x2F; Keil
+    participant Cube as STM32CubeMX
+    participant Compiler as 编译器与链接器
+    participant Probe as ST-Link
+    participant MCU as STM32 MCU
+
+    Dev-&gt;&gt;Cube: 配置引脚、时钟、外设
+    Cube--&gt;&gt;Editor: 生成初始化代码
+    Dev-&gt;&gt;Editor: 编写业务逻辑与驱动代码
+    Editor-&gt;&gt;Compiler: 编译、链接
+    Compiler--&gt;&gt;Editor: 生成 ELF &#x2F; HEX &#x2F; BIN
+    Editor-&gt;&gt;Probe: 下载与调试
+    Probe-&gt;&gt;MCU: 写入 Flash、控制断点、读取寄存器
+    MCU--&gt;&gt;Dev: 在真实硬件上运行和反馈
+  </pre></div>
+
+<table>
+<thead>
+<tr>
+<th>工具</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Keil MDK</td>
+<td>负责编译、链接、下载、调试，是企业中仍然常见的 ARM MCU 开发环境。</td>
+</tr>
+<tr>
+<td>VS Code</td>
+<td>负责提供更现代的代码编辑体验，适合阅读源码、写业务逻辑和管理项目。</td>
+</tr>
+<tr>
+<td>STM32CubeMX</td>
+<td>负责图形化配置引脚、时钟和外设，并生成初始化代码。</td>
+</tr>
+<tr>
+<td>HAL 库</td>
+<td>提供硬件抽象层 API，降低直接操作寄存器的入门门槛。</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>不要误解：</strong> HAL 可以帮你生成配置代码，但不能替你理解时钟树、中断、寄存器和外设工作原理。正确姿势是：先跑通，再读源码，再回到参考手册。</p>
+</blockquote>
+<h2 id="10-嵌入式软件的分层结构"><a href="#10-嵌入式软件的分层结构" class="headerlink" title="10. 嵌入式软件的分层结构"></a>10. 嵌入式软件的分层结构</h2><p>嵌入式代码不是一坨函数堆在一起。成熟工程一般会形成分层。</p>
+<div class="mermaid-wrap"><pre class="mermaid-src" hidden>
+  flowchart TB
+    App[应用层：业务逻辑、状态机、控制策略、通信协议]
+    Middleware[中间层：RTOS、文件系统、网络协议栈、GUI、算法库]
+    Driver[驱动层：GPIO、USART、I2C、SPI、ADC、PWM、DMA]
+    HAL[BSP &#x2F; HAL &#x2F; LL：板级支持包与硬件抽象]
+    HW[芯片与硬件层：CPU、寄存器、时钟、中断、总线、电路]
+
+    App --&gt; Middleware
+    Middleware --&gt; Driver
+    Driver --&gt; HAL
+    HAL --&gt; HW
+  </pre></div>
+
+<p>只看应用层，会不理解硬件为什么这样响应。只看寄存器，又容易缺少工程组织能力。真正成熟的嵌入式开发，需要能在不同层之间来回切换。</p>
+<h2 id="11-裸机、RTOS-与-Linux-的选择"><a href="#11-裸机、RTOS-与-Linux-的选择" class="headerlink" title="11. 裸机、RTOS 与 Linux 的选择"></a>11. 裸机、RTOS 与 Linux 的选择</h2><p>不同复杂度的嵌入式系统，会选择不同软件形态。</p>
+<div class="mermaid-wrap"><pre class="mermaid-src" hidden>
+  flowchart LR
+    Simple[简单控制：点灯、按键、串口、定时器] --&gt; Bare[裸机开发：直接运行在 MCU 上]
+    Multi[多任务控制：采集、显示、通信、存储并行] --&gt; RTOS[RTOS：FreeRTOS &#x2F; RT-Thread &#x2F; Zephyr]
+    Complex[复杂交互与联网：摄像头、文件系统、AI、图形界面] --&gt; Linux[嵌入式 Linux：驱动、内核、应用、系统集成]
+  </pre></div>
+
+<table>
+<thead>
+<tr>
+<th>软件形态</th>
+<th>适合场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>裸机</td>
+<td>适合打基础，理解芯片、外设、中断和时钟。</td>
+</tr>
+<tr>
+<td>RTOS</td>
+<td>适合多任务系统，解决调度、同步和资源管理。</td>
+</tr>
+<tr>
+<td>Linux</td>
+<td>适合复杂设备，处理网络、多媒体、文件系统和图形界面。</td>
+</tr>
+</tbody></table>
+<p>STM32 入门通常从裸机开始。等外设、中断、时钟和调试能力稳定后，再进入 RTOS，会顺很多。</p>
+<h2 id="12-嵌入式行业应用版图"><a href="#12-嵌入式行业应用版图" class="headerlink" title="12. 嵌入式行业应用版图"></a>12. 嵌入式行业应用版图</h2><div class="mermaid-wrap"><pre class="mermaid-src" hidden>
+  mindmap
+  root((嵌入式应用))
+    消费电子
+      耳机
+      手表
+      智能音箱
+      小家电
+    工业控制
+      PLC
+      电机驱动
+      传感采集
+      工业网关
+    汽车电子
+      ECU
+      BMS
+      车身控制
+      智能座舱
+    物联网
+      智能门锁
+      环境监测
+      无线模组
+      边缘网关
+    医疗设备
+      血糖仪
+      血氧仪
+      监护仪
+      便携检测
+    机器人与无人机
+      飞控
+      电机控制
+      传感器融合
+      视觉感知
+    边缘AI
+      语音唤醒
+      图像识别
+      缺陷检测
+      本地推理
+  </pre></div>
+
+<p>嵌入式几乎存在于所有“设备智能化”的场景中。它不是一个窄方向，而是一组横跨行业的底层能力。</p>
+<h2 id="13-从-STM32-入门的学习路线"><a href="#13-从-STM32-入门的学习路线" class="headerlink" title="13. 从 STM32 入门的学习路线"></a>13. 从 STM32 入门的学习路线</h2><p>与其把学习路线写成一长串清单，不如把它看成一条能力升级路径。</p>
+<div class="mermaid-wrap"><pre class="mermaid-src" hidden>
+  flowchart LR
+A[硬件直觉：LED、按键、原理图、引脚] --&gt; B[基础外设：GPIO、RCC、USART、Timer]
+ B --&gt; C[通信与采集：I2C、SPI、ADC、PWM、DMA]
+ C --&gt; D[系统机制：中断、NVIC、启动文件、内存布局]
+ D --&gt; E[工程能力：模块化、驱动封装、调试、读文档]
+ E --&gt; F[RTOS：任务、队列、信号量、互斥锁]
+ F --&gt; G[方向深化：工业、车载、IoT、Linux、机器人、AI]
+  </pre></div>
+
+<p>这个路线的关键不是“学完多少外设”，而是每学一个外设，都要补齐三件事：</p>
+<table>
+<thead>
+<tr>
+<th>能力</th>
+<th>具体表现</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>看得懂硬件</td>
+<td>知道外设接在哪个引脚，电平如何变化，原理图中对应哪一部分。</td>
+</tr>
+<tr>
+<td>查得懂文档</td>
+<td>能从参考手册中找到寄存器、时钟、中断和工作模式的依据。</td>
+</tr>
+<tr>
+<td>调得动系统</td>
+<td>能用串口、断点、寄存器窗口、逻辑分析仪等方法定位问题。</td>
+</tr>
+</tbody></table>
+<h2 id="14-最后，把这张图记住"><a href="#14-最后，把这张图记住" class="headerlink" title="14. 最后，把这张图记住"></a>14. 最后，把这张图记住</h2><div class="mermaid-wrap"><pre class="mermaid-src" hidden>
+  flowchart TD
+    History[历史动力：战争、科研、国家竞争、军转民] --&gt; Chip[半导体进步：摩尔定律、集成电路、微处理器]
+    Chip --&gt; Computer[计算机形态分化：通用计算、高性能计算、专用计算]
+    Computer --&gt; Embedded[嵌入式系统：嵌入产品内部的专用计算机]
+    Embedded --&gt; Ecosystem[产业生态：ARM、ST、开发板、工具链、文档]
+    Ecosystem --&gt; Engineer[工程师能力：软硬件结合、调试、读文档、做系统]
+    Engineer --&gt; Product[真实产品：工业、汽车、医疗、IoT、机器人、边缘AI]
+  </pre></div>
+
+<p>嵌入式系统不是从某一颗芯片开始的，而是从计算机发展、半导体进步、产业分工和真实场景需求中生长出来的。</p>
+<p>它的本质是专用计算机系统。它的目标不是“什么都能做”，而是在具体产品中稳定、实时、低成本、低功耗地完成特定任务。</p>
+<p>等这张地图建立起来，再回头看 GPIO、RCC、USART、I2C、HAL、寄存器，就会发现它们不再是零散知识点，而是嵌入式世界里一块块可以拼起来的系统组件。</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><table>
+<thead>
+<tr>
+<th>资料</th>
+<th>链接</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Arm 官方历史</td>
+<td><a target="_blank" rel="noopener" href="https://newsroom.arm.com/blog/arm-official-history">Arm official history</a></td>
+</tr>
+<tr>
+<td>Arm Cortex-M 处理器家族</td>
+<td><a target="_blank" rel="noopener" href="https://www.arm.com/products/silicon-ip-cpu">Arm Cortex-M</a></td>
+</tr>
+<tr>
+<td>STM32CubeMX 官方介绍</td>
+<td><a target="_blank" rel="noopener" href="https://www.st.com/en/development-tools/stm32cubemx.html">STM32CubeMX</a></td>
+</tr>
+<tr>
+<td>STM32CubeIDE 官方介绍</td>
+<td><a target="_blank" rel="noopener" href="https://www.st.com/en/development-tools/stm32cubeide.html">STM32CubeIDE</a></td>
+</tr>
+<tr>
+<td>FreeRTOS 官方网站</td>
+<td><a target="_blank" rel="noopener" href="https://www.freertos.org/">FreeRTOS</a></td>
+</tr>
+<tr>
+<td>Zephyr Project 官方网站</td>
+<td><a target="_blank" rel="noopener" href="https://www.zephyrproject.org/">Zephyr Project</a></td>
+</tr>
+<tr>
+<td>RISC-V International</td>
+<td><a target="_blank" rel="noopener" href="https://riscv.org/">RISC-V</a></td>
+</tr>
+</tbody></table>
+</article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://img.zhengdengliang.com/file/blog/AI/tools/1781160700966_image-20260611145132490.png" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://img.zhengdengliang.com/file/blog/AI/tools/1781160700966_image-20260611145132490.png" title="头像" alt="头像"></a><div class="post-copyright__author_name">星野暗涌</div><div class="post-copyright__author_desc">每一次仰望，都是对未知的无畏奔赴</div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="http://example.com/pages/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%AE%8F%E8%A7%82%E8%AE%A4%E7%9F%A5/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('http://example.com/pages/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%AE%8F%E8%A7%82%E8%AE%A4%E7%9F%A5/')">聊聊嵌入式的历史与生态</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"><div class="post-reward" onclick="anzhiyu.addRewardMask()"><div class="reward-button button--animated" title="赞赏作者"><i class="anzhiyufont anzhiyu-icon-hand-heart-fill"></i>打赏作者</div><div class="reward-main"><div class="reward-all"><span class="reward-title">感谢你赐予我前进的力量</span><ul class="reward-group"><li class="reward-item"><a href="/img/reward/wechat-reward.png" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/reward/wechat-reward.png" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/img/reward/alipay-reward.jpg" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/reward/alipay-reward.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul><a class="reward-main-btn" href="/about/#about-reward" target="_blank"><div class="reward-text">赞赏者名单</div><div class="reward-dec">因为你们的支持让我意识到写文章的价值🙏</div></a></div></div></div><div id="quit-box" onclick="anzhiyu.removeRewardMask()" style="display: none"></div></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="http://example.com/pages/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%AE%8F%E8%A7%82%E8%AE%A4%E7%9F%A5/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=聊聊嵌入式的历史与生态&amp;url=http://example.com/pages/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%AE%8F%E8%A7%82%E8%AE%A4%E7%9F%A5/&amp;pic=https://img.zhengdengliang.com/file/blog/AI/tools/1781166275928_20260611162422433.png" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl() {
+  var currentPageUrl = window.location.href;
+  var input = document.createElement("input");
+  input.setAttribute("value", currentPageUrl);
+  document.body.appendChild(input);
+  input.select();
+  input.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  document.body.removeChild(input);
+}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">星野暗涌</a>！</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>嵌入式开发<span class="tagsPageCount">1</span></a><a class="post-meta__box__tags" href="/tags/STM32/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>STM32<span class="tagsPageCount">1</span></a><a class="post-meta__box__tags" href="/tags/MCU/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>MCU<span class="tagsPageCount">1</span></a><a class="post-meta__box__tags" href="/tags/ARM/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>ARM<span class="tagsPageCount">1</span></a></div></div></div><div class="post_share"><div class="social-share" data-image="https://img.zhengdengliang.com/file/blog/AI/tools/1781879619188_tmp-claude-code-tips2-clean.svg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/pages/Claude-Code%E6%B7%B1%E5%85%A5%E6%B5%85%E5%87%BA-%E5%AE%89%E8%A3%85%E7%AF%87/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://img.zhengdengliang.com/file/blog/AI/tools/1781166275928_20260611162422433.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Claude Code深入浅出(安装篇)</div></div></a></div><div class="next-post pull-right"><a href="/pages/Claude-Code%E6%B7%B1%E5%85%A5%E6%B5%85%E5%87%BA(%E6%8A%80%E5%B7%A7%E7%AF%871)/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://img.zhengdengliang.com/file/blog/AI/tools/1781879585583_tmp-claude-code-tips1-clean.svg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Claude Code深入浅出(技巧篇1)</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="anzhiyufont anzhiyu-icon-comments"></i><span> 评论</span></div><div class="comment-randomInfo"><a onclick="anzhiyu.addRandomCommentInfo()" href="javascript:void(0)">匿名评论</a><a href="/privacy" style="margin-left: 4px">隐私政策</a></div><div class="comment-tips" id="comment-tips"><span>✅ 你无需删除空行，直接评论以获取最佳展示效果</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div><div class="comment-barrage"></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info__sayhi" id="author-info__sayhi" onclick="anzhiyu.changeSayHelloText()"></div><div class="author-info-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://img.zhengdengliang.com/file/blog/AI/tools/1781160700966_image-20260611145132490.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-status"><img class="g-status" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2023/08/24/64e6ce9c507bb.png" alt="status"/></div></div><div class="author-info__description">一个相信技术不该有门槛的普通人。拆解晦涩的概念，分享趁手的数字工具，让每个愿意学习的人都能跟上这个数字时代</div><div class="author-info__bottom-group"><a class="author-info__bottom-group-left" href="/"><h1 class="author-info__name">星野暗涌</h1><div class="author-info__desc">每一次仰望，都是对未知的无畏奔赴</div></a></div></div></div><div class="card-widget anzhiyu-right-widget" id="card-wechat" onclick="null"><div id="flip-wrapper"><div id="flip-content"><div class="face" style="background: url(https://bu.dusays.com/2023/01/13/63c02edf44033.png) center center / 100% no-repeat"></div><div class="back face" style="background: url(https://img.zhengdengliang.com/file/blog/settings/1781420603867_mmexport1781420526036.jpeg) center center / 100% no-repeat"></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%81%8A%E8%81%8A%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%9A%84%E5%8E%86%E5%8F%B2%E4%B8%8E%E7%94%9F%E6%80%81"><span class="toc-number">1.</span> <span class="toc-text">聊聊嵌入式的历史与生态</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#01-%E5%85%88%E6%8A%8A%E5%85%A8%E5%B1%80%E5%9C%B0%E5%9B%BE%E5%B1%95%E5%BC%80"><span class="toc-number">1.1.</span> <span class="toc-text">01. 先把全局地图展开</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#02-%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BC%9A%E8%AF%9E%E7%94%9F"><span class="toc-number">1.2.</span> <span class="toc-text">02. 计算机为什么会诞生</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#03-%E6%91%A9%E5%B0%94%E5%AE%9A%E5%BE%8B%E6%94%B9%E5%8F%98%E4%BA%86%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9A%84%E5%BD%A2%E6%80%81"><span class="toc-number">1.3.</span> <span class="toc-text">03. 摩尔定律改变了计算机的形态</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#04-%E9%80%9A%E7%94%A8%E8%AE%A1%E7%AE%97%E6%9C%BA-vs-%E4%B8%93%E7%94%A8%E8%AE%A1%E7%AE%97%E6%9C%BA"><span class="toc-number">1.4.</span> <span class="toc-text">04. 通用计算机 vs 专用计算机</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#05-%E4%BB%80%E4%B9%88%E6%98%AF%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%BB%9F"><span class="toc-number">1.5.</span> <span class="toc-text">05. 什么是嵌入式系统</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#06-%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%9A%84%E5%9B%9B%E6%9D%A1%E4%B8%BB%E7%BA%BF"><span class="toc-number">1.6.</span> <span class="toc-text">06. 嵌入式的四条主线</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#07-ARM%E3%80%81STM32-%E4%B8%8E%E4%BA%A7%E4%B8%9A%E5%88%86%E5%B7%A5"><span class="toc-number">1.7.</span> <span class="toc-text">07. ARM、STM32 与产业分工</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#08-%E6%96%87%E6%A1%A3%E6%98%AF%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%96%E7%95%8C%E7%9A%84%E9%80%9A%E7%94%A8%E8%AF%AD%E8%A8%80"><span class="toc-number">1.8.</span> <span class="toc-text">08. 文档是嵌入式世界的通用语言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#09-STM32-%E5%B7%A5%E5%85%B7%E9%93%BE%E5%88%B0%E5%BA%95%E5%9C%A8%E5%81%9A%E4%BB%80%E4%B9%88"><span class="toc-number">1.9.</span> <span class="toc-text">09. STM32 工具链到底在做什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-%E5%B5%8C%E5%85%A5%E5%BC%8F%E8%BD%AF%E4%BB%B6%E7%9A%84%E5%88%86%E5%B1%82%E7%BB%93%E6%9E%84"><span class="toc-number">1.10.</span> <span class="toc-text">10. 嵌入式软件的分层结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-%E8%A3%B8%E6%9C%BA%E3%80%81RTOS-%E4%B8%8E-Linux-%E7%9A%84%E9%80%89%E6%8B%A9"><span class="toc-number">1.11.</span> <span class="toc-text">11. 裸机、RTOS 与 Linux 的选择</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-%E5%B5%8C%E5%85%A5%E5%BC%8F%E8%A1%8C%E4%B8%9A%E5%BA%94%E7%94%A8%E7%89%88%E5%9B%BE"><span class="toc-number">1.12.</span> <span class="toc-text">12. 嵌入式行业应用版图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#13-%E4%BB%8E-STM32-%E5%85%A5%E9%97%A8%E7%9A%84%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF"><span class="toc-number">1.13.</span> <span class="toc-text">13. 从 STM32 入门的学习路线</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#14-%E6%9C%80%E5%90%8E%EF%BC%8C%E6%8A%8A%E8%BF%99%E5%BC%A0%E5%9B%BE%E8%AE%B0%E4%BD%8F"><span class="toc-number">1.14.</span> <span class="toc-text">14. 最后，把这张图记住</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="toc-number">1.15.</span> <span class="toc-text">参考资料</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/pages/Claude-Code%E6%B7%B1%E5%85%A5%E6%B5%85%E5%87%BA(%E6%8A%80%E5%B7%A7%E7%AF%872)/" title="Claude Code深入浅出(技巧篇2)"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://img.zhengdengliang.com/file/blog/AI/tools/1781879619188_tmp-claude-code-tips2-clean.svg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Claude Code深入浅出(技巧篇2)"/></a><div class="content"><a class="title" href="/pages/Claude-Code%E6%B7%B1%E5%85%A5%E6%B5%85%E5%87%BA(%E6%8A%80%E5%B7%A7%E7%AF%872)/" title="Claude Code深入浅出(技巧篇2)">Claude Code深入浅出(技巧篇2)</a><time datetime="2026-06-15T16:00:00.000Z" title="发表于 2026-06-16 00:00:00">2026-06-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/pages/Claude-Code%E6%B7%B1%E5%85%A5%E6%B5%85%E5%87%BA(%E6%8A%80%E5%B7%A7%E7%AF%871)/" title="Claude Code深入浅出(技巧篇1)"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://img.zhengdengliang.com/file/blog/AI/tools/1781879585583_tmp-claude-code-tips1-clean.svg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Claude Code深入浅出(技巧篇1)"/></a><div class="content"><a class="title" href="/pages/Claude-Code%E6%B7%B1%E5%85%A5%E6%B5%85%E5%87%BA(%E6%8A%80%E5%B7%A7%E7%AF%871)/" title="Claude Code深入浅出(技巧篇1)">Claude Code深入浅出(技巧篇1)</a><time datetime="2026-06-13T16:00:00.000Z" title="发表于 2026-06-14 00:00:00">2026-06-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/pages/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%AE%8F%E8%A7%82%E8%AE%A4%E7%9F%A5/" title="聊聊嵌入式的历史与生态"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://img.zhengdengliang.com/file/blog/AI/tools/1781166275928_20260611162422433.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="聊聊嵌入式的历史与生态"/></a><div class="content"><a class="title" href="/pages/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%AE%8F%E8%A7%82%E8%AE%A4%E7%9F%A5/" title="聊聊嵌入式的历史与生态">聊聊嵌入式的历史与生态</a><time datetime="2026-06-10T16:00:00.000Z" title="发表于 2026-06-11 00:00:00">2026-06-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/pages/Claude-Code%E6%B7%B1%E5%85%A5%E6%B5%85%E5%87%BA-%E5%AE%89%E8%A3%85%E7%AF%87/" title="Claude Code深入浅出(安装篇)"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://img.zhengdengliang.com/file/blog/AI/tools/1781166275928_20260611162422433.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Claude Code深入浅出(安装篇)"/></a><div class="content"><a class="title" href="/pages/Claude-Code%E6%B7%B1%E5%85%A5%E6%B5%85%E5%87%BA-%E5%AE%89%E8%A3%85%E7%AF%87/" title="Claude Code深入浅出(安装篇)">Claude Code深入浅出(安装篇)</a><time datetime="2026-06-10T16:00:00.000Z" title="发表于 2026-06-11 00:00:00">2026-06-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/pages/2026-05-09-c17-standards-%EF%BC%88%E4%B8%8B%EF%BC%89/" title="C++17 Standards （下）"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://img.zhengdengliang.com/file/blog/Cpp/1781322793926_photo-1614741118887-7a4ee193a5fa" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="C++17 Standards （下）"/></a><div class="content"><a class="title" href="/pages/2026-05-09-c17-standards-%EF%BC%88%E4%B8%8B%EF%BC%89/" title="C++17 Standards （下）">C++17 Standards （下）</a><time datetime="2026-05-07T16:00:00.000Z" title="发表于 2026-05-08 00:00:00">2026-05-08</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">&copy;2020 - 2026 By <a class="footer-bar-link" href="/" title="星野暗涌" target="_blank">星野暗涌</a></div></div><div id="footer-type-tips"></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://github.com/anzhiyu-c/hexo-theme-anzhiyu" title="主题">主题</a></div></div></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">21</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">14</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">5</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://hexo.anheyu.com/" title="博客"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/favicon.ico" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://image.anheyu.com/" title="安知鱼图床"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://image.anheyu.com/favicon.ico" alt="安知鱼图床"/><span class="back-menu-item-text">安知鱼图床</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 归档</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 我的</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/"><i class="anzhiyufont anzhiyu-icon-music faa-tada" style="font-size: 0.9em;"></i><span> 音乐</span></a></li></ul></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/ARM/" style="font-size: 0.88rem;">ARM<sup>1</sup></a><a href="/tags/MCU/" style="font-size: 0.88rem;">MCU<sup>1</sup></a><a href="/tags/STM32/" style="font-size: 0.88rem;">STM32<sup>1</sup></a><a href="/tags/ai%E5%B7%A5%E5%85%B7/" style="font-size: 0.88rem;">ai工具<sup>3</sup></a><a href="/tags/ai%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/" style="font-size: 0.88rem;">ai应用开发<sup>2</sup></a><a href="/tags/claude-code/" style="font-size: 0.88rem;">claude code<sup>3</sup></a><a href="/tags/cpp/" style="font-size: 0.88rem;">cpp<sup>8</sup></a><a href="/tags/docker/" style="font-size: 0.88rem;">docker<sup>1</sup></a><a href="/tags/go/" style="font-size: 0.88rem;">go<sup>3</sup></a><a href="/tags/mysql/" style="font-size: 0.88rem;">mysql<sup>1</sup></a><a href="/tags/qt/" style="font-size: 0.88rem;">qt<sup>1</sup></a><a href="/tags/vue3/" style="font-size: 0.88rem;">vue3<sup>1</sup></a><a href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/" style="font-size: 0.88rem;">嵌入式开发<sup>1</sup></a><a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 0.88rem;">数据库<sup>1</sup></a></div></div><hr/></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="anzhiyufont anzhiyu-icon-comments"></i></a><a id="switch-commentBarrage" href="javascript:anzhiyu.switchCommentBarrage();" title="开关弹幕"><i class="anzhiyufont anzhiyu-icon-danmu"></i></a><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="8152976493" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.7"></meting-js></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="anzhiyufont anzhiyu-icon-xmark"></i></button></nav><div class="is-center" id="loading-database"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-pulse-icon"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://music.163.com/#/playlist?id=8152976493&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/@fancyapps/ui@6.1.6/dist/fancybox/fancybox.umd.js"></script><script src="https://cdn.cbd.int/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://cdn.cbd.int/vanilla-lazyload@19.1.3/dist/lazyload.iife.min.js"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("2026/6/11"); //此处修改你的建站时间或者网站上线时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  const ascll = [
+    `欢迎使用安知鱼!`,
+    `生活明朗, 万物可爱`,
+    `
+        
+       █████╗ ███╗   ██╗███████╗██╗  ██╗██╗██╗   ██╗██╗   ██╗
+      ██╔══██╗████╗  ██║╚══███╔╝██║  ██║██║╚██╗ ██╔╝██║   ██║
+      ███████║██╔██╗ ██║  ███╔╝ ███████║██║ ╚████╔╝ ██║   ██║
+      ██╔══██║██║╚██╗██║ ███╔╝  ██╔══██║██║  ╚██╔╝  ██║   ██║
+      ██║  ██║██║ ╚████║███████╗██║  ██║██║   ██║   ╚██████╔╝
+      ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝    ╚═════╝
+        
+        `,
+    "已上线",
+    dnum,
+    "天",
+    "©2020 By 安知鱼 V1.7.1",
+  ];
+  const ascll2 = [`NCC2-036`, `调用前置摄像头拍照成功，识别为【小笨蛋】.`, `Photo captured: `, `🤪`];
+
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} %c ${ascll[2]} %c${ascll[3]}%c ${ascll[4]}%c ${ascll[5]}\n\n%c ${ascll[6]}\n`,
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      ""
+    )
+  );
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，小笨蛋.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Powered by 安知鱼 %c 你正在访问 星野暗涌 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 你现在正处于监控中.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async src="/anzhiyu/random.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>(() => {
+  const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+  if ($mermaid.length === 0) return
+  const runMermaid = () => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    Array.from($mermaid).forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      const mermaidThemeConfig = '%%{init:{ \'theme\':\'' + theme + '\'}}%%\n'
+      const mermaidID = 'mermaid-' + index
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+
+      const renderV10 = () => {
+        renderFn.then(({svg}) => {
+          mermaidSrc.insertAdjacentHTML('afterend', svg)
+        })
+      }
+
+      const renderV9 = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+      }
+
+      typeof renderFn === 'string' ? renderV9(renderFn) : renderV10()
+    })
+  }
+
+  const loadMermaid = () => {
+    window.loadMermaid ? runMermaid() : getScript('https://cdn.cbd.int/mermaid@11.12.2/dist/mermaid.min.js').then(runMermaid)
+  }
+
+  anzhiyu.addGlobalFn('themeChange', runMermaid, 'mermaid')
+
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script><script>(() => {
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'https://twikoo.zhengdengliang.com/',
+      region: '',
+      onCommentLoaded: () => {
+        anzhiyu.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+    installQQNickFallback()
+    installCommentImageUploader()
+  }
+
+  const installCommentImageUploader = () => {
+    const uploadURL = 'https://img.zhengdengliang.com/upload?authCode=Ag5TqN8vEVfmmi&uploadFolder=blog/comments&returnFormat=full'
+    if (!uploadURL) return
+
+    const commentRoot = document.getElementById('post-comment') || document
+    if (commentRoot.dataset && commentRoot.dataset.commentImageUploader === 'true') return
+    if (commentRoot.dataset) commentRoot.dataset.commentImageUploader = 'true'
+
+    const getTwikooRoot = () => document.getElementById('twikoo') || document.getElementById('twikoo-wrap') || commentRoot
+    const getTextarea = () => getTwikooRoot().querySelector('textarea.el-textarea__inner, textarea')
+    const fileInput = document.createElement('input')
+    fileInput.type = 'file'
+    fileInput.accept = 'image/*'
+    fileInput.multiple = true
+    fileInput.style.display = 'none'
+    document.body.appendChild(fileInput)
+
+    const setTextareaValue = (textarea, value) => {
+      const setter = Object.getOwnPropertyDescriptor(HTMLTextAreaElement.prototype, 'value').set
+      setter.call(textarea, value)
+      textarea.dispatchEvent(new Event('input', { bubbles: true }))
+      textarea.dispatchEvent(new Event('change', { bubbles: true }))
+      textarea.focus()
+    }
+
+    const insertText = (textarea, text) => {
+      const start = textarea.selectionStart || textarea.value.length
+      const end = textarea.selectionEnd || textarea.value.length
+      const before = textarea.value.slice(0, start)
+      const after = textarea.value.slice(end)
+      const prefix = before && !/\s$/.test(before) ? '\n' : ''
+      const suffix = after && !/^\s/.test(after) ? '\n' : ''
+      const nextValue = `${before}${prefix}${text}${suffix}${after}`
+      setTextareaValue(textarea, nextValue)
+      const cursor = before.length + prefix.length + text.length
+      textarea.setSelectionRange(cursor, cursor)
+    }
+
+    const pickURL = data => {
+      if (!data) return ''
+      if (typeof data === 'string') {
+        const markdownMatch = data.match(/!\[[^\]]*\]\((https?:\/\/[^)\s]+)\)/)
+        if (markdownMatch) return markdownMatch[1]
+        const urlMatch = data.match(/https?:\/\/[^\s"'<>)]*/)
+        return urlMatch ? urlMatch[0] : ''
+      }
+      const candidates = [
+        data.url,
+        data.full,
+        data.src,
+        data.link,
+        data.image,
+        data.path,
+        data.data && data.data.url,
+        data.data && data.data.full,
+        data.data && data.data.src,
+        data.data && data.data.link,
+        data.result && data.result.url,
+        data.result && data.result.full,
+        data.result && data.result.src,
+        data.result && data.result.link
+      ]
+      return candidates.find(item => typeof item === 'string' && /^https?:\/\//.test(item)) || ''
+    }
+
+    const uploadFile = async file => {
+      const formData = new FormData()
+      formData.append('file', file)
+      const response = await fetch(uploadURL, {
+        method: 'POST',
+        body: formData
+      })
+      const text = await response.text()
+      if (!response.ok) throw new Error(text || `Upload failed: ${response.status}`)
+      try {
+        const json = JSON.parse(text)
+        const url = pickURL(json)
+        if (url) return url
+      } catch (e) {}
+      const url = pickURL(text)
+      if (url) return url
+      throw new Error('Upload response has no image url')
+    }
+
+    const uploadFiles = async files => {
+      const images = [...files].filter(file => file && file.type && file.type.startsWith('image/'))
+      if (!images.length) return
+      const textarea = getTextarea()
+      if (!textarea) return
+      if (window.anzhiyu && anzhiyu.snackbarShow) anzhiyu.snackbarShow('图片上传中...')
+      try {
+        const urls = []
+        for (const file of images) {
+          const url = await uploadFile(file)
+          urls.push(`![${file.name.replace(/\.[^.]+$/, '') || 'image'}](${url})`)
+        }
+        insertText(textarea, urls.join('\n'))
+        if (window.anzhiyu && anzhiyu.snackbarShow) anzhiyu.snackbarShow('图片已插入评论')
+      } catch (error) {
+        console.error(error)
+        if (window.anzhiyu && anzhiyu.snackbarShow) anzhiyu.snackbarShow('图片上传失败，请稍后再试')
+      }
+    }
+
+    const bindUploader = () => {
+      const root = getTwikooRoot()
+      const textarea = getTextarea()
+      if (!root || !textarea) return
+
+      if (textarea.dataset.commentImagePaste !== 'true') {
+        textarea.dataset.commentImagePaste = 'true'
+        textarea.addEventListener('paste', event => {
+          const files = event.clipboardData && event.clipboardData.files
+          if (!files || ![...files].some(file => file.type && file.type.startsWith('image/'))) return
+          event.preventDefault()
+          uploadFiles(files)
+        })
+        textarea.addEventListener('drop', event => {
+          const files = event.dataTransfer && event.dataTransfer.files
+          if (!files || ![...files].some(file => file.type && file.type.startsWith('image/'))) return
+          event.preventDefault()
+          uploadFiles(files)
+        })
+      }
+
+      if (root.querySelector('.tk-image-upload-button')) return
+      const button = document.createElement('button')
+      button.type = 'button'
+      button.className = 'tk-image-upload-button tk-submit-action-icon'
+      button.title = '上传图片'
+      button.setAttribute('aria-label', '上传图片')
+      button.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="17" height="17" rx="2.2" fill="none"></rect><circle cx="8.2" cy="8.2" r="1.25" fill="currentColor" stroke="none"></circle><path d="M5.8 17.2l4.1-4.35 3.05 3.05 2-2.15 3.25 3.45" fill="none"></path></svg>'
+      button.addEventListener('click', () => fileInput.click())
+
+      const actionBar = root.querySelector('.tk-row-actions-start, .tk-submit-action, .tk-footer, .tk-comments-container + .tk-submit')
+      const owoButton = actionBar && actionBar.querySelector('.OwO')
+      if (owoButton && owoButton.nextSibling) actionBar.insertBefore(button, owoButton.nextSibling)
+      else if (actionBar) actionBar.appendChild(button)
+      else textarea.insertAdjacentElement('afterend', button)
+    }
+
+    fileInput.addEventListener('change', () => {
+      uploadFiles(fileInput.files)
+      fileInput.value = ''
+    })
+
+    new MutationObserver(bindUploader).observe(commentRoot, { childList: true, subtree: true })
+    bindUploader()
+    setTimeout(bindUploader, 1000)
+  }
+
+  const installQQNickFallback = () => {
+    const commentRoot = document.getElementById('post-comment') || document
+    const getTwikooRoot = () => document.getElementById('twikoo') || document.getElementById('twikoo-wrap') || commentRoot
+    if (commentRoot.dataset && commentRoot.dataset.qqNickFallback === 'true') return
+    if (commentRoot.dataset) commentRoot.dataset.qqNickFallback = 'true'
+
+    const cache = {}
+    const qqNickCacheKey = 'anzhiyu_qq_nick_cache_v3'
+    const qqNickApi = '/api/qqinfo?qq={qq}&v=2026062206'
+    const getInputText = input => {
+      const field = input.closest('.tk-input, .tk-meta-input, .el-form-item, .el-input, label, div') || input.parentElement
+      return [
+        input.name,
+        input.id,
+        input.type,
+        input.placeholder,
+        input.autocomplete,
+        input.getAttribute('aria-label'),
+        field && field.textContent
+      ].join(' ').toLowerCase()
+    }
+
+    const getInputScope = input => input && input.closest('.tk-submit') || getTwikooRoot()
+
+    const getInputs = (scope = getTwikooRoot()) => {
+      const inputs = [...scope.querySelectorAll('input.el-input__inner, input')]
+        .filter(input => input.offsetParent !== null && input.type !== 'hidden')
+      const findInput = patterns => inputs.find(input => patterns.some(pattern => pattern.test(getInputText(input))))
+      const nick = findInput([/nick/, /name/, /昵称/, /暱稱/, /qq/]) || inputs[0]
+      const mail = findInput([/mail/, /email/, /邮箱/, /郵箱/]) || inputs.find(input => input !== nick && input.type === 'email') || inputs.find(input => input !== nick)
+      return { nick, mail }
+    }
+
+    const extractQQ = nick => {
+      const nickValue = nick ? nick.value.trim() : ''
+      return /^[1-9]\d{4,11}$/.test(nickValue) ? nickValue : ''
+    }
+
+    const setValue = (input, value) => {
+      if (!input || !value) return
+      if (input.value === value) return
+      const setter = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value').set
+      if (commentRoot.dataset) commentRoot.dataset.qqNickSetting = 'true'
+      setter.call(input, value)
+      input.dispatchEvent(new Event('input', { bubbles: true }))
+      input.dispatchEvent(new Event('change', { bubbles: true }))
+      window.setTimeout(() => {
+        if (commentRoot.dataset) delete commentRoot.dataset.qqNickSetting
+      }, 0)
+    }
+
+    const ensureNickIconFont = input => {
+      if (!input || input.dataset.qqNickIconFont === 'true') return
+      input.dataset.qqNickIconFont = 'true'
+      const currentFont = window.getComputedStyle(input).fontFamily || ''
+      input.style.fontFamily = `${currentFont}, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji", sans-serif`
+    }
+
+    const readStoredNick = qq => {
+      if (Object.prototype.hasOwnProperty.call(cache, qq)) return cache[qq]
+      try {
+        const stored = JSON.parse(localStorage.getItem(qqNickCacheKey) || '{}')
+        if (stored[qq] && typeof stored[qq].nick === 'string') {
+          cache[qq] = stored[qq].nick
+          return stored[qq].nick
+        }
+        return null
+      } catch (e) {
+        return null
+      }
+    }
+
+    const saveStoredNick = (qq, nick) => {
+      if (!qq || typeof nick !== 'string') return
+      cache[qq] = nick
+      try {
+        const stored = JSON.parse(localStorage.getItem(qqNickCacheKey) || '{}')
+        stored[qq] = { nick, time: Date.now() }
+        localStorage.setItem(qqNickCacheKey, JSON.stringify(stored))
+      } catch (e) {}
+    }
+
+    const decodeNickText = text => {
+      if (typeof text !== 'string') return ''
+      const textarea = document.createElement('textarea')
+      textarea.innerHTML = text
+      return textarea.value.normalize ? textarea.value.normalize('NFC') : textarea.value
+    }
+
+    const pickNickFromApiData = data => {
+      if (!data) return ''
+      const candidates = [
+        data.nickname,
+        data.name,
+        data.nick,
+        data.qqname,
+        data.user,
+        data.data && data.data.nickname,
+        data.data && data.data.name,
+        data.data && data.data.nick,
+        data.data && data.data.qqname,
+        data.result && data.result.nickname,
+        data.result && data.result.name,
+        data.result && data.result.nick
+      ]
+      const nick = candidates.find(item => typeof item === 'string' && item.trim())
+      return nick ? decodeNickText(nick).trim() : ''
+    }
+
+    const fetchQQNick = qq => new Promise(resolve => {
+      const controller = new AbortController()
+      const timer = window.setTimeout(() => controller.abort(), 6000)
+      const apiUrl = qqNickApi.replace('{qq}', encodeURIComponent(qq))
+      fetch(apiUrl, { signal: controller.signal })
+        .then(res => res.ok ? res.json() : null)
+        .then(data => resolve({
+          nick: pickNickFromApiData(data).trim()
+        }))
+        .catch(() => resolve({ nick: '' }))
+        .finally(() => window.clearTimeout(timer))
+    })
+
+    const timeoutValue = (ms, value) => new Promise(resolve => {
+      window.setTimeout(() => resolve(value), ms)
+    })
+
+    const queryQQNick = async qq => {
+      const storedNick = readStoredNick(qq)
+      if (storedNick !== null) {
+        return { nick: storedNick }
+      }
+
+      try {
+        const apiResult = await Promise.race([
+          fetchQQNick(qq),
+          timeoutValue(7000, { nick: '' })
+        ])
+        const finalNick = apiResult.nick || qq
+        saveStoredNick(qq, finalNick)
+        return { nick: finalNick }
+      } catch (e) {
+        saveStoredNick(qq, qq)
+        return { nick: qq }
+      }
+    }
+
+    const handleQQInput = async nickInput => {
+      const scope = getInputScope(nickInput)
+      const { nick, mail } = getInputs(scope)
+      if (!nick) return
+      const qq = extractQQ(nick)
+      if (!qq) {
+        if (commentRoot.dataset) delete commentRoot.dataset.qqNickPending
+        return
+      }
+      if (nick.dataset.qqNickRunning === qq) return
+      const requestId = `${qq}:${Date.now()}`
+      nick.dataset.qqNickRequest = requestId
+      nick.dataset.qqNickRequestQQ = qq
+      nick.dataset.qqNickRunning = qq
+      if (commentRoot.dataset) commentRoot.dataset.qqNickLast = qq
+      if (commentRoot.dataset) commentRoot.dataset.qqNickPending = qq
+      const qqResult = await queryQQNick(qq)
+      const { nick: latestNick } = getInputs(scope)
+      if (!latestNick) return
+      if (latestNick.dataset.qqNickRunning === qq) delete latestNick.dataset.qqNickRunning
+      if (latestNick.dataset.qqNickRequest !== requestId) return
+      if (latestNick.dataset.qqNickUserCancel === requestId) return
+      const finalNick = qqResult.nick || qq
+      const applyFinalNick = () => {
+        const { nick: targetNick, mail: targetMail } = getInputs(scope)
+        if (!targetNick) return
+        if (targetNick.dataset.qqNickRequest !== requestId) return
+        if (targetNick.dataset.qqNickUserCancel === requestId) return
+        const currentNick = targetNick.value.trim()
+        const currentMail = targetMail ? targetMail.value.trim() : ''
+        const canFillNick = !currentNick || currentNick === qq || currentNick === targetNick.dataset.qqNickAutoValue
+        if (canFillNick) {
+          setValue(targetNick, finalNick)
+        }
+        if (!currentMail) {
+          setValue(targetMail, `${qq}@qq.com`)
+        }
+        targetNick.dataset.qqNickAutoValue = finalNick
+      }
+      applyFinalNick()
+      if (commentRoot.dataset && commentRoot.dataset.qqNickPending === qq) delete commentRoot.dataset.qqNickPending
+    }
+
+    const safeHandleQQInput = nick => {
+      handleQQInput(nick).catch(() => {
+        if (commentRoot.dataset) delete commentRoot.dataset.qqNickPending
+      })
+    }
+
+    let qqNickInputTimer = null
+    const scheduleHandleQQInput = nick => {
+      window.clearTimeout(qqNickInputTimer)
+      qqNickInputTimer = window.setTimeout(() => safeHandleQQInput(nick), 500)
+    }
+
+    const bindNickInput = () => {
+      const root = getTwikooRoot()
+      const scopes = [...root.querySelectorAll('.tk-submit')]
+      if (!scopes.length) scopes.push(root)
+      scopes.forEach(scope => {
+        const { nick } = getInputs(scope)
+        if (!nick || nick.dataset.qqNickFallbackBinded === 'true') return
+        nick.dataset.qqNickFallbackBinded = 'true'
+        ensureNickIconFont(nick)
+        nick.addEventListener('input', event => {
+          if (commentRoot.dataset && commentRoot.dataset.qqNickSetting === 'true') return
+          const value = nick.value.trim()
+          if (event.isTrusted) {
+            const requestQQ = nick.dataset.qqNickRequestQQ || ''
+            delete nick.dataset.qqNickAutoValue
+            if (requestQQ && value !== requestQQ) {
+              nick.dataset.qqNickUserCancel = nick.dataset.qqNickRequest || ''
+              if (commentRoot.dataset) delete commentRoot.dataset.qqNickPending
+            }
+          }
+          if (extractQQ(nick)) {
+            scheduleHandleQQInput(nick)
+          }
+        })
+        nick.addEventListener('keydown', event => {
+          if (event.key === 'Enter' && extractQQ(nick)) {
+            event.preventDefault()
+            safeHandleQQInput(nick)
+          }
+        })
+        nick.addEventListener('blur', () => safeHandleQQInput(nick))
+      })
+    }
+
+    new MutationObserver(bindNickInput).observe(commentRoot, { childList: true, subtree: true })
+    bindNickInput()
+    setTimeout(bindNickInput, 1000)
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') setTimeout(runFn,0)
+    else getScript('https://cdn.cbd.int/twikoo@1.7.13/dist/twikoo.all.min.js').then(runFn)
+  }
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'https://twikoo.zhengdengliang.com/',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(res => {
+      countELement.textContent = res[0].count
+    }).catch(err => {
+      console.error(err)
+    })
+  }
+
+  const runFn = () => {
+    init();
+    
+  }
+
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) anzhiyu.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else {
+      loadTwikoo()
+    }
+  } else {
+    window.loadOtherComment = loadTwikoo
+  }
+})()</script><input type="hidden" name="page-type" id="page-type" value="post"><script async src="/js/anzhiyu/comment_barrage.js"></script></div><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getComment = () => {
+    const runTwikoo = () => {
+      twikoo.getRecentComments({
+        envId: 'https://twikoo.zhengdengliang.com/',
+        region: '',
+        pageSize: 6,
+        includeReply: true
+      }).then(function (res) {
+        const twikooArray = res.map(e => {
+          return {
+            'content': changeContent(e.comment),
+            'avatar': e.avatar,
+            'nick': e.nick,
+            'url': e.url + '#' + e.id,
+            'date': new Date(e.created).toISOString()
+          }
+        })
+
+        saveToLocal.set('twikoo-newest-comments', JSON.stringify(twikooArray), 10/(60*24))
+        generateHtml(twikooArray)
+      }).catch(function (err) {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.textContent= "无法获取评论，请确认相关配置是否正确"
+      })
+    }
+
+    if (typeof twikoo === 'object') {
+      runTwikoo()
+    } else {
+      getScript('https://cdn.cbd.int/twikoo@1.7.13/dist/twikoo.all.min.js').then(runTwikoo)
+    }
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'data-lazy-src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'><div class='name'><span>${array[i].nick} </span></div></a>`
+        }
+        
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <time datetime="${array[i].date}">${anzhiyu.diffDate(array[i].date, true)}</time></div>
+        </div>`
+      }
+    } else {
+      result += '没有评论'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom && ($dom.innerHTML= result)
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('twikoo-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><script>var visitorMail = "2224825422@qq.com";
+</script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://cdn.cbd.int/qrcodejs@1.0.0/qrcode.min.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><canvas class="fireworks" mobile="true"></canvas><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/fireworks.min.js"></script><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+POWERMODE.mobile = true;
+document.body.addEventListener('input', POWERMODE);
+</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["meta[property=\"og:image\"]","meta[property=\"og:title\"]","meta[property=\"og:url\"]","meta[property=\"og:type\"]","meta[property=\"og:site_name\"]","meta[property=\"og:description\"]","head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script charset="UTF-8" src="https://cdn.cbd.int/anzhiyu-theme-static@1.1.5/accesskey/accesskey.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>
