@@ -16635,6 +16635,8 @@ li.card-category-list-item {
   padding: 1rem;
   overflow-x: auto;
   overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
   text-align: center;
   border: var(--style-border);
   border-radius: 12px;
