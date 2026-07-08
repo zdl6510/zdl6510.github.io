@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>六月 2026 | 星野暗涌</title><meta name="author" content="星野暗涌"><meta name="copyright" content="星野暗涌"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#18171d"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="六月 2026"><meta name="application-name" content="六月 2026"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#18171d"><meta property="og:type" content="website"><meta property="og:title" content="六月 2026"><meta property="og:url" content="http://example.com/archives/2026/06/index.html"><meta property="og:site_name" content="星野暗涌"><meta property="og:description" content="六月 2026"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://img.zhengdengliang.com/file/blog/AI/tools/1781160700966_image-20260611145132490.png"><meta property="article:author" content="星野暗涌"><meta property="article:tag"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://img.zhengdengliang.com/file/blog/AI/tools/1781160700966_image-20260611145132490.png"><meta name="description" content="六月 2026"><link rel="shortcut icon" href="/favicon.ico"><link rel="canonical" href="http://example.com/archives/2026/06/"><link rel="preconnect" href="//cdn.cbd.int"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="code-xxx"/><meta name="msvalidate.01" content="xxx"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/@fortawesome/fontawesome-free@7.1.0/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@6.1.6/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>六月 2026 | 星野暗涌</title><meta name="author" content="星野暗涌"><meta name="copyright" content="星野暗涌"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#18171d"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="六月 2026"><meta name="application-name" content="六月 2026"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#18171d"><meta property="og:type" content="website"><meta property="og:title" content="六月 2026"><meta property="og:url" content="http://example.com/archives/2026/06/index.html"><meta property="og:site_name" content="星野暗涌"><meta property="og:description" content="六月 2026"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://img.zhengdengliang.com/file/blog/AI/tools/1781160700966_image-20260611145132490.png"><meta property="article:author" content="星野暗涌"><meta property="article:tag"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://img.zhengdengliang.com/file/blog/AI/tools/1781160700966_image-20260611145132490.png"><meta name="description" content="六月 2026"><link rel="shortcut icon" href="/favicon.ico"><link rel="canonical" href="http://example.com/archives/2026/06/"><link rel="preconnect" href="//cdn.cbd.int"/><link rel="preconnect" href="//img.zhengdengliang.com" crossorigin=""/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="code-xxx"/><meta name="msvalidate.01" content="xxx"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/@fortawesome/fontawesome-free@7.1.0/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@6.1.6/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
   linkPageTop: undefined,
   peoplecanvas: {"enable":true,"img":"https://upload-bbs.miyoushe.com/upload/2024/07/27/125766904/ba62475f396df9de3316a08ed9e65d86_5680958632268053399..png"},
   postHeadAiDescription: {"enable":true,"gptName":"Zai","mode":"custom","switchBtn":false,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":"xxxx","Referer":"https://xx.xx/","summaryApi":"/api/ai-summary"},
@@ -61,7 +61,7 @@
   isHome: false,
   isHighlightShrink: false,
   isToc: false,
-  postUpdate: '2026-07-08 12:35:24',
+  postUpdate: '2026-07-08 13:06:08',
   postMainColor: '',
 }</script><noscript><style type="text/css">
   #nav {
@@ -260,7 +260,20 @@ queueMicrotask(() => {
 });</script><script async src="/anzhiyu/random.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>(() => {
   const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
   if ($mermaid.length === 0) return
-  const runMermaid = () => {
+  let mermaidLoader = null
+  const renderedMermaid = new WeakSet()
+
+  const ensureMermaid = () => {
+    if (window.loadMermaid) return Promise.resolve()
+    if (!mermaidLoader) {
+      mermaidLoader = getScript('https://cdn.cbd.int/mermaid@11.12.2/dist/mermaid.min.js').then(() => {
+        window.loadMermaid = true
+      })
+    }
+    return mermaidLoader
+  }
+
+  const getMermaidConfig = () => {
     window.loadMermaid = true
     const isDark = document.documentElement.getAttribute('data-theme') === 'dark'
     const theme = isDark ? 'dark' : 'default'
@@ -303,48 +316,88 @@ queueMicrotask(() => {
         padding: 18
       }
     }
-    const normalizeMermaidSvg = container => {
-      const svg = container.querySelector('svg')
-      if (!svg) return
-      const viewBox = svg.viewBox && svg.viewBox.baseVal
-      if (!viewBox || !viewBox.width || !viewBox.height) return
-      const minReadableWidth = Math.min(Math.max(viewBox.width, 760), 1800)
-      const scale = minReadableWidth / viewBox.width
-      svg.style.width = `${Math.round(minReadableWidth)}px`
-      svg.style.height = `${Math.round(viewBox.height * scale)}px`
-      svg.style.maxWidth = 'none'
-    }
+    return mermaidConfig
+  }
 
-    Array.from($mermaid).forEach((item, index) => {
-      const mermaidSrc = item.firstElementChild
-      item.querySelectorAll('svg').forEach(svg => svg.remove())
-      const mermaidThemeConfig = '%%{init:' + JSON.stringify(mermaidConfig) + '}%%\n'
-      const mermaidID = 'mermaid-' + index
-      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+  const normalizeMermaidSvg = container => {
+    const svg = container.querySelector('svg')
+    if (!svg) return
+    const viewBox = svg.viewBox && svg.viewBox.baseVal
+    if (!viewBox || !viewBox.width || !viewBox.height) return
+    const minReadableWidth = Math.min(Math.max(viewBox.width, 760), 1800)
+    const scale = minReadableWidth / viewBox.width
+    svg.style.width = `${Math.round(minReadableWidth)}px`
+    svg.style.height = `${Math.round(viewBox.height * scale)}px`
+    svg.style.maxWidth = 'none'
+  }
 
-      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+  const renderMermaidItem = (item, index) => {
+    if (renderedMermaid.has(item)) return
+    renderedMermaid.add(item)
 
-      const renderV10 = () => {
-        renderFn.then(({svg}) => {
-          mermaidSrc.insertAdjacentHTML('afterend', svg)
-          normalizeMermaidSvg(item)
-        })
-      }
+    const mermaidSrc = item.firstElementChild
+    item.querySelectorAll('svg').forEach(svg => svg.remove())
+    const mermaidThemeConfig = '%%{init:' + JSON.stringify(getMermaidConfig()) + '}%%\n'
+    const mermaidID = 'mermaid-' + index
+    const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
 
-      const renderV9 = svg => {
+    const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+
+    const renderV10 = () => {
+      renderFn.then(({svg}) => {
         mermaidSrc.insertAdjacentHTML('afterend', svg)
         normalizeMermaidSvg(item)
-      }
+      })
+    }
 
-      typeof renderFn === 'string' ? renderV9(renderFn) : renderV10()
-    })
+    const renderV9 = svg => {
+      mermaidSrc.insertAdjacentHTML('afterend', svg)
+      normalizeMermaidSvg(item)
+    }
+
+    typeof renderFn === 'string' ? renderV9(renderFn) : renderV10()
+  }
+
+  const renderWhenNeeded = (item, index) => {
+    ensureMermaid().then(() => renderMermaidItem(item, index))
   }
 
   const loadMermaid = () => {
-    window.loadMermaid ? runMermaid() : getScript('https://cdn.cbd.int/mermaid@11.12.2/dist/mermaid.min.js').then(runMermaid)
+    if (!('IntersectionObserver' in window)) {
+      ensureMermaid().then(() => {
+        Array.from($mermaid).forEach(renderMermaidItem)
+      })
+      return
+    }
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return
+        const item = entry.target
+        const index = Number(item.dataset.mermaidIndex)
+        observer.unobserve(item)
+        renderWhenNeeded(item, index)
+      })
+    }, {
+      rootMargin: '360px 0px'
+    })
+
+    Array.from($mermaid).forEach((item, index) => {
+      item.dataset.mermaidIndex = index
+      observer.observe(item)
+    })
   }
 
-  anzhiyu.addGlobalFn('themeChange', runMermaid, 'mermaid')
+  const rerenderVisibleMermaid = () => {
+    if (!window.loadMermaid) return
+    Array.from($mermaid).forEach((item, index) => {
+      if (!item.querySelector('svg')) return
+      renderedMermaid.delete(item)
+      renderMermaidItem(item, index)
+    })
+  }
+
+  anzhiyu.addGlobalFn('themeChange', rerenderVisibleMermaid, 'mermaid')
 
   window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
 })()</script><input type="hidden" name="page-type" id="page-type" value="anzhiyu"></div><script>window.addEventListener('load', () => {
