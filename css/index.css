@@ -16631,11 +16631,61 @@ li.card-category-list-item {
   z-index: 99999 !important;
 }
 .mermaid-wrap {
-  margin: 0 0 20px;
+  margin: 1.2rem 0 1.8rem;
+  padding: 1rem;
+  overflow-x: auto;
+  overflow-y: hidden;
   text-align: center;
+  border: var(--style-border);
+  border-radius: 12px;
+  background: var(--anzhiyu-card-bg);
+  -webkit-box-shadow: var(--anzhiyu-shadow-border);
+  box-shadow: var(--anzhiyu-shadow-border);
 }
 .mermaid-wrap > svg {
-  height: 100%;
+  display: block;
+  width: auto !important;
+  max-width: none !important;
+  min-width: 760px;
+  height: auto !important;
+  margin: 0 auto;
+  overflow: visible;
+}
+.mermaid-wrap > svg text {
+  font-family: var(--global-font), "Microsoft YaHei", "PingFang SC", sans-serif !important;
+  letter-spacing: 0;
+}
+.mermaid-wrap > svg .nodeLabel,
+.mermaid-wrap > svg .edgeLabel,
+.mermaid-wrap > svg .label,
+.mermaid-wrap > svg .legend,
+.mermaid-wrap > svg .sectionTitle,
+.mermaid-wrap > svg .taskText,
+.mermaid-wrap > svg .titleText {
+  line-height: 1.45;
+  word-break: break-word;
+}
+.mermaid-wrap > svg .node rect,
+.mermaid-wrap > svg .node polygon,
+.mermaid-wrap > svg .node circle,
+.mermaid-wrap > svg .node ellipse {
+  filter: drop-shadow(0 8px 18px rgba(0,0,0,0.12));
+}
+.mermaid-wrap > svg .edgeLabel {
+  border-radius: 8px;
+}
+.mermaid-wrap > svg .titleText {
+  font-weight: 700 !important;
+}
+.mermaid-wrap::-webkit-scrollbar {
+  height: 8px;
+}
+.mermaid-wrap::-webkit-scrollbar-thumb {
+  background: var(--anzhiyu-main);
+  border-radius: 999px;
+}
+.mermaid-wrap::-webkit-scrollbar-track {
+  background: transparent;
 }
 .fb-comments iframe {
   width: 100% !important;
