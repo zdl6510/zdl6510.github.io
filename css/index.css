@@ -16633,10 +16633,15 @@ li.card-category-list-item {
 .mermaid-wrap {
   margin: 1.2rem 0 1.8rem;
   padding: 1rem;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  max-width: 100%;
   overflow-x: auto;
   overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
   overscroll-behavior-x: contain;
+  scrollbar-gutter: stable;
   text-align: center;
   border: var(--style-border);
   border-radius: 12px;
@@ -16647,8 +16652,6 @@ li.card-category-list-item {
 .mermaid-wrap > svg {
   display: block;
   width: auto !important;
-  max-width: none !important;
-  min-width: 760px;
   height: auto !important;
   margin: 0 auto;
   overflow: visible;
@@ -16679,15 +16682,51 @@ li.card-category-list-item {
 .mermaid-wrap > svg .titleText {
   font-weight: 700 !important;
 }
+.mermaid-wrap.mermaid-horizontal {
+  padding-bottom: 1.35rem;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: var(--anzhiyu-main) rgba(128,128,160,0.22);
+  touch-action: pan-x;
+  text-align: left;
+}
+.mermaid-wrap.mermaid-horizontal > svg {
+  max-width: none !important;
+  min-width: 920px;
+  margin: 0;
+}
+.mermaid-wrap.mermaid-vertical {
+  overflow-x: hidden;
+  text-align: center;
+}
+.mermaid-wrap.mermaid-vertical > svg {
+  max-width: 100% !important;
+  min-width: 0;
+}
 .mermaid-wrap::-webkit-scrollbar {
   height: 8px;
+}
+.mermaid-wrap.mermaid-horizontal::-webkit-scrollbar {
+  display: block;
+  height: 12px;
 }
 .mermaid-wrap::-webkit-scrollbar-thumb {
   background: var(--anzhiyu-main);
   border-radius: 999px;
 }
+.mermaid-wrap.mermaid-horizontal::-webkit-scrollbar-thumb {
+  border: 3px solid rgba(0,0,0,0);
+  -webkit-background-clip: padding;
+  -moz-background-clip: padding;
+  background-clip: padding-box;
+}
 .mermaid-wrap::-webkit-scrollbar-track {
   background: transparent;
+}
+.mermaid-wrap.mermaid-horizontal::-webkit-scrollbar-track {
+  background: rgba(128,128,160,0.18);
+  border-radius: 999px;
 }
 .fb-comments iframe {
   width: 100% !important;
